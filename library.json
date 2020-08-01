@@ -1,0 +1,12 @@
+{
+    "id": "{DBD5563D-DFBA-A3DC-11A4-5E5E4C21F768}",
+    "name": "Victron",
+    "author": "Hermann Dötsch",
+    "url": "https://github.com/hermanthegerman2/Victron",
+    "compatibility": {
+        "version": "5.3"
+    },
+    "version": "1.0",
+    "build": 0,
+    "date": 1
+}
