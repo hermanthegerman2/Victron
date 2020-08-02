@@ -29,11 +29,11 @@ trait VictronConstants
         "P" => array('Position' => 15, 'Name' => 'Instantaneous power', 'custom_profile' => '~Watt.3680', 'Value' => 0.0),
         "CE" => array('Position' => 16, 'Name' => 'Consumed Amp Hours', 'custom_profile' => '~Ampere', 'Value' => 0.0),
         "SOC" => array('Position' => 17, 'Name' => 'State-of-charge', 'custom_profile' => '~Intensity.100', 'Value' => 0.0),
-        "TTG" => array('Position' => 18, 'Name' => 'Time-to-go', 'custom_profile' => array('Name' => 'Time_to_go', 'icon' => '', 'prefix'  => '', 'suffix' => ' min', 'min' => 0, 'max' => 100, 'steps' => 1), 'Value' => 0),
+        "TTG" => array('Position' => 18, 'Name' => 'Time-to-go', 'custom_profile' => array('Name' => 'Time_to_go', 'icon' => '', 'prefix'  => '', 'suffix' => ' min', 'min' => '', 'max' => 100, 'steps' => 1), 'Value' => 0),
         "Alarm" => array('Position' => 19, 'Name' => 'Alarm condition active', 'custom_profile' => array('Name' => 'Alarm_condition_active', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Value' => FALSE),
         "Relay" => array('Position' => 20, 'Name' => 'Relay state', 'custom_profile'  => array('Name' => 'Relay_state', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Value' => FALSE),
         "AR" => array('Position' => 21, 'Name' => 'Alarm reason', 'custom_profile'  => array('Name' => 'Alarm_reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Value' => 0),
-        "OR" => array('Position' => 22, 'Name' => 'Off reason', 'custom_profile'  => array('Name' => 'Off_reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => 0, 'max' => 7, 'steps' => 1), 'Value' => 0),
+        "OR" => array('Position' => 22, 'Name' => 'Off reason', 'custom_profile'  => array('Name' => 'Off_reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 7, 'steps' => 1), 'Value' => 0),
         "H1" => array('Position' => 23, 'Name' => 'Depth of the deepest discharge', 'custom_profile' => '~Ampere', 'Value' => 0.0),
         "H2" => array('Position' => 24, 'Name' => 'Depth of the last discharge', 'custom_profile' => '~Ampere', 'Value' => 0.0),
         "H3" => array('Position' => 25, 'Name' => 'Depth of the average discharge', 'custom_profile' => '~Ampere', 'Value' => 0.0),
@@ -58,7 +58,7 @@ trait VictronConstants
         "H22" => array('Position' => 44, 'Name' => 'Yield yesterday', 'custom_profile' => '~Electricity', 'Value' => 0.0),
         "H23" => array('Position' => 45, 'Name' => 'Maximum power yesterday', 'custom_profile' => '~Watt.3680', 'Value' => 0.0),
         "ERR" => array('Position' => 46, 'Name' => 'Error code', 'custom_profile'  => array('Name' => 'Error_code', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Value' => 0),
-        "CS" => array('Position' => 47, 'Name' => 'State of operation', 'custom_profile'  => array('Name' => 'State_of_operation', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => 0, 'max' => 255, 'steps' => 1), 'Value' => 0),
+        "CS" => array('Position' => 47, 'Name' => 'State of operation', 'custom_profile'  => array('Name' => 'State_of_operation', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 255, 'steps' => 1), 'Value' => 0),
         "BMV" => array('Position' => 48, 'Name' => 'Model description (deprecated)', 'custom_profile'  => '', 'Value' => ''),
         "FW" => array('Position' => 49, 'Name' => 'Firmware version (16 bit)', 'custom_profile'  => '', 'Value' => ''),
         "FWE" => array('Position' => 50, 'Name' => 'Firmware version (24 bit)', 'custom_profile'  => '', 'Value' => ''),
@@ -70,7 +70,7 @@ trait VictronConstants
         "AC_OUT_I" => array('Position' => 56, 'Name' => 'AC output current', 'custom_profile' => '~Ampere', 'Value' => 0.0),
         "AC_OUT_S" => array('Position' => 57, 'Name' => 'AC output apparent power', 'custom_profile' => '~Power', 'Value' => 0.0),
         "WARN" => array('Position' => 58, 'Name' => 'Warning reason', 'custom_profile' => array('Name' => 'Warning_reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Value' => 0),
-        "MPPT" => array('Position' => 59, 'Name' => 'Tracker operation mode', 'custom_profile' => array('Name' => 'Tracker_operation_mode', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => 0, 'max' => 2, 'steps' => 1), 'Value' => 0)
+        "MPPT" => array('Position' => 59, 'Name' => 'Tracker operation mode', 'custom_profile' => array('Name' => 'Tracker_operation_mode', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 2, 'steps' => 1), 'Value' => 0)
     ];
 
     protected $variable_mapping = array (
