@@ -12,7 +12,7 @@ trait ModuleHelper
     protected $archive_mappings = [];
     //protected $profile_mappings = [];
     protected $hidden_mappings = [];
-    protected $icon_mappings = [];
+    //protected $icon_mappings = [];
 
     protected function GetParentID()
     {
