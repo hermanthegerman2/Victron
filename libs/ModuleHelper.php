@@ -6,6 +6,9 @@ namespace Helper;
 
 trait ModuleHelper
 {
+    private $prefix;
+    private $archive_id;
+
     protected function GetParentID()
     {
         $ParentID = (IPS_GetInstance($this->InstanceID)['ConnectionID']);
