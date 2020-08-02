@@ -357,7 +357,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
                         case "PID":
                             $identifier = substr($value, 2);
-                            $value = $this->type[$identifier];
+                            $value = $this->device_mapping[$identifier];
                             break;
 
                     }

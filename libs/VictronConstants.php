@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace Constants;
 
-trait VictronConstants {
+trait VictronConstants
+{
 
-    protected $archive_mappings = [];
-    protected $hidden_mappings = [];
-    protected $icon_mappings = [];
-
-    private	$type = [
+    protected	$device_mapping = [
         "A053" => "SmartSolar MPPT 75|15"
     ];
     protected $custom_profile = [
@@ -124,5 +121,4 @@ trait VictronConstants {
         "WARN" => array('Position' => 58, 'Name' => 'Warning reason', 'Profil' => 'Warning_reason', 'Vartype' => 2),
         "MPPT" => array('Position' => 59, 'Name' => 'Tracker operation mode', 'Profil' => 'Tracker_operation_mode', 'Vartype' => 2)
     ];
-
 }
