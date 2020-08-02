@@ -357,7 +357,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             If (empty($this->ReadAttributeString('PID'))) {
                                 $this->CreateCategoryByIdentifier($this->InstanceID, $PID, $name = null, $icon = null);
                                 $this->WriteAttributeString('PID', $PID);
-                                $this->SendDebug("Gerät gefunden: ", $PID,0);
+                                $this->SendDebug("Victron Gerät gefunden: ", $PID,0);
+                                IPS_LogMessage("Victron Gerät gefunden: ", $PID);
                             }
                             break;
 
