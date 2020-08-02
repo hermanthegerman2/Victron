@@ -390,6 +390,9 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                         }
                                         $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
                                         $ident = $parent_id . '_' . $value['Name'];
+
+                                        // Nur Variablen in display_mapping anlegen
+
                                         If (preg_match("/".$key."/i",$this->display_mapping[$PID])) {
                                             $this->CreateVariableByIdentifier([
                                                 'parent_id' => $parent_id,
