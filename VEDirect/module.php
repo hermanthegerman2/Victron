@@ -35,7 +35,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 			$this->ConnectParent("{3CFF0FD9-E306-41DB-9B5A-9D06D38576C3}");
             //$this->ConnectParent("{6DC3D946-0D31-450F-A8C6-C42DB8D7D4F1}");
             // Modul-Eigenschaftserstellung
-            $this->RegisterPropertyBoolean("Open", false);
+            $this->RegisterPropertyBoolean("Open", true);
             $this->RegisterPropertyString("IPAddress", "192.168.2.2");
             $this->RegisterPropertyInteger("Socket", 10000);
             $this->RegisterPropertyString("Serial Port", "ttyUSB0");
@@ -356,8 +356,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             $PID = $this->device_mapping[$identifier];
                             If (empty($this->ReadAttributeString('PID'))) {
                                 $this->WriteAttributeString('PID', $PID);
-
-                                $PID = $this->CreateCategoryByIdentifier($this->IPS_GetVariableIDByName('Victron'), $PID, $name = null, $icon = null);
+                                $PID = $this->CreateCategoryByIdentifier($this->InstanceID, $PID, $name = null, $icon = null);
                                 $this->SendDebug("Gerät gefunden: ", $PID,0);
                             }
                             break;
