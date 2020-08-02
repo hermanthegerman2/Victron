@@ -34,7 +34,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             // Modul-Eigenschaftserstellung
             $this->RegisterPropertyBoolean("Open", false);
             $this->RegisterPropertyString("IPAddress", "192.168.2.2");
-            $this->ReadPropertyInteger("Socket", "10000");
+            $this->ReadPropertyInteger("Socket", 10000);
             $this->RegisterPropertyString("Serial Port", "ttyUSB0");
             $this->RegisterPropertyBoolean("AutoRestart", true);
             // Statusvariablen anlegen
