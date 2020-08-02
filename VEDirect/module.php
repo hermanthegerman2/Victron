@@ -38,7 +38,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $this->RegisterPropertyString("Serial Port", "ttyUSB0");
             $this->RegisterPropertyBoolean("AutoRestart", true);
             // Statusvariablen anlegen
-            $this->RegisterVariableBoolean("SocketStatus", "ocketStatus", "~Alert.Reversed", 40);
+            $this->RegisterVariableBoolean("SocketStatus", "SocketStatus", "~Alert.Reversed", 40);
             $this->DisableAction("SocketStatus");
 		}
 
@@ -153,7 +153,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == false) {
                         SetValueBoolean($this->GetIDForIdent("SocketStatus"), true);
                     }
-                    $this->CheckConfig();
+                    //$this->CheckConfig();
                     // Hardware und Softwareversion feststellen
                     $this->CommandClientSocket(pack("L*", 17, 0, 0, 0).pack("L*", 26, 0, 0, 0), 32);
 
