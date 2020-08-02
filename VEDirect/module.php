@@ -153,44 +153,10 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == false) {
                         SetValueBoolean($this->GetIDForIdent("SocketStatus"), true);
                     }
-                    //$this->CheckConfig();
-                    // Hardware und Softwareversion feststellen
-                    $this->CommandClientSocket(pack("L*", 17, 0, 0, 0).pack("L*", 26, 0, 0, 0), 32);
-
-                    // Alle Waveforms löschen
-                    //$this->CommandClientSocket(pack("L*", 27, 0, 0, 0), 16);
-
-                    // I2C-Handle zurücksetzen
-                    //If ($this->GetBuffer("I2C_Enabled") == 1) {
-                    //    $this->ResetI2CHandle(0);
-                    //}
-
-                    // Notify Starten
-                    $Handle = $this->ClientSocket(pack("L*", 99, 0, 0, 0));
-                    $this->SetBuffer("Handle", $Handle);
-                    $this->SendDebug("Handle", (int)$Handle, 0);
-
-                    // MUX einrichten
- /*                   If (($this->ReadPropertyInteger("MUX") > 0) AND ($this->GetBuffer("I2C_Enabled") == 1)) {
-                        $MUX_Handle = $this->CommandClientSocket(pack("L*", 54, 1, 112, 4, 0), 16);
-                        $this->SetBuffer("MUX_Handle", $MUX_Handle);
-                        $this->SendDebug("MUX Handle", $MUX_Handle, 0);
-                        $this->SetBuffer("MUX_Channel", -1);
-                        If ($MUX_Handle >= 0) {
-                            // MUX setzen
-                            $this->SetMUX(0);
-                        }
-                    }*/
 
                     // Vorbereitung beendet
                     $this->SendDebug("ApplyChanges", "Beende Vorbereitung", 0);
                     $this->SetBuffer("ModuleReady", 1);
-
-
-                    If ($Handle >= 0) {
-                        // Notify setzen
-                        $this->CommandClientSocket(pack("L*", 19, $Handle, $this->CalcBitmask(), 0), 16);
-                    }
 
                     $this->SetStatus(102);
 
