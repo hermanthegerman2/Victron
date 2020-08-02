@@ -10,6 +10,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 	    use \Helper\ModuleHelper;
         use \Constants\VictronConstants;
 
+        const guid_device = '{018EF6B5-AB94-40C6-AA53-46943E824ACF}';
+
         private $Socket = false;
 
         public function __construct($InstanceID)

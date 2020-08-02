@@ -6,8 +6,6 @@ namespace Constants;
 
 trait VictronConstants {
 
-    const guid_device = '{018EF6B5-AB94-40C6-AA53-46943E824ACF}';
-
     protected $archive_mappings = [];
     protected $hidden_mappings = [];
     protected $icon_mappings = [];
