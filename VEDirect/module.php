@@ -1,9 +1,13 @@
 <?php
-set_include_path(__DIR__.'/../libs');
+
+declare(strict_types=1);
+
 require_once __DIR__ . "/../libs/VictronConstants.php";
 require_once __DIR__ . "/../libs/ModuleHelper.php";
 
 	class VEDirect extends IPSModule {
+
+	    use \Helper\ModuleHelper;
 
         private $Socket = false;
 
@@ -31,6 +35,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $this->RegisterPropertyBoolean("Open", false);
             $this->RegisterPropertyString("IPAddress", "192.168.2.2");
             $this->RegisterPropertyString("Socket", "10000");
+            $this->RegisterPropertyString("Serial Port", "ttyUSB0");
 		}
 
         public function GetConfigurationForm()
@@ -44,8 +49,16 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $arrayElements = array();
             $arrayElements[] = array("type" => "CheckBox", "name" => "Open", "caption" => "Aktiv");
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-            $arrayElements[] = array("type" => "Select", "name" => "VictronVEDirect verbinden mit:", "caption" => "Einheit",  "options"=> [ "caption" => "Socket", "value" => 0 , "caption" => "Seriell" , "value" => 1 ]);
+            $arrayElements[] = array("type" => "Select", "name" => "VictronVEDirect verbinden mit:", "caption" => "Einheit");
+            $arraySort = array();
+            $arraySort = array("column" => "Schnittstelle", "direction" => "ascending");
+            $arrayColumns = array();
+            $arrayColumns[] = array("label" => "Service", "name" => "Seriell", "width" => "200px", "add" => "");
+            $arrayColumns[] = array("label" => "Status", "name" => "Socket", "width" => "auto", "add" => "");
 
+
+
+            //"options" => ( "caption" => "Socket", "value" => 0 , "caption" => "Seriell" , "value" => 1));
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
 
             $arraySort = array();
