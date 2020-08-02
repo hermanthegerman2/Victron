@@ -8,6 +8,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 	class VEDirect extends IPSModule {
 
 	    use \Helper\ModuleHelper;
+        use \Constants\VictronConstants;
 
         private $Socket = false;
 
@@ -183,7 +184,6 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
                         SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
                     }
-
                     $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
                     if (!$status) {
                         IPS_LogMessage(" Netzanbindung: ","Port ist geschlossen!");
@@ -192,13 +192,6 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
                         }
                         $this->SetStatus(104);
-                    }
-                    else {
-                        fclose($status);
-                        //IPS_LogMessage("Victron Netzanbindung: ","Port ist geöffnet");
-                        $this->SendDebug("Netzanbindung", "Port ist geoeffnet", 0);
-                        $result = true;
-                        $this->SetStatus(102);
                     }
                 }
                 else {
@@ -270,10 +263,117 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 			$this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $Text)));
 		}
 
-		public function ReceiveData($JSONString)
-		{
-			$data = json_decode($JSONString);
-            $this->SendDebug("Device RECV", utf8_decode($data->Buffer), 0);
-		}
+        public function ReceiveData($JSONString)
+        {
+            //$receive = json_decode($JSONString);
+            $data = json_decode($JSONString);
+            //$this->SendDebug("ReceiveData Utf-8", utf8_decode($data->Buffer), 0);
+            $buffer = $data->{'Buffer'};
+            $message = preg_split('/\r\n/', $buffer);
+            $bufferend = array_pop($message);
+            for ($i = 1; $i < count($message); $i++) {
+                //$this->SendDebug("ReceiveData explode", $array[$i], 0);
+                $var= preg_split('/[\t]/', $message[$i]);
+                for ($n = 1; $n < count($var); $n++) {
+                    $label = $var[$n - 1];
+                    $value = $var[$n];
+                    $this->SendDebug("ReceiveData ", $this->Variable[$label]['Name'] . '  --->  ' . $value, 0);
 
+                    $instance_id = $this->CreateInstanceByIdentifier(self::guid_device, $ParentID = $this->GetParentID(), $name);
+                    $this->SendDebug("instance_id ", $instance_id,0);
+
+                    $ident = $instance_id . '_' . $this->Variable[$label]['Name'];
+
+                    switch ($label) {
+                        case "V":
+                        case "V2":
+                        case "V3":
+                        case "VS":
+                        case "VM":
+                        case "DM":
+                        case "VPV":
+                        case "I":
+                        case "I2":
+                        case "I3":
+                        case "IL":
+                        case "CE":
+                        case "SOC":
+                        case "H1":
+                        case "H2":
+                        case "H3":
+                        case "H6":
+                        case "H7":
+                        case "H8":
+                        case "H15":
+                        case "H16":
+                            $value = floatval($value) / 1000;
+                            break;
+
+                        case "PPV":
+                        case "T":
+                        case "LOAD":
+                        case "P":
+                        case "AR":
+                        case "OR":
+                        case "H4":
+                        case "H5":
+                        case "H9":
+                        case "H10":
+                        case "H11":
+                        case "H12":
+                        case "H13":
+                        case "H14":
+                        case "ERR":
+                        case "CS":
+                        case "HSDS":
+                        case "MODE":
+                        case "WARN":
+                        case "MPPT":
+                            $value = intval($value);
+                            break;
+
+                        case "Alarm":
+                        case "Relay":
+                            $value = boolval($value);
+                            break;
+
+                        case "H17":
+                        case "H18":
+                        case "H19":
+                        case "H20":
+                        case "H22":
+                        case "AC_OUT_V":
+                        case "AC_OUT_I":
+                            $value = floatval($value) / 100;
+                            break;
+
+                        case "H21":
+                        case "H23":
+                        case "AC_OUT_S":
+                            $value = floatval($value);
+                            break;
+
+                        case "PID":
+                            $identifier = substr($value, 2);
+                            $value = $this->type[$identifier];
+                            break;
+
+                    }
+
+                    /*$this->CreateVariableByIdentifier([
+                        'parent_id' => $instance_id,
+                        'name' => $this->Variable[$label]['Name'],
+                        'value' => $value,
+                        'identifier' => $ident,
+                        'position' => $this->Variable[$label]['Position'],
+                        'custom_profile' => ''
+                    ]);
+*/
+
+                }
+            }
+            $this->SendDebug("ReceiveData buffer_end", $bufferend, 0);
+
+
+        }
 	}

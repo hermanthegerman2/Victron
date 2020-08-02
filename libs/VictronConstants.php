@@ -1,9 +1,12 @@
 <?php
 // helper properties
+declare(strict_types=1);
+
+namespace Constants;
+
 trait VictronConstants {
 
-    private $category_id = 0;
-    private $archive_id = 0;
+    const guid_device = '{018EF6B5-AB94-40C6-AA53-46943E824ACF}';
 
     protected $archive_mappings = [];
     protected $hidden_mappings = [];
