@@ -393,7 +393,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                         $this->CreateVariableByIdentifier([
                                             'parent_id' => $parent_id,
                                             'name' => $value['Name'],
-                                            'value' => $value['Vartype'],
+                                            'value' => $value['Value'],
                                             'identifier' => $ident,
                                             'position' => $value['Position'],
                                             'custom_profile' => $custom_profile
