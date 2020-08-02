@@ -6,14 +6,6 @@ namespace Helper;
 
 trait ModuleHelper
 {
-    private $prefix;
-    private $archive_id;
-
-    protected $archive_mappings = [];
-    protected $profile_mappings = [];
-    protected $hidden_mappings = [];
-    protected $icon_mappings = [];
-
     protected function GetParentID()
     {
         $ParentID = (IPS_GetInstance($this->InstanceID)['ConnectionID']);
