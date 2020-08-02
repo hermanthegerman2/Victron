@@ -273,7 +273,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 		public function ReceiveData($JSONString)
 		{
 			$data = json_decode($JSONString);
-			IPS_LogMessage("Device RECV", utf8_decode($data->Buffer));
+            $this->SendDebug("Device RECV", utf8_decode($data->Buffer), 0);
 		}
 
 	}
