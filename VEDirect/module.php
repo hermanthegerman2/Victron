@@ -34,7 +34,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             // Modul-Eigenschaftserstellung
             $this->RegisterPropertyBoolean("Open", false);
             $this->RegisterPropertyString("IPAddress", "192.168.2.2");
-            $this->RegisterPropertyString("Socket", "10000");
+            $this->ReadPropertyInteger("Socket", "10000");
             $this->RegisterPropertyString("Serial Port", "ttyUSB0");
             $this->RegisterPropertyBoolean("AutoRestart", true);
             // Statusvariablen anlegen
@@ -209,8 +209,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $result = false;
             If (Sys_Ping($this->ReadPropertyString("IPAddress"), 2000)) {
                 //IPS_LogMessage("Victron Netzanbindung","Angegebene IP ".$this->ReadPropertyString("IPAddress")." reagiert");
-                $this->SendDebug("Netzanbindung", "IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyString("Socket")." reagiert", 0);
-                $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyString("Socket"), $errno, $errstr, 10);
+                $this->SendDebug("Netzanbindung", "IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyInteger("Socket")." reagiert", 0);
+                $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
                 if (!$status) {
                     IPS_LogMessage("Victron Netzanbindung: ","Port ist geschlossen!");
                     $this->SendDebug("Netzanbindung", "Port ist geschlossen!", 0);
@@ -218,7 +218,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
                     }
 
-                    $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyString("Socket"), $errno, $errstr, 10);
+                    $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
                     if (!$status) {
                         IPS_LogMessage(" Netzanbindung: ","Port ist geschlossen!");
                         $this->SendDebug("Netzanbindung", "Port ist geschlossen!", 0);
@@ -244,8 +244,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                 }
             }
             else {
-                IPS_LogMessage("Victron Netzanbindung: ","IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyString("Socket")." reagiert nicht!");
-                $this->SendDebug("Netzanbindung", "IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyString("Socket")." reagiert nicht!", 0);
+                IPS_LogMessage("Victron Netzanbindung: ","IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyInteger("Socket")." reagiert nicht!");
+                $this->SendDebug("Netzanbindung", "IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyInteger("Socket")." reagiert nicht!", 0);
                 If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
                     SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
                 }
@@ -256,7 +256,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
         public function GetConfigurationForParent()
         {
-            $JsonArray = array( "Host" => $this->ReadPropertyString('IPAddress'), "Port" => $this->ReadPropertyString("Socket"), "Open" => $this->ReadPropertyBoolean("Open"));
+            $JsonArray = array( "Host" => $this->ReadPropertyString('IPAddress'), "Port" => $this->ReadPropertyInteger("Socket"), "Open" => $this->ReadPropertyBoolean("Open"));
             $Json = json_encode($JsonArray);
             return $Json;
         }
