@@ -390,22 +390,24 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                         }
                                         $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
                                         $ident = $parent_id . '_' . $value['Name'];
+                                        If (preg_match("/".$key."/i",$this->display_mapping[$PID])) {
+                                            $this->CreateVariableByIdentifier([
+                                                'parent_id' => $parent_id,
+                                                'name' => $value['Name'],
+                                                'value' => $value['Value'],
+                                                'identifier' => $ident,
+                                                'position' => $value['Position'],
+                                                'custom_profile' => $custom_profile
+                                            ]);
+                                        }
 
-                                        $this->CreateVariableByIdentifier([
-                                            'parent_id' => $parent_id,
-                                            'name' => $value['Name'],
-                                            'value' => $value['Value'],
-                                            'identifier' => $ident,
-                                            'position' => $value['Position'],
-                                            'custom_profile' => $custom_profile
-                                        ]);
                                     }
 
 
                                 }
                             }
                             break;
-
+                        //Check Variablen, welche geschrieben werden ->
                     }
 
                 }

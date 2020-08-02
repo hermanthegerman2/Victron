@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d579a785-4654-46fe-b6b5-dfdfc428af82" name="Default Changelist" comment="" />
+    <list default="true" id="d579a785-4654-46fe-b6b5-dfdfc428af82" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VEDirect/module.php" beforeDir="false" afterPath="$PROJECT_DIR$/VEDirect/module.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/VictronConstants.php" beforeDir="false" afterPath="$PROJECT_DIR$/libs/VictronConstants.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,14 +56,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1596341294760</updated>
-      <workItem from="1596341296635" duration="42352000" />
-    </task>
-    <task id="LOCAL-00007" summary="Form">
-      <created>1596344369518</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1596344369518</updated>
+      <workItem from="1596341296635" duration="44194000" />
     </task>
     <task id="LOCAL-00008" summary="Form">
       <created>1596344459036</created>
@@ -397,7 +394,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596399072092</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Form">
+      <created>1596399363138</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1596399363138</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -419,10 +423,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Form" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1992" y="313" key="Vcs.Push.Dialog.v2" timestamp="1596399076545">
+    <state x="1992" y="313" key="Vcs.Push.Dialog.v2" timestamp="1596399365607">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
-    <state x="1992" y="313" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596399076545" />
+    <state x="1992" y="313" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596399365607" />
     <state x="2217" y="494" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596343825937">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>

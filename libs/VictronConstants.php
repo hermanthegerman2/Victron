@@ -6,9 +6,60 @@ namespace Constants;
 
 trait VictronConstants
 {
-
     protected $device_mapping = [
-        "A053" => "SmartSolar MPPT 75|15"
+        "0300" => "BlueSolar MPPT 70|15",
+        "A040" => "BlueSolar MPPT 75|50",
+        "A041" => "BlueSolar MPPT 150|35",
+        "A042" => "BlueSolar MPPT 75|15",
+        "A043" => "BlueSolar MPPT 100|15",
+        "A044" => "BlueSolar MPPT 100|30",
+        "A045" => "BlueSolar MPPT 100|50",
+        "A046" => "BlueSolar MPPT 150|70",
+        "A047" => "BlueSolar MPPT 150|100",
+        "A048" => "BlueSolar MPPT 75|50 rev2",
+        "A049" => "BlueSolar MPPT 100|50 rev2",
+        "A04A" => "BlueSolar MPPT 100|30 rev2",
+        "A04B" => "BlueSolar MPPT 150|35 rev2",
+        "A04C" => "BlueSolar MPPT 75|10",
+        "A04D" => "BlueSolar MPPT 150|45",
+        "A04E" => "BlueSolar MPPT 150|60",
+        "A04F" => "BlueSolar MPPT 150|85",
+        "A050" => "SmartSolar MPPT 250|100",
+        "A051" => "SmartSolar MPPT 150|100",
+        "A052" => "SmartSolar MPPT 150|85",
+        "A053" => "SmartSolar MPPT 75|15",
+        "A054" => "SmartSolar MPPT 75|10",
+        "A055" => "SmartSolar MPPT 100|15",
+        "A056" => "SmartSolar MPPT 100|30",
+        "A057" => "SmartSolar MPPT 100|50",
+        "A058" => "SmartSolar MPPT 150|35",
+        "A059" => "SmartSolar MPPT 150|100 rev2",
+        "A05A" => "SmartSolar MPPT 150|85 rev2",
+        "A05B" => "SmartSolar MPPT 250|70",
+        "A05C" => "SmartSolar MPPT 250|85",
+        "A05D" => "SmartSolar MPPT 250|60",
+        "A05E" => "SmartSolar MPPT 250|45",
+        "A05F" => "SmartSolar MPPT 100|20",
+        "A060" => "SmartSolar MPPT 100|20 48V",
+        "A061" => "SmartSolar MPPT 150|45",
+        "A062" => "SmartSolar MPPT 150|60",
+        "A063" => "SmartSolar MPPT 150|70",
+        "A064" => "SmartSolar MPPT 250|85 rev2",
+        "A065" => "SmartSolar MPPT 250|100 rev2",
+        "A102" => "SmartSolar MPPT VE.Can 150|70",
+        "A103" => "SmartSolar MPPT VE.Can 150|45",
+        "A104" => "SmartSolar MPPT VE.Can 150|60",
+        "A105" => "SmartSolar MPPT VE.Can 150|85",
+        "A106" => "SmartSolar MPPT VE.Can 150|100",
+        "A107" => "SmartSolar MPPT VE.Can 250|45",
+        "A108" => "SmartSolar MPPT VE.Can 250|60",
+        "A109" => "SmartSolar MPPT VE.Can 250|70",
+        "A10A" => "SmartSolar MPPT VE.Can 250|85",
+        "A10B" => "SmartSolar MPPT VE.Can 250|100"
+    ];
+
+    protected $display_mapping = [
+        "A053" => "V,VS,VPV,PPV,I,IL,LOAD,Alarm,Relay,AR,OR,H1,H2,H3,H5,H7,H8,H19,H20,H21,H22,H23,ERR,FW,SER#,HSDS,MODE,WARN,MPPT"
     ];
 
     protected $DeviceVariable = [
@@ -72,37 +123,4 @@ trait VictronConstants
         "WARN" => array('Position' => 58, 'Name' => 'Warning reason', 'custom_profile' => array('Name' => 'Warning_reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Value' => 0),
         "MPPT" => array('Position' => 59, 'Name' => 'Tracker operation mode', 'custom_profile' => array('Name' => 'Tracker_operation_mode', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 2, 'steps' => 1), 'Value' => 0)
     ];
-
-    protected $variable_mapping = array (
-        "SmartSolar MPPT 75|15" => array(
-            "V" => "Main or channel 1 (battery) voltage", 1,
-            "VS" => "Auxiliary (starter) voltage", 1,
-            "VPV" => "Panel voltage", 1,
-            "PPV" => "Panel power", 'value' => 1,
-            "I" => "Main or channel 1 battery current", 'value' => 1,
-            "IL" => "Load current", 'value' => 1,
-            "LOAD" => "Load output state", 'value' => 1,
-            "Alarm" => "Alarm condition active", 'value' => 0,
-            "Relay" => "Relay state", 'value' => 0,
-            "AR" => "Alarm_reason", 'value' => 2,
-            "OR" => "Off reason", 'value' => 2,
-            "H1" => "Depth of the deepest discharge", 'value' => 1,
-            "H2" => "Depth of the last discharge", 'value' => 1,
-            "H3" => "Depth of the average discharge", 'value' => 1,
-            "H7" => "Minimum main (battery) voltage", 'value' => 1,
-            "H8" => "Maximum main (battery) voltage",  'value' => 1,
-            "H19" => "Yield total (user resettable counter)", 'value' => 1,
-            "H20" => "Yield today",  'value' => 1,
-            "H21" => "Maximum power today", 'value' => 1,
-            "H22" => "Yield yesterday", 'value' => 1,
-            "H23" => "Maximum power yesterday", 'value' => 1,
-            "ERR" => "Error code", 'value' => 2,
-            "FW" => "Firmware version (16 bit)", 'value' => 3,
-            "SER#" => "Serial number", 'value' => 1, 'value' => 3,
-            "HSDS" => "Day sequence number", 'value' => 2,
-            "MODE" => "Device mode", 'value' => 1,
-            "WARN" => "Warning reason", 'value' => 2,
-            "MPPT" => "Tracker operation mode", 'value' => 2
-        )
-    );
 }
