@@ -381,16 +381,17 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                 // Gerätevariablen anlegen -> nur die in display_mapping
                                 //If (preg_match("/".$key."/i",$this->display_mapping[$PID]))
 
-                                foreach ($this->variable_mapping AS ($key && (preg_match("/".$key."/i",$this->display_mapping[$PID]))) => $value)  {
-                                    if (is_array($value)) {
-                                        foreach ($value as $v) {
-                                            if (is_array($value)) {
-                                                foreach ($value as $v) {
+                                foreach ($this->variable_mapping AS $key => $value) {
+                                    If (preg_match("/".$key."/i",$this->display_mapping[$PID])) {
+                                        if (is_array($value)) {
+                                            foreach ($value as $v) {
+                                                if (is_array($value)) {
+                                                    foreach ($value as $v) {
+                                                    }
                                                 }
                                             }
-                                        }
-                                        $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
-                                        $ident = $parent_id . '_' . $value['Name'];
+                                            $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
+                                            $ident = $parent_id . '_' . $value['Name'];
 
                                             $this->CreateVariableByIdentifier([
                                                 'parent_id' => $parent_id,
@@ -400,10 +401,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                                 'position' => $value['Position'],
                                                 'custom_profile' => $custom_profile
                                             ]);
-
-
+                                        }
                                     }
-
 
                                 }
                             }
