@@ -40,7 +40,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $this->RegisterPropertyInteger("Socket", 10000);
             $this->RegisterPropertyString("Serial Port", "ttyUSB0");
             $this->RegisterPropertyBoolean("AutoRestart", true);
-            $this->RegisterAttributeString("PID", NULL);
+            $this->RegisterAttributeInteger("parent_id", NULL);
             // Statusvariablen anlegen
             $this->RegisterVariableBoolean("SocketStatus", "SocketStatus", "~Alert.Reversed", 40);
             $this->DisableAction("SocketStatus");
@@ -354,9 +354,9 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         case "PID":
                             $PID = substr($value, 2);
                             $PID = $this->device_mapping[$PID];
-                            If (empty($this->ReadAttributeString('PID'))) {
+                            If (empty($this->ReadAttributeInteger('parent_id'))) {
                                 $parent_id = $this->CreateCategoryByIdentifier($this->InstanceID, $PID, $name = null, $icon = null);
-                                $this->WriteAttributeString('PID', $PID);
+                                $this->WriteAttributeInteger('parent_id', $parent_id);
                                 $this->SendDebug("Victron Gerät gefunden: ", $PID, 0);
                                 IPS_LogMessage("Victron Gerät gefunden: ", $PID);
 
@@ -365,7 +365,12 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                 foreach ($this->DeviceVariable AS $key => $value) {
                                     if (is_array($value)) {
                                         foreach ($value as $v) {
+                                            if (is_array($value)) {
+                                                foreach ($value as $v) {
+                                                }
+                                            }
                                         }
+                                        $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
                                         $ident = $parent_id . '_' . $value['Name'];
                                         $this->SendDebug($key, $value['Position'] . " : " . $value['Name'] . " : " . $value['Profil'] . " : " . $value['Vartype'], 0);
                                         // print $key." : ".$value."\n";
@@ -375,7 +380,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                             'value' => $value['Vartype'],
                                             'identifier' => $ident,
                                             'position' => $value['Position'],
-                                            'custom_profile' => $value['Profil']
+                                            'custom_profile' => $custom_profile
                                         ]);
                                     }
 
@@ -383,6 +388,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                 }
                             }
                             break;
+
                     }
 
                 }
