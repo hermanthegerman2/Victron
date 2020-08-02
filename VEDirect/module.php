@@ -59,37 +59,13 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                 $arrayElements[] = array("type" => "Label", "label" => "Es wurde kein MUX gefunden.");
             }
             $arrayOptions = array();
-            $arrayElements[] = array("type" => "Label", "label" => "Nutzung der I²C-Schnittstelle 0:");
-            $arrayOptions[] = array("label" => "Nein", "value" => 0);
-            $arrayOptions[] = array("label" => "Ja", "value" => 1);
-            $arrayElements[] = array("type" => "Select", "name" => "I2C0", "caption" => "I²C 0", "options" => $arrayOptions );
-            $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-            If (($this->ConnectionTest()) AND ($this->SearchSpecialI2CDevices(24) == true))  {
-                $arrayOptions = array();
-                $arrayOptions[] = array("label" => "Kein DS2482", "value" => 0);
-                $arrayOptions[] = array("label" => "DS2482 Adr. 24/0x18", "value" => 1);
-                $arrayElements[] = array("type" => "Select", "name" => "OW", "caption" => "1-Wire Auswahl", "options" => $arrayOptions );
-            }
-            else {
-                $arrayElements[] = array("type" => "Label", "label" => "Es wurde kein DS2482 gefunden.");
-            }
-            $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-            $arrayElements[] = array("type" => "Label", "label" => "Analyse der Raspberry Pi Konfiguration:");
+
             $arraySort = array();
             $arraySort = array("column" => "ServiceTyp", "direction" => "ascending");
             $arrayColumns = array();
             $arrayColumns[] = array("label" => "Service", "name" => "ServiceTyp", "width" => "200px", "add" => "");
             $arrayColumns[] = array("label" => "Status", "name" => "ServiceStatus", "width" => "auto", "add" => "");
-            $ServiceArray = array();
-            $ServiceArray = unserialize($this->CheckConfig());
-            $arrayValues[] = array("ServiceTyp" => "I²C", "ServiceStatus" => $ServiceArray["I2C"]["Status"], "rowColor" => $ServiceArray["I2C"]["Color"]);
-            $arrayValues[] = array("ServiceTyp" => "Serielle Schnittstelle (RS232)", "ServiceStatus" => $ServiceArray["Serielle Schnittstelle"]["Status"], "rowColor" => $ServiceArray["Serielle Schnittstelle"]["Color"]);
-            $arrayValues[] = array("ServiceTyp" => "Shell Zugriff", "ServiceStatus" => $ServiceArray["Shell Zugriff"]["Status"], "rowColor" => $ServiceArray["Shell Zugriff"]["Color"]);
-            $arrayValues[] = array("ServiceTyp" => "PIGPIO Server", "ServiceStatus" => $ServiceArray["PIGPIO Server"]["Status"], "rowColor" => $ServiceArray["PIGPIO Server"]["Color"]);
-            $arrayValues[] = array("ServiceTyp" => "1-Wire-Server", "ServiceStatus" => $ServiceArray["1-Wire-Server"]["Status"], "rowColor" => $ServiceArray["1-Wire-Server"]["Color"]);
-            $arrayElements[] = array("type" => "List", "name" => "Raspi_Config", "caption" => "Konfiguration", "rowCount" => 5, "add" => false, "delete" => false, "sort" => $arraySort, "columns" => $arrayColumns, "values" => $arrayValues);
-            $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-            // Tabelle für die gefundenen I²C-Devices
+
             $arraySort = array();
             $arraySort = array("column" => "DeviceTyp", "direction" => "ascending");
             $arrayColumns = array();
@@ -117,16 +93,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
                 $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
             }
-            If (($this->ConnectionTest()) AND ($this->ReadPropertyBoolean("Open") == true)) {
-                $arrayElements[] = array("type" => "Label", "label" => "Führt einen Restart des PIGPIO aus:");
-                $arrayElements[] = array("type" => "Button", "label" => "PIGPIO Restart", "onClick" => 'I2G_PIGPIOD_Restart($id);');
-                $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-            }
-            $arrayElements[] = array("type" => "Label", "label" => "Wird ein Audio Hat wie z.B. Hifiberry parallel verwendet, muss diese Option gewählt werden.");
-            $arrayElements[] = array("type" => "Label", "label" => "Die Nutzung von PWM (Dimmer, RGB, RGBW usw.) ist dann nicht möglich!");
-            $arrayElements[] = array("type" => "CheckBox", "name" => "AudioDAC", "caption" => "Vorhanden");
-            $arrayElements[] = array("type" => "Label", "label" => "Führt einen automatischren Restart des PIGPIO aus:");
-            $arrayElements[] = array("type" => "CheckBox", "name" => "AutoRestart", "caption" => "Auto Restart");
+
 
             $arrayActions = array();
             If ($this->ReadPropertyBoolean("Open") == true) {
@@ -164,7 +131,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $this->RegisterMessage(0, 10100); // Alle Kernelmessages (10103 muss im MessageSink ausgewertet werden.)
 
             If (IPS_GetKernelRunlevel() == 10103) {
-                $this->SetBuffer("ModuleReady", 0);
+                /*$this->SetBuffer("ModuleReady", 0);
                 $this->SetBuffer("Handle", -1);
                 $this->SetBuffer("HardwareRev", 0);
                 $Typ = array(2 => 2, 3, 4, 7 => 7, 8, 9, 10, 11, 14 => 14, 15, 17 => 17, 18, 22 => 22, 23, 24, 25, 27 => 27);
@@ -204,7 +171,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
                 $this->SetBuffer("IR_RC5_Toggle", 0);
                 $this->SetBuffer("IR_RC5X_Toggle", 0);
-
+*/
                 $ParentID = $this->GetParentID();
                 // Änderung an den untergeordneten Instanzen
                 $this->RegisterMessage($this->InstanceID, 11101); // Instanz wurde verbunden (InstanceID vom Parent)
@@ -367,12 +334,6 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 		{
 			//Never delete this line!
 			parent::Destroy();
-		}
-
-		public function ApplyChanges()
-		{
-			//Never delete this line!
-			parent::ApplyChanges();
 		}
 
 		public function Send(string $Text)
