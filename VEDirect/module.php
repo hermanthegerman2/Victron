@@ -44,7 +44,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $arrayElements = array();
             $arrayElements[] = array("type" => "CheckBox", "name" => "Open", "caption" => "Aktiv");
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-            $arrayElements[] = array("type" => "Select", "name" => "VictronVEDirect verbinden mit:", "caption" => "Einheit",  "options"=> [ "caption" => "Socket", "value" => 0 , "caption" => "Seriell", "value" => 1]);
+            $arrayElements[] = array("type" => "Select", "name" => "VictronVEDirect verbinden mit:", "caption" => "Einheit",  "options"=> [ "caption" => "Socket", "value" => 0 , "caption" => "Seriell" , "value" => 1 ]);
 
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
 
