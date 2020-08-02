@@ -62,7 +62,7 @@ trait VictronConstants
         "SmartSolar MPPT 75|15" => "V,VS,VPV,PPV,I,IL,LOAD,Alarm,Relay,AR,OR,H1,H2,H3,H5,H7,H8,H19,H20,H21,H22,H23,ERR,FW,SER#,HSDS,MODE,WARN,MPPT"
     ];
 
-    protected $DeviceVariable = [
+    protected $variable_mapping = [
         "V" => array('Position' => 1, 'Name' => 'Main or channel 1 (battery) voltage', 'custom_profile'  => '~Volt', 'Value' => 0.0),
         "V2" => array('Position' => 2, 'Name' => 'Channel 2 (battery) voltage', 'custom_profile' => '~Volt', 'Value' => 0.0),
         "V3" => array('Position' => 3, 'Name' => 'Channel 3 (battery) voltage', 'custom_profile'  => '~Volt', 'Value' => 0.0),

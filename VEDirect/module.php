@@ -380,7 +380,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
                                 // Gerätevariablen anlegen
 
-                                foreach ($this->DeviceVariable AS $key => $value) {
+                                foreach ($this->variable_mapping AS $key => $value) {
                                     if (is_array($value)) {
                                         foreach ($value as $v) {
                                             if (is_array($value)) {
