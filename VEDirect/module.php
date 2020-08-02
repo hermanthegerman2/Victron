@@ -7,7 +7,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
 	class VEDirect extends IPSModule {
 
-	    const guid_device = '{4607FBB3-BE52-1D44-F235-5439358A479D}';
+	    const guid_device = "{018EF6B5-AB94-40C6-AA53-46943E824ACF}";
 
 	    use \Helper\ModuleHelper;
         use \Constants\VictronConstants;
