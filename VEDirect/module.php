@@ -280,7 +280,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     $label = $var[$n - 1];
                     $value = $var[$n];
                     $this->SendDebug("ReceiveData ", $this->Variable[$label]['Name'] . '  --->  ' . $value, 0);
-
+                    $instance_id = 0;
                     $instance_id = $this->CreateInstanceByIdentifier(self::guid_device, $ParentID = $this->GetParentID(), $name);
                     $this->SendDebug("instance_id ", $instance_id,0);
 
