@@ -355,8 +355,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             $identifier = substr($value, 2);
                             $PID = $this->device_mapping[$identifier];
                             If (empty($this->ReadAttributeString('PID'))) {
+                                $this->CreateCategoryByIdentifier($this->InstanceID, $PID, $name = null, $icon = null);
                                 $this->WriteAttributeString('PID', $PID);
-                                $PID = $this->CreateCategoryByIdentifier($this->InstanceID, $PID, $name = null, $icon = null);
                                 $this->SendDebug("Gerät gefunden: ", $PID,0);
                             }
                             break;
