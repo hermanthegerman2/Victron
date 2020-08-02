@@ -10,7 +10,7 @@ trait ModuleHelper
     private $archive_id;
 
     protected $archive_mappings = [];
-    //protected $profile_mappings = [];
+    protected $profile_mappings = [];
     protected $hidden_mappings = [];
     protected $icon_mappings = [];
 

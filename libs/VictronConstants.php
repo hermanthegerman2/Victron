@@ -11,19 +11,6 @@ trait VictronConstants
         "A053" => "SmartSolar MPPT 75|15"
     ];
 
-    protected $profile_mappings = [
-        'Load output state' => 'Load_output_state',
-        'Alarm condition active' => 'Alarm_condition_active',
-        'Relay state' => 'Relay_state',
-        'Alarm reason' => 'Alarm_reason',
-        'Off reason' => 'Off_reason',
-        'State of operation' => 'State_of_operation',
-        'Error code' => 'Error_code',
-        'Device mode' => 'Device_mode',
-        'Warning reason' => 'Warning_reason',
-        'Tracker operation mode' => 'Tracker_operation_mode'
-        ];
-
     protected $DeviceVariable = [
         "V" => array('Position' => 1, 'Name' => 'Main or channel 1 (battery) voltage', 'custom_profile'  => '~Volt', 'Vartype' => 0.0),
         "V2" => array('Position' => 2, 'Name' => 'Channel 2 (battery) voltage', 'custom_profile' => '~Volt', 'Vartype' => 0.0),

@@ -14,7 +14,24 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
         private $Socket = false;
 
-        public function __construct($InstanceID)
+        protected $profile_mappings = [
+            'Load output state' => 'Load_output_state',
+            'Alarm condition active' => 'Alarm_condition_active',
+            'Relay state' => 'Relay_state',
+            'Alarm reason' => 'Alarm_reason',
+            'Off reason' => 'Off_reason',
+            'State of operation' => 'State_of_operation',
+            'Error code' => 'Error_code',
+            'Device mode' => 'Device_mode',
+            'Warning reason' => 'Warning_reason',
+            'Tracker operation mode' => 'Tracker_operation_mode'
+        ];
+
+        protected $icon_mappings = [
+            'Power' => 'Power'
+        ];
+
+                function __construct($InstanceID)
         {
             parent::__construct($InstanceID);
         }
