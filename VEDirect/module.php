@@ -40,6 +40,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $this->RegisterPropertyInteger("Socket", 10000);
             $this->RegisterPropertyString("Serial Port", "ttyUSB0");
             $this->RegisterPropertyBoolean("AutoRestart", true);
+            $this->RegisterAttributeString("PID", NULL);
             // Statusvariablen anlegen
             $this->RegisterVariableBoolean("SocketStatus", "SocketStatus", "~Alert.Reversed", 40);
             $this->DisableAction("SocketStatus");
@@ -280,11 +281,6 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     $label = $var[$n - 1];
                     $value = $var[$n];
                     $this->SendDebug("ReceiveData ", $this->Variable[$label]['Name'] . '  --->  ' . $value, 0);
-                    $instance_id = 0;
-                    $instance_id = $this->CreateInstanceByIdentifier(self::guid_device, $ParentID = $this->GetParentID(), $name);
-                    $this->SendDebug("instance_id ", $instance_id,0);
-
-                    $ident = $instance_id . '_' . $this->Variable[$label]['Name'];
 
                     switch ($label) {
                         case "V":
@@ -357,7 +353,12 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
                         case "PID":
                             $identifier = substr($value, 2);
-                            $value = $this->device_mapping[$identifier];
+                            $PID = $this->device_mapping[$identifier];
+                            If (empty($this->ReadAttributeString('PID'))) {
+                                $this->RegisterAttributeString('PID') = $PID;
+                                $PID = $this->CreateInstanceByIdentifier(self::guid_device, $ParentID = $this->GetParentID(), $name=$PID);
+                                $this->SendDebug("Gerät gefunden: ", $PID,0);
+                            }
                             break;
 
                     }
