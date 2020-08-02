@@ -163,7 +163,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     // I2C-Handle zurücksetzen
                     //If ($this->GetBuffer("I2C_Enabled") == 1) {
                     //    $this->ResetI2CHandle(0);
-                    }
+                    //}
 
                     // Notify Starten
                     $Handle = $this->ClientSocket(pack("L*", 99, 0, 0, 0));
@@ -180,8 +180,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             // MUX setzen
                             $this->SetMUX(0);
                         }
-                    }
-*/
+                    }*/
+
                     // Vorbereitung beendet
                     $this->SendDebug("ApplyChanges", "Beende Vorbereitung", 0);
                     $this->SetBuffer("ModuleReady", 1);
