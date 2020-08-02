@@ -48,7 +48,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
             $arrayElements[] = array("type" => "Label", "label" => "Detaillierung der genutzten I²C-Schnittstelle:");
 
-            If (($this->ConnectionTest()) AND ($this->SearchSpecialI2CDevices(112) == true))  {
+            /*If (($this->ConnectionTest()) AND ($this->SearchSpecialI2CDevices(112) == true))  {
                 $arrayOptions = array();
                 $arrayOptions[] = array("label" => "Kein MUX", "value" => 0);
                 $arrayOptions[] = array("label" => "TCA9548a Adr. 112/0x70", "value" => 1);
@@ -57,7 +57,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             }
             else {
                 $arrayElements[] = array("type" => "Label", "label" => "Es wurde kein MUX gefunden.");
-            }
+            }*/
             $arrayOptions = array();
 
             $arraySort = array();
