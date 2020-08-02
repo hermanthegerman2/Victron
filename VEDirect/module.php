@@ -7,6 +7,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
 	class VEDirect extends IPSModule {
 
+	    const guid_device = '{4607FBB3-BE52-1D44-F235-5439358A479D}';
+
 	    use \Helper\ModuleHelper;
         use \Constants\VictronConstants;
 
@@ -354,7 +356,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             $PID = $this->device_mapping[$identifier];
                             If (empty($this->ReadAttributeString('PID'))) {
                                 $this->WriteAttributeString('PID', $PID);
-                                $PID = $this->CreateCategoryByIdentifier($this->GetParentID(), $PID, $name = null, $icon = null);
+                                $PID = $this->CreateCategoryByIdentifier(self::guid_device, $PID, $name = null, $icon = null);
                                 $this->SendDebug("Gerät gefunden: ", $PID,0);
                             }
                             break;
