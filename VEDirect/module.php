@@ -422,7 +422,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                 }
                             }
                             $id[] = $this->_getIdentifierByNeedle($parent_id, $needle);
-                            $this->SendDebug("Schreiben id ", var_dump($id)." : needle: ".var_dump($needle)." : value: ".$value, 0);
+                            $this->SendDebug("Schreiben id ", var_dump($id)." : value: ".$value, 0);
                     }
 
                 }
