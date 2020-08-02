@@ -415,20 +415,14 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             $parent_id = $this->ReadAttributeInteger('parent_id');
                             foreach ($this->variable_mapping as $key => $value) {
                                 if (is_array($value)) {
-
-                                    foreach ($value AS $v) {
-
-                                    }
+                                    foreach ($value AS $v) {}
                                     if  ($label == $key) {
                                         $needle = $value['Name'];
                                     }
-
                                 }
-
                             }
-                            $id = $this->_getIdentifierByNeedle($parent_id, $needle);
+                            $id[] = $this->_getIdentifierByNeedle($parent_id, $needle);
                             $this->SendDebug("Schreiben id ", var_dump($id)." : needle: ".var_dump($needle)." : value: ".$value, 0);
-
                     }
 
                 }
