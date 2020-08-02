@@ -394,31 +394,32 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             }
             $this->SendDebug("ReceiveData buffer_end", $bufferend, 0);
 
-            /**
-             * create custom variable profile
-             * @param string $profile_id
-             * @param string $name
-             */
-            protected function CreateCustomVariableProfile(string $profile_id, string $name)
+
+
+        }
+        /**
+         * create custom variable profile
+         * @param string $profile_id
+         * @param string $name
+         */
+
+        protected function CreateCustomVariableProfile(string $profile_id, string $name)
         {
             switch ($name):
                 case 'Load_output_state':
                     IPS_CreateVariableProfile($profile_id, 0); // boolean
-                    IPS_SetVariableProfileAssociation($profile_id, false, $this->Translate('Off'), 'Power', -1);
-                    IPS_SetVariableProfileAssociation($profile_id, true, $this->Translate('On'), 'Power', 0x3ADF00);
-                    IPS_SetVariableProfileIcon($profile_id, 'Power');
+                    IPS_SetVariableProfileAssociation("Load_output_state",0,$this->Translate('Off'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Load_output_state",1,$this->Translate('On'),"",0xFFFFFF);
                     break;
                 case 'Alarm_condition_active':
                     IPS_CreateVariableProfile($profile_id, 0); // boolean
-                    IPS_SetVariableProfileAssociation($profile_id, false, $this->Translate('Off'), 'Power', -1);
-                    IPS_SetVariableProfileAssociation($profile_id, true, $this->Translate('On'), 'Power', 0x3ADF00);
-                    IPS_SetVariableProfileIcon($profile_id, 'Power');
+                    IPS_SetVariableProfileAssociation("Alarm_condition_active",0,$this->Translate('Off'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Alarm_condition_active",1,$this->Translate('On'),"",0xFFFFFF);
                     break;
                 case 'Relay_state':
                     IPS_CreateVariableProfile($profile_id, 0); // boolean
-                    IPS_SetVariableProfileAssociation($profile_id, false, $this->Translate('Off'), 'Power', -1);
-                    IPS_SetVariableProfileAssociation($profile_id, true, $this->Translate('On'), 'Power', 0x3ADF00);
-                    IPS_SetVariableProfileIcon($profile_id, 'Power');
+                    IPS_SetVariableProfileAssociation("Relay_state",0,$this->Translate('Off'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Relay_state",1,$this->Translate('On'),"",0xFFFFFF);
                     break;
                 case 'Alarm_reason':
                     IPS_CreateVariableProfile($profile_id, 1); // integer
@@ -451,9 +452,21 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     break;
                 case 'State_of_operation':
                     IPS_CreateVariableProfile($profile_id, 1); // integer
-                    IPS_SetVariableProfileText($profile_id, '', '°C');
-                    IPS_SetVariableProfileIcon($profile_id, 'Temperature');
-                    IPS_SetVariableProfileValues($profile_id, 0, 300, 1);
+                    IPS_SetVariableProfileAssociation("State_of_operation",0,$this->Translate('Off'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("State_of_operation",1,$this->Translate('Low power'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("State_of_operation",2,$this->Translate('Fault'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("State_of_operation",3,$this->Translate('Bulk'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("State_of_operation",4,$this->Translate('Absorption'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("State_of_operation",5,$this->Translate('Float'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("State_of_operation",6,$this->Translate('Storage'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("State_of_operation",7,$this->Translate('Equalize (manual)'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("State_of_operation",9,$this->Translate('Inverting'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("State_of_operation",11,$this->Translate('Power supply'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("State_of_operation",245,$this->Translate('Starting-up'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("State_of_operation",246,$this->Translate('Repeated absorption'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("State_of_operation",247,$this->Translate('Auto equalize / Recondition'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("State_of_operation",248,$this->Translate('BatterySafe'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("State_of_operation",252,$this->Translate('External Control'),"",0xFFFFFF);
                     break;
                 case 'Error_code':
                     IPS_CreateVariableProfile($profile_id, 1); // integer
@@ -509,12 +522,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     IPS_SetVariableProfileAssociation("Tracker_operation_mode",0,$this->Translate('Off'),"",0xFFFFFF);
                     IPS_SetVariableProfileAssociation("Tracker_operation_mode",1,$this->Translate('Voltage or current limited'),"",0xFFFFFF);
                     IPS_SetVariableProfileAssociation("Tracker_operation_mode",2,$this->Translate('MPP Tracker active'),"",0xFFFFFF);
-                    IPS_SetVariableProfileIcon($profile_id, 'Power');
-
                     break;
-                endswitch;
-        }
-
-
+            endswitch;
         }
 	}
