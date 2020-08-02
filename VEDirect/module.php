@@ -323,7 +323,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         case "H15":
                         case "H16":
                             $value = floatval($value) / 1000;
-                            //break;
+                            break;
 
                         case "PPV":
                         case "T":
@@ -346,12 +346,12 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         case "WARN":
                         case "MPPT":
                             $value = intval($value);
-                            //break;
+                            break;
 
                         case "Alarm":
                         case "Relay":
                             $value = boolval($value);
-                            //break;
+                            break;
 
                         case "H17":
                         case "H18":
@@ -361,13 +361,13 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         case "AC_OUT_V":
                         case "AC_OUT_I":
                             $value = floatval($value) / 100;
-                            //break;
+                            break;
 
                         case "H21":
                         case "H23":
                         case "AC_OUT_S":
                             $value = floatval($value);
-                            //break;
+                            break;
 
                         case "PID":
                             // Initiales NAlegen der Kategorie und der Gerätevariablen
