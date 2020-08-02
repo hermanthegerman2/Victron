@@ -29,7 +29,7 @@ trait VictronConstants
         "P" => array('Position' => 15, 'Name' => 'Instantaneous power', 'custom_profile' => '~Watt.3680', 'Value' => 0.0),
         "CE" => array('Position' => 16, 'Name' => 'Consumed Amp Hours', 'custom_profile' => '~Ampere', 'Value' => 0.0),
         "SOC" => array('Position' => 17, 'Name' => 'State-of-charge', 'custom_profile' => '~Intensity.100', 'Value' => 0.0),
-        "TTG" => array('Position' => 18, 'Name' => 'Time-to-go', 'custom_profile' => 'Time-to-go', 'Value' => FALSE),
+        "TTG" => array('Position' => 18, 'Name' => 'Time-to-go', 'custom_profile' => array('Name' => 'Time_to_go', 'icon' => '', 'prefix'  => '', 'suffix' => ' min', 'min' => 0, 'max' => 100, 'steps' => 1), 'Value' => 0),
         "Alarm" => array('Position' => 19, 'Name' => 'Alarm condition active', 'custom_profile' => array('Name' => 'Alarm_condition_active', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Value' => FALSE),
         "Relay" => array('Position' => 20, 'Name' => 'Relay state', 'custom_profile'  => array('Name' => 'Relay_state', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Value' => FALSE),
         "AR" => array('Position' => 21, 'Name' => 'Alarm reason', 'custom_profile'  => array('Name' => 'Alarm_reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Value' => 0),

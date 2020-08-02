@@ -17,6 +17,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
         protected $profile_mappings = [
             'Load output state' => 'Load_output_state',
             'Alarm condition active' => 'Alarm_condition_active',
+            'Time-to-go' => 'Time_to_go',
             'Relay state' => 'Relay_state',
             'Alarm reason' => 'Alarm_reason',
             'Off reason' => 'Off_reason',
