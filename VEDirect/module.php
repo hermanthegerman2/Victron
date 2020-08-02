@@ -352,27 +352,33 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             break;
 
                         case "PID":
-                            $identifier = substr($value, 2);
-                            $PID = $this->device_mapping[$identifier];
+                            $PID = substr($value, 2);
+                            $PID = $this->device_mapping[$PID];
                             If (empty($this->ReadAttributeString('PID'))) {
-                                $this->CreateCategoryByIdentifier($this->InstanceID, $PID, $name = null, $icon = null);
+                                $parent_id = $this->CreateCategoryByIdentifier($this->InstanceID, $PID, $name = null, $icon = null);
                                 $this->WriteAttributeString('PID', $PID);
-                                $this->SendDebug("Victron Gerät gefunden: ", $PID,0);
+                                $this->SendDebug("Victron Gerät gefunden: ", $PID, 0);
                                 IPS_LogMessage("Victron Gerät gefunden: ", $PID);
+
+                                // Gerätevariablen anlegen
+                                $position = 0;
+                                foreach ($this->variable_mapping[$PID] as $v => $name) {
+                                    $ident  = $parent_id . '_' . $name;
+                                    // print $key." : ".$value."\n";
+                                    $this->CreateVariableByIdentifier([
+                                        'parent_id' => $parent_id,
+                                        'name' => $name,
+                                        'value' => $value,
+                                        'identifier' => $ident,
+                                        'position' => $position,
+                                        'custom_profile' => ''
+                                    ]);
+                                    $position++;
+
+                                }
                             }
                             break;
-
                     }
-
-                    /*$this->CreateVariableByIdentifier([
-                        'parent_id' => $instance_id,
-                        'name' => $this->Variable[$label]['Name'],
-                        'value' => $value,
-                        'identifier' => $ident,
-                        'position' => $this->Variable[$label]['Position'],
-                        'custom_profile' => ''
-                    ]);
-*/
 
                 }
             }

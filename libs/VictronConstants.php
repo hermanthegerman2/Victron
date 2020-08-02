@@ -10,6 +10,7 @@ trait VictronConstants
     protected	$device_mapping = [
         "A053" => "SmartSolar MPPT 75|15"
     ];
+
     protected $custom_profile = [
         "LOAD" => array('Name' => 'Load_output_state', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''),
         "Alarm" => array('Name' => 'Alarm_condition_active', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''),
@@ -60,7 +61,7 @@ trait VictronConstants
         'AC output apparent power' => '~Power'
     ];
 
-    protected $Variable = [
+    protected $DeviceVariable = [
         "V" => array('Position' => 1, 'Name' => 'Main or channel 1 (battery) voltage', 'Profil'  => '~Volt', 'Vartype' => 1),
         "V2" => array('Position' => 2, 'Name' => 'Channel 2 (battery) voltage', 'Profil' => '~Volt', 'Vartype' => 1),
         "V3" => array('Position' => 3, 'Name' => 'Channel 3 (battery) voltage', 'Profil'  => '~Volt', 'Vartype' => 1),
@@ -121,4 +122,38 @@ trait VictronConstants
         "WARN" => array('Position' => 58, 'Name' => 'Warning reason', 'Profil' => 'Warning_reason', 'Vartype' => 2),
         "MPPT" => array('Position' => 59, 'Name' => 'Tracker operation mode', 'Profil' => 'Tracker_operation_mode', 'Vartype' => 2)
     ];
+
+    protected $variable_mapping = array (
+        "SmartSolar MPPT 75|15" => array(
+            "V" => "Main or channel 1 (battery) voltage",
+            "VS" => "Auxiliary (starter) voltage",
+            "VPV" => "Panel voltage",
+            "PPV" => "Panel power",
+            "I" => "Main or channel 1 battery current",
+            "IL" => "Load current",
+            "LOAD" => "Load output state",
+            "Alarm" => "Alarm condition active",
+            "Relay" => "Relay state",
+            "AR" => "Alarm_reason",
+            "OR" => "Off reason",
+            "H1" => "Depth of the deepest discharge",
+            "H2" => "Depth of the last discharge",
+            "H3" => "Depth of the average discharge",
+            "H7" => "Minimum main (battery) voltage",
+            "H8" => "Maximum main (battery) voltage",
+            "H19" => "Yield total (user resettable counter)",
+            "H20" => "Yield today",
+            "H21" => "Maximum power today",
+            "H22" => "Yield yesterday",
+            "H23" => "Maximum power yesterday",
+            "ERR" => "Error code",
+            "FW" => "Firmware version (16 bit)",
+            //"PID" => "Product ID",
+            "SER#" => "Serial number",
+            "HSDS" => "Day sequence number",
+            "MODE" => "Device mode",
+            "WARN" => "Warning reason",
+            "MPPT" => "Tracker operation mode"
+        )
+    );
 }
