@@ -364,18 +364,20 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
                                 foreach ($this->DeviceVariable AS $key => $value) {
                                     if (is_array($value)) {
-                                        foreach ($value AS $v) {}
-                                        $ident  = $parent_id . '_' . $value['Name'];
-                                        $this->SendDebug($key, $value['Position']." : ".$value['Name']." : ".$value['Profil']." : ".$value['Vartype'], 0);
-                                    // print $key." : ".$value."\n";
-                                    $this->CreateVariableByIdentifier([
-                                        'parent_id' => $parent_id,
-                                        'name' => $value['Name'],
-                                        'value' => $value['Vartype'],
-                                        'identifier' => $ident,
-                                        'position' => $value['Position'],
-                                        'custom_profile' => $value['Profil']
-                                    ]);
+                                        foreach ($value as $v) {
+                                        }
+                                        $ident = $parent_id . '_' . $value['Name'];
+                                        $this->SendDebug($key, $value['Position'] . " : " . $value['Name'] . " : " . $value['Profil'] . " : " . $value['Vartype'], 0);
+                                        // print $key." : ".$value."\n";
+                                        $this->CreateVariableByIdentifier([
+                                            'parent_id' => $parent_id,
+                                            'name' => $value['Name'],
+                                            'value' => $value['Vartype'],
+                                            'identifier' => $ident,
+                                            'position' => $value['Position'],
+                                            'custom_profile' => $value['Profil']
+                                        ]);
+                                    }
 
 
                                 }
