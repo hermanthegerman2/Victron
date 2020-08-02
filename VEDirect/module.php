@@ -372,8 +372,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                         }
                                         $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
                                         $ident = $parent_id . '_' . $value['Name'];
-                                        $this->SendDebug($key, $value['Position'] . " : " . $value['Name'] . " : " . $value['Profil'] . " : " . $value['Vartype'], 0);
-                                        // print $key." : ".$value."\n";
+
                                         $this->CreateVariableByIdentifier([
                                             'parent_id' => $parent_id,
                                             'name' => $value['Name'],
@@ -394,6 +393,127 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                 }
             }
             $this->SendDebug("ReceiveData buffer_end", $bufferend, 0);
+
+            /**
+             * create custom variable profile
+             * @param string $profile_id
+             * @param string $name
+             */
+            protected function CreateCustomVariableProfile(string $profile_id, string $name)
+        {
+            switch ($name):
+                case 'Load_output_state':
+                    IPS_CreateVariableProfile($profile_id, 0); // boolean
+                    IPS_SetVariableProfileAssociation($profile_id, false, $this->Translate('Off'), 'Power', -1);
+                    IPS_SetVariableProfileAssociation($profile_id, true, $this->Translate('On'), 'Power', 0x3ADF00);
+                    IPS_SetVariableProfileIcon($profile_id, 'Power');
+                    break;
+                case 'Alarm_condition_active':
+                    IPS_CreateVariableProfile($profile_id, 0); // boolean
+                    IPS_SetVariableProfileAssociation($profile_id, false, $this->Translate('Off'), 'Power', -1);
+                    IPS_SetVariableProfileAssociation($profile_id, true, $this->Translate('On'), 'Power', 0x3ADF00);
+                    IPS_SetVariableProfileIcon($profile_id, 'Power');
+                    break;
+                case 'Relay_state':
+                    IPS_CreateVariableProfile($profile_id, 0); // boolean
+                    IPS_SetVariableProfileAssociation($profile_id, false, $this->Translate('Off'), 'Power', -1);
+                    IPS_SetVariableProfileAssociation($profile_id, true, $this->Translate('On'), 'Power', 0x3ADF00);
+                    IPS_SetVariableProfileIcon($profile_id, 'Power');
+                    break;
+                case 'Alarm_reason':
+                    IPS_CreateVariableProfile($profile_id, 1); // integer
+                    IPS_SetVariableProfileAssociation("Alarm_reason",1,$this->Translate('Low Voltage'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Alarm_reason",2,$this->Translate('High Voltage'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Alarm_reason",4,$this->Translate('Low SOC'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Alarm_reason",8,$this->Translate('Low Starter Voltage'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Alarm_reason",16,$this->Translate('High Starter Voltage'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Alarm_reason",32,$this->Translate('Low Temperature'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Alarm_reason",64,$this->Translate('High Temperature'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Alarm_reason",128,$this->Translate('Mid Voltage'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Alarm_reason",256,$this->Translate('Overload'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Alarm_reason",512,$this->Translate('DC-ripple'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Alarm_reason",1024,$this->Translate('Low V AC out'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Alarm_reason",2048,$this->Translate('BMS'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Alarm_reason",4096,$this->Translate('Short Circuit'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Alarm_reason",8192,$this->Translate('BMS Lockout'),"",0xFFFFFF);
+                    break;
+                case 'Off_reason':
+                    IPS_CreateVariableProfile($profile_id, 1); // integer
+                    IPS_SetVariableProfileAssociation("Off_reason",1,$this->Translate('No Input Power'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Off_reason",2,$this->Translate('Switched off (power switch)'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Off_reason",4,$this->Translate('Switched off (device mode register)'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Off_reason",8,$this->Translate('Remote input'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Off_reason",10,$this->Translate('Protection active'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Off_reason",20,$this->Translate('Paygo'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Off_reason",40,$this->Translate('BMS'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Off_reason",80,$this->Translate('Engine shutdown detection'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Off_reason",100,$this->Translate('Analysing input voltage'),"",0xFFFFFF);
+                    break;
+                case 'State_of_operation':
+                    IPS_CreateVariableProfile($profile_id, 1); // integer
+                    IPS_SetVariableProfileText($profile_id, '', '°C');
+                    IPS_SetVariableProfileIcon($profile_id, 'Temperature');
+                    IPS_SetVariableProfileValues($profile_id, 0, 300, 1);
+                    break;
+                case 'Error_code':
+                    IPS_CreateVariableProfile($profile_id, 1); // integer
+                    IPS_SetVariableProfileAssociation("Error_code",0,$this->Translate('No error'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",2,$this->Translate('Battery voltage too high'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",17,$this->Translate('Charger temperature too high'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",18,$this->Translate('Charger over current'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",19,$this->Translate('Charger current reversed'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",20,$this->Translate('Bulk time limit exceeded'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",21,$this->Translate('Current sensor issue (sensor bias/sensor broken)'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",26,$this->Translate('Terminals overheated'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",28,$this->Translate('Converter issue (dual converter models only)'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",33,$this->Translate('Input voltage too high (solar panel)'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",34,$this->Translate('Input current too high (solar panel)'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",38,$this->Translate('Input shutdown (due to excessive battery voltage)'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",39,$this->Translate('Input shutdown (due to current flow during off mode)'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",65,$this->Translate('Lost communication with one of devices'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",66,$this->Translate('Synchronised charging device configuration issue'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",67,$this->Translate('BMS connection lost'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",68,$this->Translate('Network misconfigured'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",116,$this->Translate('Factory calibration data lost'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",117,$this->Translate('Invalid/incompatible firmware'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Error_code",119,$this->Translate('User settings invalid'),"",0xFFFFFF);
+                    break;
+                case 'Device_mode':
+                    IIPS_CreateVariableProfile($profile_id, 1); // integer
+                    IPS_SetVariableProfileAssociation("Device_mode",1,$this->Translate('VE_REG_MODE_CHARGER'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Device_mode",2,$this->Translate('VE_REG_MODE_INVERTER'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Device_mode",4,$this->Translate('VE_REG_MODE_OFF'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Device_mode",8,$this->Translate('VE_REG_MODE_ECO'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Device_mode",16,$this->Translate('VE_REG_MODE_HIBERNATE'),"",0xFFFFFF);
+
+                    break;
+                case 'Warning_reason':
+                    IPS_CreateVariableProfile($profile_id, 1); // integer
+                    IPS_SetVariableProfileAssociation("Warning_reason",1,$this->Translate('Low Voltage'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Warning_reason",2,$this->Translate('High Voltage'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Warning_reason",4,$this->Translate('Low SOC'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Warning_reason",8,$this->Translate('Low Starter Voltage'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Warning_reason",16,$this->Translate('High Starter Voltage'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Warning_reason",32,$this->Translate('Low Temperature'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Warning_reason",64,$this->Translate('High Temperature'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Warning_reason",128,$this->Translate('Mid Voltage'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Warning_reason",256,$this->Translate('Overload'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Warning_reason",512,$this->Translate('DC-ripple'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Warning_reason",1024,$this->Translate('Low V AC out'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Warning_reason",2048,$this->Translate('BMS'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Warning_reason",4096,$this->Translate('Short Circuit'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Warning_reason",8192,$this->Translate('BMS Lockout'),"",0xFFFFFF);
+                    break;
+                case 'Tracker_operation_mode':
+                    IPS_CreateVariableProfile($profile_id, 1); // integer
+                    IPS_SetVariableProfileAssociation("Tracker_operation_mode",0,$this->Translate('Off'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Tracker_operation_mode",1,$this->Translate('Voltage or current limited'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation("Tracker_operation_mode",2,$this->Translate('MPP Tracker active'),"",0xFFFFFF);
+                    IPS_SetVariableProfileIcon($profile_id, 'Power');
+
+                    break;
+                endswitch;
+        }
 
 
         }

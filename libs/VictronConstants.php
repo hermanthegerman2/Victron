@@ -7,59 +7,22 @@ namespace Constants;
 trait VictronConstants
 {
 
-    protected	$device_mapping = [
+    protected $device_mapping = [
         "A053" => "SmartSolar MPPT 75|15"
     ];
 
-    protected $custom_profile = [
-        "LOAD" => array('Name' => 'Load_output_state', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''),
-        "Alarm" => array('Name' => 'Alarm_condition_active', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''),
-        "Relay" => array('Name' => 'Relay_state', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''),
-        "AR" => array('Name' => 'Alarm_reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''),
-        "OR" => array('Name' => 'Off_reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => 0, 'max' => 7, 'steps' => 1),
-        "CS" => array('Name' => 'State_of_operation', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => 0, 'max' => 255, 'steps' => 1),
-        "ERR" => array('Name' => 'Error_code', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''),
-        "MODE" => array('Name' => 'Device_mode', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => 0, 'max' => 4, 'steps' => 1),
-        "WARN" => array('Name' => 'Warning_reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''),
-        "MPPT" => array('Name' => 'Tracker_operation_mode', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => 0, 'max' => 2, 'steps' => 1)
-    ];
-
     protected $profile_mappings = [
-        'Main or channel 1 (battery) voltage' => '~Volt',
-        'Channel 2 (battery) voltage' => '~Volt',
-        'Channel 3 (battery) voltage' => '~Volt',
-        'Auxiliary (starter) voltage' => '~Volt',
-        'Mid-point voltage of the battery bank'	=> '~Volt',
-        'Mid-point deviation of the battery bank' => '~Intensity.100',
-        'Panel voltage' => '~Volt',
-        'Panel power' => '~Watt.3680',
-        'Main or channel 1 battery current'	=> '~Ampere',
-        'Channel 2 battery current'	=> '~Ampere',
-        'Channel 3 battery current'	=> '~Ampere',
-        'Load current' => '~Ampere',
-        'Battery temperature' => '~Temperature',
-        'Instantaneous power' => '~Watt.3680',
-        'Consumed Amp Hours' => '~Ampere',
-        'State-of-charge' => '~Intensity.100',
-        'Depth of the deepest discharge' => '~Ampere',
-        'Depth of the last discharge' => '~Ampere',
-        'Depth of the average discharge' => '~Ampere',
-        'Cumulative Amp Hours drawn' => '~Ampere',
-        'Minimum main (battery) voltage' => '~Volt',
-        'Maximum main (battery) voltage' => '~Volt',
-        'Minimum auxiliary (battery) voltage' => '~Volt',
-        'Maximum auxiliary (battery) voltage' => '~Volt',
-        'Amount of discharged energy' => '~Electricity',
-        'Amount of charged energy' => '~Electricity',
-        'Yield total (user resettable counter)'	=> '~Electricity',
-        'Yield today' => '~Electricity',
-        'Maximum power today' => '~Watt.3680',
-        'Yield yesterday' => '~Electricity',
-        'Maximum power yesterday' => '~Watt.3680',
-        'AC output voltage'	=> 	'~Volt',
-        'AC output current'	=> '~Ampere',
-        'AC output apparent power' => '~Power'
-    ];
+        'Load output state' => 'Load_output_state',
+        'Alarm condition active' => 'Alarm_condition_active',
+        'Relay state' => 'Relay_state',
+        'Alarm reason' => 'Alarm_reason',
+        'Off reason' => 'Off_reason',
+        'State of operation' => 'State_of_operation',
+        'Error code' => 'Error_code',
+        'Device mode' => 'Device_mode',
+        'Warning reason' => 'Warning_reason',
+        'Tracker operation mode' => 'Tracker_operation_mode'
+        ];
 
     protected $DeviceVariable = [
         "V" => array('Position' => 1, 'Name' => 'Main or channel 1 (battery) voltage', 'custom_profile'  => '~Volt', 'Vartype' => 0.0),
@@ -82,7 +45,7 @@ trait VictronConstants
         "TTG" => array('Position' => 18, 'Name' => 'Time-to-go', 'custom_profile' => 'Time-to-go', 'Vartype' => FALSE),
         "Alarm" => array('Position' => 19, 'Name' => 'Alarm condition active', 'custom_profile' => array('Name' => 'Alarm_condition_active', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Vartype' => FALSE),
         "Relay" => array('Position' => 20, 'Name' => 'Relay state', 'custom_profile'  => array('Name' => 'Relay_state', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Vartype' => FALSE),
-        "AR" => array('Position' => 21, 'Name' => 'Alarm_reason', 'custom_profile'  => array('Name' => 'Alarm_reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Vartype' => 0),
+        "AR" => array('Position' => 21, 'Name' => 'Alarm reason', 'custom_profile'  => array('Name' => 'Alarm_reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Vartype' => 0),
         "OR" => array('Position' => 22, 'Name' => 'Off reason', 'custom_profile'  => array('Name' => 'Off_reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => 0, 'max' => 7, 'steps' => 1), 'Vartype' => 0),
         "H1" => array('Position' => 23, 'Name' => 'Depth of the deepest discharge', 'custom_profile' => '~Ampere', 'Vartype' => 0.0),
         "H2" => array('Position' => 24, 'Name' => 'Depth of the last discharge', 'custom_profile' => '~Ampere', 'Vartype' => 0.0),
