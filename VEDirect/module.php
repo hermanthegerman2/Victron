@@ -409,6 +409,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                 }
                             }
                             break;
+                        case "Checksum":
+                            break;
                         default:
                             $parent_id = $this->ReadAttributeInteger('parent_id');
                             $needle = $this->variable_mapping[$label];
