@@ -76,25 +76,6 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $arrayColumns[] = array("label" => "Instanz ID", "name" => "InstanceID", "width" => "70px", "add" => "");
             $arrayColumns[] = array("label" => "Status", "name" => "DeviceStatus", "width" => "auto", "add" => "");
 
- /*           If (($this->ConnectionTest()) AND ($this->ReadPropertyBoolean("Open") == true) AND ($this->GetBuffer("I2C_Enabled") == 1)) {
-                // I²C-Devices einlesen und in das Values-Array kopieren
-                $DeviceArray = array();
-                $DeviceArray = unserialize($this->SearchI2CDevices());
-                $arrayValues = array();
-                If (count($DeviceArray , COUNT_RECURSIVE) >= 4) {
-                    for ($i = 0; $i < Count($DeviceArray); $i++) {
-                        $arrayValues[] = array("DeviceTyp" => $DeviceArray[$i][0], "DeviceAddress" => $DeviceArray[$i][1], "DeviceBus" => $DeviceArray[$i][2], "InstanceID" => $DeviceArray[$i][3], "DeviceStatus" => $DeviceArray[$i][4], "rowColor" => $DeviceArray[$i][5]);
-                    }
-                    $arrayElements[] = array("type" => "List", "name" => "I2C_Devices", "caption" => "I²C-Devices", "rowCount" => 5, "add" => false, "delete" => false, "sort" => $arraySort, "columns" => $arrayColumns, "values" => $arrayValues);
-                    $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-                }
-                else {
-                    $arrayElements[] = array("type" => "Label", "label" => "Es wurden keine I²C-Devices gefunden.");
-                }
-
-                $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-            }
-*/
 
             $arrayActions = array();
             If ($this->ReadPropertyBoolean("Open") == true) {
