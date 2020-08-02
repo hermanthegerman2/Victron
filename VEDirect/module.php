@@ -36,6 +36,10 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $this->RegisterPropertyString("IPAddress", "192.168.2.2");
             $this->RegisterPropertyString("Socket", "10000");
             $this->RegisterPropertyString("Serial Port", "ttyUSB0");
+            $this->RegisterPropertyBoolean("AutoRestart", true);
+            // Statusvariablen anlegen
+            $this->RegisterVariableBoolean("SocketStatus", "ocketStatus", "~Alert.Reversed", 40);
+            $this->DisableAction("SocketStatus");
 		}
 
         public function GetConfigurationForm()
@@ -49,7 +53,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $arrayElements = array();
             $arrayElements[] = array("type" => "CheckBox", "name" => "Open", "caption" => "Aktiv");
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-            $arrayElements[] = array("type" => "Select", "name" => "VictronVEDirect verbinden mit:", "caption" => "Einheit");
+            //$arrayElements[] = array("type" => "Select", "name" => "VictronVEDirect verbinden mit:", "caption" => "Einheit");
             $arraySort = array();
             $arraySort = array("column" => "Schnittstelle", "direction" => "ascending");
             $arrayColumns = array();
@@ -113,47 +117,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $this->RegisterMessage(0, 10100); // Alle Kernelmessages (10103 muss im MessageSink ausgewertet werden.)
 
             If (IPS_GetKernelRunlevel() == 10103) {
-                /*$this->SetBuffer("ModuleReady", 0);
-                $this->SetBuffer("Handle", -1);
-                $this->SetBuffer("HardwareRev", 0);
-                $Typ = array(2 => 2, 3, 4, 7 => 7, 8, 9, 10, 11, 14 => 14, 15, 17 => 17, 18, 22 => 22, 23, 24, 25, 27 => 27);
-                $this->SetBuffer("PinPossible", serialize($Typ));
-                $this->SetBuffer("PinI2C", "");
-                $this->SetBuffer("I2CSearch", 0);
-                $this->SetBuffer("I2C_Enabled", 0);
-                $this->SetBuffer("I2C_0_Configured", 0);
-                $this->SetBuffer("I2C_1_Configured", 0);
-                $this->SetBuffer("Serial_Configured", 0);
-                $this->SetBuffer("Serial_Display_Configured", 0);
-                $this->SetBuffer("Serial_Display_RxD", -1);
-                $this->SetBuffer("Serial_GPS_Configured", 0);
-                $this->SetBuffer("Serial_GPS_RxD", -1);
-                $this->SetBuffer("Serial_GPS_Data", "");
-                $this->SetBuffer("Serial_SDS011_Configured", 0);
-                $this->SetBuffer("Serial_SDS011_RxD", -1);
-                $this->SetBuffer("1Wire_Configured", 0);
-                $this->SetBuffer("SerialNotify", 0);
-                $this->SetBuffer("SerialScriptID", -1);
-                $this->SetBuffer("Default_I2C_Bus", 1);
-                $this->SetBuffer("Default_Serial_Bus", 0);
-                $this->SetBuffer("MUX_Handle", -1);
-                $this->SetBuffer("OW_Handle", -1);
-                $this->SetBuffer("NotifyBitmask", -1);
-                $this->SetBuffer("LastNotify", -1);
-                $PinNotify = array();
-                $this->SetBuffer("PinNotify", serialize($PinNotify));
 
-                $this->SetBuffer("owLastDevice", 0);
-                $this->SetBuffer("owLastDiscrepancy", 0);
-                $this->SetBuffer("owTripletDirection", 1);
-                $this->SetBuffer("owTripletFirstBit", 0);
-                $this->SetBuffer("owTripletSecondBit", 0);
-                $this->SetBuffer("owDeviceAddress_0", 0);
-                $this->SetBuffer("owDeviceAddress_1", 0);
-
-                $this->SetBuffer("IR_RC5_Toggle", 0);
-                $this->SetBuffer("IR_RC5X_Toggle", 0);
-*/
                 $ParentID = $this->GetParentID();
                 // Änderung an den untergeordneten Instanzen
                 $this->RegisterMessage($this->InstanceID, 11101); // Instanz wurde verbunden (InstanceID vom Parent)
@@ -165,14 +129,11 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     If (IPS_GetProperty($ParentID, 'Host') <> $this->ReadPropertyString('IPAddress')) {
                         IPS_SetProperty($ParentID, 'Host', $this->ReadPropertyString('IPAddress'));
                     }
-                    If (IPS_GetProperty($ParentID, 'Port') <> 8888) {
-                        IPS_SetProperty($ParentID, 'Port', 8888);
-                    }
                     If (IPS_GetProperty($ParentID, 'Open') <> $this->ReadPropertyBoolean("Open")) {
                         IPS_SetProperty($ParentID, 'Open', $this->ReadPropertyBoolean("Open"));
                     }
                     If (IPS_GetName($ParentID) == "Client Socket") {
-                        IPS_SetName($ParentID, "IPS2GPIO");
+                        IPS_SetName($ParentID, "Victron");
                     }
                     if(IPS_HasChanges($ParentID))
                     {
@@ -221,28 +182,10 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         }
                     }
 
-                    // OW einrichten
-                    If (($this->ReadPropertyInteger("OW") > 0) AND ($this->GetBuffer("I2C_Enabled") == 1)) {
-                        $OW_Handle = $this->CommandClientSocket(pack("L*", 54, 1, 24, 4, 0), 16);
-                        $this->SetBuffer("OW_Handle", $OW_Handle);
-                        $this->SendDebug("OW Handle", $OW_Handle, 0);
-                    }
-
-                    $I2C_DeviceHandle = array();
-                    $this->SetBuffer("I2C_Handle", serialize($I2C_DeviceHandle));
-
                     // Vorbereitung beendet
                     $this->SendDebug("ApplyChanges", "Beende Vorbereitung", 0);
                     $this->SetBuffer("ModuleReady", 1);
 
-                    // Ermitteln der genutzten I2C-Adressen
-                    $this->SendDataToChildren(json_encode(Array("DataID" => "{8D44CA24-3B35-4918-9CBD-85A28C0C8917}", "Function"=>"get_used_i2c")));
-                    // Ermitteln der sonstigen Seriellen Schnittstellen-Daten
-                    $this->SendDataToChildren(json_encode(Array("DataID" => "{8D44CA24-3B35-4918-9CBD-85A28C0C8917}", "Function"=>"get_serial")));
-                    // Ermitteln der sonstigen genutzen GPIO
-                    $this->SendDataToChildren(json_encode(Array("DataID" => "{8D44CA24-3B35-4918-9CBD-85A28C0C8917}", "Function"=>"get_usedpin")));
-                    // Start-trigger für andere Instanzen (BT, RPi)
-                    $this->SendDataToChildren(json_encode(Array("DataID" => "{8D44CA24-3B35-4918-9CBD-85A28C0C8917}", "Function"=>"get_start_trigger")));
 
                     If ($Handle >= 0) {
                         // Notify setzen
@@ -261,17 +204,66 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                 return;
             }
         }
+        private function ConnectionTest()
+        {
+            $result = false;
+            If (Sys_Ping($this->ReadPropertyString("IPAddress"), 2000)) {
+                //IPS_LogMessage("IPS2GPIO Netzanbindung","Angegebene IP ".$this->ReadPropertyString("IPAddress")." reagiert");
+                $this->SendDebug("Netzanbindung", "IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyString("Socket")." reagiert", 0);
+                $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyString("Socket"), $errno, $errstr, 10);
+                if (!$status) {
+                    IPS_LogMessage("Victron Netzanbindung: ","Port ist geschlossen!");
+                    $this->SendDebug("Netzanbindung", "Port ist geschlossen!", 0);
+                    If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
+                        SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
+                    }
+
+                    $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyString("Socket"), $errno, $errstr, 10);
+                    if (!$status) {
+                        IPS_LogMessage(" Netzanbindung: ","Port ist geschlossen!");
+                        $this->SendDebug("Netzanbindung", "Port ist geschlossen!", 0);
+                        If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
+                            SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
+                        }
+                        $this->SetStatus(104);
+                    }
+                    else {
+                        fclose($status);
+                        //IPS_LogMessage("Victron Netzanbindung: ","Port ist geöffnet");
+                        $this->SendDebug("Netzanbindung", "Port ist geoeffnet", 0);
+                        $result = true;
+                        $this->SetStatus(102);
+                    }
+                }
+                else {
+                    fclose($status);
+                    //IPS_LogMessage("Victron Netzanbindung: ","Port ist geöffnet");
+                    $this->SendDebug("Netzanbindung", "Port ist geoeffnet", 0);
+                    $result = true;
+                    $this->SetStatus(102);
+                }
+            }
+            else {
+                IPS_LogMessage("Victron Netzanbindung: ","IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyString("Socket")." reagiert nicht!");
+                $this->SendDebug("Netzanbindung", "IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyString("Socket")." reagiert nicht!", 0);
+                If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
+                    SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
+                }
+                $this->SetStatus(104);
+            }
+            return $result;
+        }
 
         public function GetConfigurationForParent()
         {
-            $JsonArray = array( "Host" => $this->ReadPropertyString('IPAddress'), "Port" => 8888, "Open" => $this->ReadPropertyBoolean("Open"));
+            $JsonArray = array( "Host" => $this->ReadPropertyString('IPAddress'), "Port" => $this->ReadPropertyString("Socket"), "Open" => $this->ReadPropertyBoolean("Open"));
             $Json = json_encode($JsonArray);
             return $Json;
         }
 
         public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
         {
-            IPS_LogMessage("IPS2GPIO MessageSink", "Message from SenderID ".$SenderID." with Message ".$Message."\r\n Data: ".print_r($Data, true));
+            IPS_LogMessage("Victron MessageSink", "Message from SenderID ".$SenderID." with Message ".$Message."\r\n Data: ".print_r($Data, true));
             switch ($Message) {
                 case 10100:
                     If ($Data[0] == 10103) {
@@ -279,22 +271,11 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     }
                     break;
                 case 11101:
-                    IPS_LogMessage("IPS2GPIO MessageSink", "Instanz ".$SenderID." wurde verbunden");
+                    IPS_LogMessage("Victron MessageSink", "Instanz ".$SenderID." wurde verbunden");
                     break;
                 case 11102:
                     $this->SendDebug("MessageSink", "Instanz  ".$SenderID." wurde getrennt", 0);
-                    //IPS_LogMessage("IPS2GPIO MessageSink", "Instanz  ".$SenderID." wurde getrennt");
-                    // Prüfung für die Pin-Belegung
-                    $PinUsed = array();
-                    $PinUsed = unserialize($this->GetBuffer("PinUsed"));
-                    foreach($PinUsed as $Pin => $InstanceID ){
-                        If ($InstanceID == $SenderID) {
-                            unset($PinUsed[$Pin]);
-                            $this->SendDebug("MessageSink", "Pin ".$Pin." wurde freigegeben", 0);
-                        }
-                    }
-                    $this->SetBuffer("PinUsed", serialize($PinUsed));
-
+                    //IPS_LogMessage("Victron MessageSink", "Instanz  ".$SenderID." wurde getrennt");
                     break;
                 case 10505:
                     If ($Data[0] == 102) {
@@ -304,8 +285,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         If ($this->ReadPropertyBoolean("AutoRestart") == true) {
                             $this->ConnectionTest();
                         }
-                        If (GetValueBoolean($this->GetIDForIdent("PigpioStatus")) == true) {
-                            SetValueBoolean($this->GetIDForIdent("PigpioStatus"), false);
+                        If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
+                            SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
                         }
                     }
                     break;
