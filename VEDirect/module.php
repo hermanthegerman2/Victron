@@ -280,7 +280,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                 for ($n = 1; $n < count($var); $n++) {
                     $label = $var[$n - 1];
                     $value = $var[$n];
-                    $this->SendDebug("ReceiveData ", $this->DeviceVariable[$label]['Name'] . '  --->  ' . $value, 0);
+                    $this->SendDebug("ReceiveData ", $label . '  --->  ' . $value, 0);
 
                     switch ($label) {
                         case "V":
