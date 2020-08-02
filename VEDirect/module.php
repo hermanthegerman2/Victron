@@ -150,19 +150,19 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                 If (($this->ConnectionTest()) AND ($this->ReadPropertyBoolean("Open") == true))  {
                     $this->SetSummary($this->ReadPropertyString('IPAddress'));
                     $this->SendDebug("ApplyChanges", "Starte Vorbereitung", 0);
-                    If (GetValueBoolean($this->GetIDForIdent("PigpioStatus")) == false) {
-                        SetValueBoolean($this->GetIDForIdent("PigpioStatus"), true);
+                    If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == false) {
+                        SetValueBoolean($this->GetIDForIdent("SocketStatus"), true);
                     }
                     $this->CheckConfig();
                     // Hardware und Softwareversion feststellen
                     $this->CommandClientSocket(pack("L*", 17, 0, 0, 0).pack("L*", 26, 0, 0, 0), 32);
 
                     // Alle Waveforms löschen
-                    $this->CommandClientSocket(pack("L*", 27, 0, 0, 0), 16);
+                    //$this->CommandClientSocket(pack("L*", 27, 0, 0, 0), 16);
 
                     // I2C-Handle zurücksetzen
-                    If ($this->GetBuffer("I2C_Enabled") == 1) {
-                        $this->ResetI2CHandle(0);
+                    //If ($this->GetBuffer("I2C_Enabled") == 1) {
+                    //    $this->ResetI2CHandle(0);
                     }
 
                     // Notify Starten
@@ -171,7 +171,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     $this->SendDebug("Handle", (int)$Handle, 0);
 
                     // MUX einrichten
-                    If (($this->ReadPropertyInteger("MUX") > 0) AND ($this->GetBuffer("I2C_Enabled") == 1)) {
+ /*                   If (($this->ReadPropertyInteger("MUX") > 0) AND ($this->GetBuffer("I2C_Enabled") == 1)) {
                         $MUX_Handle = $this->CommandClientSocket(pack("L*", 54, 1, 112, 4, 0), 16);
                         $this->SetBuffer("MUX_Handle", $MUX_Handle);
                         $this->SendDebug("MUX Handle", $MUX_Handle, 0);
@@ -181,7 +181,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             $this->SetMUX(0);
                         }
                     }
-
+*/
                     // Vorbereitung beendet
                     $this->SendDebug("ApplyChanges", "Beende Vorbereitung", 0);
                     $this->SetBuffer("ModuleReady", 1);
@@ -208,7 +208,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
         {
             $result = false;
             If (Sys_Ping($this->ReadPropertyString("IPAddress"), 2000)) {
-                //IPS_LogMessage("IPS2GPIO Netzanbindung","Angegebene IP ".$this->ReadPropertyString("IPAddress")." reagiert");
+                //IPS_LogMessage("Victron Netzanbindung","Angegebene IP ".$this->ReadPropertyString("IPAddress")." reagiert");
                 $this->SendDebug("Netzanbindung", "IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyString("Socket")." reagiert", 0);
                 $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyString("Socket"), $errno, $errstr, 10);
                 if (!$status) {
