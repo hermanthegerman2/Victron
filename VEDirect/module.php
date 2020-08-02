@@ -10,8 +10,6 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 	    use \Helper\ModuleHelper;
         use \Constants\VictronConstants;
 
-        const guid_device = '{018EF6B5-AB94-40C6-AA53-46943E824ACF}';
-
         private $Socket = false;
 
         public function __construct($InstanceID)
@@ -356,7 +354,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             $PID = $this->device_mapping[$identifier];
                             If (empty($this->ReadAttributeString('PID'))) {
                                 $this->WriteAttributeString('PID', $PID);
-                                $PID = $this->CreateInstanceByIdentifier(self::guid_device, $ParentID = $this->GetParentID(), $name=$PID);
+                                $PID = $this->CreateCategoryByIdentifier($this->GetParentID(), $PID, $name = null, $icon = null);
                                 $this->SendDebug("Gerät gefunden: ", $PID,0);
                             }
                             break;
