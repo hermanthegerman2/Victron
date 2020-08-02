@@ -414,7 +414,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             $needle = $this->variable_mapping[$label];
                             $id = $this->_getIdentifierByNeedle($parent_id, $needle);
                             $this->SendDebug("Schreiben id ", $id." : needle: ".$needle." : value: ".$value, 0);
-                    endswitch;
+
                     }
 
                 }
