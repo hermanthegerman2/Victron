@@ -355,7 +355,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             $identifier = substr($value, 2);
                             $PID = $this->device_mapping[$identifier];
                             If (empty($this->ReadAttributeString('PID'))) {
-                                $this->RegisterAttributeString('PID') = $PID;
+                                $this->WriteAttributeString('PID', $PID);
                                 $PID = $this->CreateInstanceByIdentifier(self::guid_device, $ParentID = $this->GetParentID(), $name=$PID);
                                 $this->SendDebug("Gerät gefunden: ", $PID,0);
                             }
