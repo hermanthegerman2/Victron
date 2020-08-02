@@ -29,7 +29,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             //$this->ConnectParent("{6DC3D946-0D31-450F-A8C6-C42DB8D7D4F1}");
             // Modul-Eigenschaftserstellung
             $this->RegisterPropertyBoolean("Open", false);
-            $this->RegisterPropertyString("IPAddress", "127.0.0.1");
+            $this->RegisterPropertyString("IPAddress", "192.168.2.2");
+            $this->RegisterPropertyString("Socket", "10000");
 		}
 
         public function GetConfigurationForm()
@@ -43,25 +44,9 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $arrayElements = array();
             $arrayElements[] = array("type" => "CheckBox", "name" => "Open", "caption" => "Aktiv");
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-            $arrayElements[] = array("type" => "ValidationTextBox", "name" => "IPAddress", "caption" => "IP");
-            $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-            $arrayElements[] = array("type" => "Label", "label" => "Zugriffsdaten des Raspberry Pi SSH:");
-            $arrayElements[] = array("type" => "ValidationTextBox", "name" => "User", "caption" => "User");
-            $arrayElements[] = array("type" => "PasswordTextBox", "name" => "Password", "caption" => "Password");
-            $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-            $arrayElements[] = array("type" => "Label", "label" => "Detaillierung der genutzten I²C-Schnittstelle:");
+            $arrayElements[] = array("type" => "Select", "name" => "VictronVEDirect verbinden mit:", "caption" => "Einheit",  "options"=> [ "caption" => "Socket", "value" => 0 , "caption" => "Seriell", "value" => 1);
 
-            /*If (($this->ConnectionTest()) AND ($this->SearchSpecialI2CDevices(112) == true))  {
-                $arrayOptions = array();
-                $arrayOptions[] = array("label" => "Kein MUX", "value" => 0);
-                $arrayOptions[] = array("label" => "TCA9548a Adr. 112/0x70", "value" => 1);
-                $arrayOptions[] = array("label" => "PCA9542 Adr. 112/0x70", "value" => 2);
-                $arrayElements[] = array("type" => "Select", "name" => "MUX", "caption" => "MUX-Auswahl", "options" => $arrayOptions );
-            }
-            else {
-                $arrayElements[] = array("type" => "Label", "label" => "Es wurde kein MUX gefunden.");
-            }*/
-            $arrayOptions = array();
+            $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
 
             $arraySort = array();
             $arraySort = array("column" => "ServiceTyp", "direction" => "ascending");
