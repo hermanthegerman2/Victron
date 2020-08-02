@@ -496,13 +496,13 @@ trait ModuleHelper
      * @param $needle
      * @return array
      */
-    protected function _getIdentifierByNeedle($needle)
+    protected function _getIdentifierByNeedle($parent_id, $needle)
     {
         $needle = str_replace(' ', '_', $needle);
 
         $idents = [];
         if ($needle) {
-            foreach (IPS_GetChildrenIDs($this->InstanceID) AS $object_ids) {
+            foreach (IPS_GetChildrenIDs($parent_id) AS $object_ids) {
                 $object = IPS_GetObject($object_ids);
 
                 if (strstr($object['ObjectIdent'], '_' . $needle)) {

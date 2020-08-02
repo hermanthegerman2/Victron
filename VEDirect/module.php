@@ -370,9 +370,11 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             break;
 
                         case "PID":
+                            // Initiales NAlegen der Kategorie und der Gerätevariablen
                             $PID = substr($value, 2);
                             $PID = $this->device_mapping[$PID];
-                            If (empty($this->ReadAttributeInteger('parent_id'))) {
+                            // parent_id gesetzt ?
+                            if (empty($this->ReadAttributeInteger('parent_id'))) {
                                 $parent_id = $this->CreateCategoryByIdentifier($this->InstanceID, $PID, $name = null, $icon = null);
                                 $this->WriteAttributeInteger('parent_id', $parent_id);
                                 $this->SendDebug("Victron Gerät gefunden: ", $PID, 0);
@@ -381,8 +383,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                 // Gerätevariablen anlegen -> nur die in display_mapping
                                 //If (preg_match("/".$key."/i",$this->display_mapping[$PID]))
 
-                                foreach ($this->variable_mapping AS $key => $value) {
-                                    If (preg_match("/".$key."/i",$this->display_mapping[$PID])) {
+                                foreach ($this->variable_mapping as $key => $value) {
+                                    if (preg_match("/" . $key . "/i", $this->display_mapping[$PID])) {
                                         if (is_array($value)) {
                                             foreach ($value as $v) {
                                                 if (is_array($value)) {
@@ -407,7 +409,12 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                 }
                             }
                             break;
-                        //Check Variablen, welche geschrieben werden ->
+                        default:
+                            $parent_id = $this->ReadAttributeInteger('parent_id');
+                            $needle = $this->variable_mapping[$label];
+                            $id = $this->_getIdentifierByNeedle($parent_id, $needle);
+                            $this->SendDebug("Schreiben id ", $id." : needle: ".$needle." : value: ".$value, 0);
+                    endswitch;
                     }
 
                 }
