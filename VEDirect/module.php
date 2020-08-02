@@ -75,7 +75,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $arrayColumns[] = array("label" => "Instanz ID", "name" => "InstanceID", "width" => "70px", "add" => "");
             $arrayColumns[] = array("label" => "Status", "name" => "DeviceStatus", "width" => "auto", "add" => "");
 
-            If (($this->ConnectionTest()) AND ($this->ReadPropertyBoolean("Open") == true) AND ($this->GetBuffer("I2C_Enabled") == 1)) {
+ /*           If (($this->ConnectionTest()) AND ($this->ReadPropertyBoolean("Open") == true) AND ($this->GetBuffer("I2C_Enabled") == 1)) {
                 // I²C-Devices einlesen und in das Values-Array kopieren
                 $DeviceArray = array();
                 $DeviceArray = unserialize($this->SearchI2CDevices());
@@ -93,7 +93,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
                 $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
             }
-
+*/
 
             $arrayActions = array();
             If ($this->ReadPropertyBoolean("Open") == true) {
