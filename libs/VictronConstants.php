@@ -59,7 +59,7 @@ trait VictronConstants
     ];
 
     protected $variable_mapping = [
-        "V" => array('Name' => 'Main or channel 1 battery voltage', 'custom_profile' => '~Volt', 'Divider' => 1000, 'Value' => 2),
+        "V" => array('Name' => 'Main battery voltage', 'custom_profile' => '~Volt', 'Divider' => 1000, 'Value' => 2),
         "V2" => array('Name' => 'Channel 2 battery voltage', 'custom_profile' => '~Volt', 'Divider' => 1000, 'Value' => 2),
         "V3" => array('Name' => 'Channel 3 battery voltage', 'custom_profile' => '~Volt', 'Divider' => 1000, 'Value' => 2),
         "VS" => array('Name' => 'Auxiliary starter voltage', 'custom_profile' => '~Volt', 'Divider' => 1000, 'Value' => 2),
@@ -67,7 +67,7 @@ trait VictronConstants
         "DM" => array('Name' => 'Mid-point deviation of the battery bank', 'custom_profile' => '~Intensity.100', 'Divider' => 1000, 'Value' => 1),
         "VPV" => array('Name' => 'Panel voltage', 'custom_profile' => '~Volt', 'Divider' => 1000, 'Value' => 2),
         "PPV" => array('Name' => 'Panel power', 'custom_profile' => '~Watt.3680', 'Divider' => 1, 'Value' => 2),
-        "I" => array('Name' => 'Main or channel 1 battery current', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 2),
+        "I" => array('Name' => 'Main battery current', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 2),
         "I2" => array('Name' => 'Channel 2 battery current', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 2),
         "I3" => array('Name' => 'Channel 3 battery current', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 2),
         "IL" => array('Name' => 'Load current', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 2),
@@ -121,6 +121,6 @@ trait VictronConstants
     ];
 
     protected $display_mapping = [
-        "SmartSolar MPPT 75/15" => "V,VPV,PPV,I,IL,LOAD,Alarm,Relay,AR,OR,H1,H2,H3,H5,H7,H8,H19,H20,H21,H22,H23,ERR,CS,FW,SER#,HSDS,MODE,WARN,MPPT"
-    ];
+        "SmartSolar MPPT 75/15" => array('V','VPV','PPV','I','IL','LOAD','Alarm','Relay','AR','OR','H1','H2','H3','H7','H8','H19','H20','H21','H22','H23','ERR','CS','FW','SER#','HSDS','MODE','WARN','MPPT')
+        ];
 }

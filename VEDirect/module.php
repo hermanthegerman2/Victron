@@ -139,7 +139,6 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             return JSON_encode(array("status" => $arrayStatus, "elements" => $arrayElements, "actions" => $arrayActions));
         }
 
-
         public function ApplyChanges()
         {
             //Never delete this line!
@@ -317,7 +316,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         $PID = $this->device_mapping[$PID];
                         // Prüfung ob instance_id gesetzt ?
                         if (empty($this->ReadAttributeInteger('instance_id'))) {
-                            //IPS_SetIdent($this->InstanceID, $PID);
+                            IPS_SetIdent($this->InstanceID, $PID);
                             $this->WriteAttributeInteger('instance_id', $this->InstanceID);
                             $this->SendDebug("Victron Gerät gefunden: ", $PID, 0);
                             $this->_log("Victron Gerät gefunden: ", $PID);
@@ -327,12 +326,13 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             $position = 0;
                             foreach ($this->variable_mapping as $key => $value) {
 
-                                if (array_search($key, explode(",", $this->display_mapping[$PID])) > 0) { // ist die Variable im Array display_mapping dabei ?
+                                if (array_search($key, $this->display_mapping[$PID]) == true) { // ist die Variable im Array display_mapping dabei ?
                                     $this->_log("Array auslesen : ", $value);
                                     if (is_array($value)) {
                                         $ident = $this->InstanceID . '_' . $value['Name'];
                                         $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
                                         $this->_log("CreateVariableByIdentifier : ", $custom_profile);
+
                                         $this->CreateVariableByIdentifier([
                                             'parent_id' => $this->InstanceID,
                                             'name' => $value['Name'],
