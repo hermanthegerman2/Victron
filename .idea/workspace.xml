@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="743ffc69-5e4a-46cd-b509-289612cf2695" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/VEDirect/module.php" beforeDir="false" afterPath="$PROJECT_DIR$/VEDirect/module.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="Form">
+      <created>1596449491584</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1596449491584</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Form">
+      <created>1596449694184</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1596449694184</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Form">
+      <created>1596450000925</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1596450000925</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Form">
+      <created>1596450207908</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1596450207908</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Form">
+      <created>1596450447693</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1596450447693</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Form">
+      <created>1596451646636</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1596451646636</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Form">
+      <created>1596451878807</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1596451878807</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Form">
+      <created>1596453233028</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1596453233028</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Form">
+      <created>1596458731668</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1596458731668</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Form">
+      <created>1596460137106</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1596460137106</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Form">
+      <created>1596460701329</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1596460701329</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Form">
+      <created>1596461032283</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1596461032283</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Form">
+      <created>1596461560040</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1596461560040</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Form">
+      <created>1596461926560</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1596461926560</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Form">
+      <created>1596462747492</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1596462747492</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Form">
+      <created>1596462869203</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1596462869203</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Form">
+      <created>1596463088441</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1596463088441</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Form">
+      <created>1596463329823</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1596463329823</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Form">
+      <created>1596463820633</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1596463820633</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Form">
+      <created>1596463897455</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1596463897455</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Form">
+      <created>1596464133821</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1596464133821</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Form">
+      <created>1596464442080</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1596464442080</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Form" />
+    <option name="LAST_COMMIT_MESSAGE" value="Form" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1992" y="686" width="816" height="161" key="Vcs.Push.Dialog.v2" timestamp="1596464444486">
+      <screen x="1440" y="0" width="1920" height="1160" />
+    </state>
+    <state x="1992" y="686" width="816" height="161" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596464444486" />
+  </component>
+</project>
