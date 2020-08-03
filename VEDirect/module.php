@@ -327,23 +327,18 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             foreach ($this->variable_mapping as $key => $value) {
 
                                 if (array_search($key, $this->display_mapping[$PID]) == true) { // ist die Variable im Array display_mapping dabei ?
-                                    $this->_log("Array auslesen : ", $value);
+                                    $ident = $this->InstanceID . '_' . $value['Name'];
 
-                                        $ident = $this->InstanceID . '_' . $value['Name'];
-                                        $custom_profile = isset($value['custom_profile']) ? $value['custom_profile'] : false;
-                                        $this->_log("CreateVariableByIdentifier : ", $custom_profile);
-
-                                        $this->CreateVariableByIdentifier([
-                                            'parent_id' => $this->InstanceID,
-                                            'name' => $value['Name'],
-                                            'value' => $value['Value'],
-                                            'identifier' => $ident,
-                                            'position' => $position,
-                                            'icon' => $value['icon'],
-                                            'custom_profile' => $custom_profile
-                                        ]);
-                                        $position++;
-
+                                    $this->CreateVariableByIdentifier([
+                                        'parent_id' => $this->InstanceID,
+                                        'name' => $value['Name'],
+                                        'value' => $value['Value'],
+                                        'identifier' => $ident,
+                                        'position' => $position,
+                                        'icon' => $value['icon'],
+                                        'custom_profile' => $value['custom_profile']
+                                    ]);
+                                   $position++;
                                 }
 
                             }
@@ -355,13 +350,9 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     }
                     else {
                         foreach ($this->variable_mapping as $key => $value) {
-                            if (is_array($value)) {
-                                foreach ($value as $v) {
-                                }
-                                if ($label == $key) {
-                                    $needle = $value['Name'];
-                                    $divider = $value['Divider'];
-                                }
+                            if ($label == $key) {
+                                $needle = $value['Name'];
+                                $divider = $value['Divider'];
                             }
                         }
                         $Ident = implode($this->_getIdentifierByNeedle($needle));
@@ -373,10 +364,10 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                 $this->SendDebug("Schreiben Wert", "Id: " . $id . " / divisor: " . $divider . "/ value: " . $labelvalue, 0);
                                 switch ($divider) {
                                     case 1:
-                                        if ($labelvalue = "ON") {
+                                        if ($labelvalue == "ON") {
                                             $labelvalue = true;
                                         }
-                                        elseif ($labelvalue = "Off") {
+                                        elseif ($labelvalue == "Off") {
                                             $labelvalue = false;
                                         }
                                         if (IPS_GetVariable($id)["VariableType"] == 0) {
