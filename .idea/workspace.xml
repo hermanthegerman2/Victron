@@ -20,9 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="743ffc69-5e4a-46cd-b509-289612cf2695" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VEDirect/module.php" beforeDir="false" afterPath="$PROJECT_DIR$/VEDirect/module.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/VictronConstants.php" beforeDir="false" afterPath="$PROJECT_DIR$/libs/VictronConstants.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,20 +37,6 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="TaskManager">
-    <task id="LOCAL-00014" summary="Form">
-      <created>1596461926560</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1596461926560</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Form">
-      <created>1596462747492</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1596462747492</updated>
-    </task>
     <task id="LOCAL-00016" summary="Form">
       <created>1596462869203</created>
       <option name="number" value="00016" />
@@ -389,7 +373,21 @@
       <option name="project" value="LOCAL" />
       <updated>1596494661659</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Form">
+      <created>1596494879162</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1596494879162</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Form">
+      <created>1596495551984</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1596495551984</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -413,10 +411,10 @@
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
     <state x="1854" y="235" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596482550120" />
-    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2" timestamp="1596494667924">
+    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2" timestamp="1596495554203">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
-    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596494667924" />
+    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596495554203" />
     <state x="2217" y="494" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596479707176">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
