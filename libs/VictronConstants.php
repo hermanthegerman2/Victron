@@ -77,7 +77,7 @@ trait VictronConstants
         "CE" => array('Name' => 'Consumed Amp Hours', 'icon' => 'EnergySolar', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 2),
         "SOC" => array('Name' => 'State-of-charge', 'icon' => 'EnergySolar', 'custom_profile' => '~Intensity.100', 'Divider' => 1000, 'Value' => 2),
         "TTG" => array('Name' => 'Time-to-go', 'icon' => 'EnergySolar', 'custom_profile' => array('icon' => '', 'min' => 0, 'max' => 100, 'steps' => 1), 'Divider' => 1, 'Value' => 1),
-        "Alarm" => array('Name' => 'Alarm condition active', 'icon' => 'EnergySolar', 'custom_profile' => array('icon' => '', 'min' => 0, 'max' => 1, 'steps' => 1, 'values' => array('On', 'Off')), 'Divider' => 1, 'Value' => 0),
+        "Alarm" => array('Name' => 'Alarm condition active', 'icon' => 'EnergySolar', 'custom_profile' => array('icon' => '', 'min' => 0, 'max' => 1, 'steps' => 1, ), 'Divider' => 1, 'Value' => 0),
         "Relay" => array('Name' => 'Relay state', 'icon' => 'EnergySolar', 'custom_profile' => array('icon' => '', 'min' => 0, 'max' => 1, 'steps' => 1), 'Divider' => 1, 'Value' => 0),
         "AR" => array('Name' => 'Alarm reason', 'icon' => 'EnergySolar', 'custom_profile' => array('icon' => '', 'min' => 0, 'max' => 8192, 'steps' => 1), 'Divider' => 1, 'Value' => 1),
         "OR" => array('Name' => 'Off reason', 'icon' => 'EnergySolar', 'custom_profile' => array('icon' => '', 'min' => 0, 'max' => 128, 'steps' => 1), 'Divider' => 1, 'Value' => 1),
