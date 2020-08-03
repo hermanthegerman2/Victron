@@ -189,7 +189,6 @@ trait ModuleHelper
             }
 
             // set profile by name mapping
-            $this->_log("custom_profile: ", $custom_profile." : ".$name);
             if (!$custom_profile && isset($this->profile_mappings[$name])) {
                 // attach module prefix to custom profile name
                 $profile_id = substr($this->profile_mappings[$name], 0, 1) == '~'
