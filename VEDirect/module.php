@@ -252,7 +252,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     }
                     break;
                 case 11101:
-                    IPS_LogMessage("Victron MessageSink", "Instanz ".$SenderID." wurde verbunden");
+                    $this->_log("Victron MessageSink", "Instanz ".$SenderID." wurde verbunden");
                     break;
                 case 11102:
                     $this->SendDebug("MessageSink", "Instanz  ".$SenderID." wurde getrennt", 0);
@@ -349,16 +349,16 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     }
                     $Ident = implode($this->_getIdentifierByNeedle($needle));
                     $id = $this->GetIdForIdentRecursive($Ident);
-                    $this->SendDebug("Schreiben Wert", "divisor: ".$divider." : value: ".$labelvalue, 0);
+                    $this->SendDebug("Schreiben Wert",$id." divisor: ".$divider." : value: ".$labelvalue, 0);
                     Switch ($divider) {
                         case 100:
-                            $this->SetValue($id, $labelvalue/100);
+                            SetValue($id, $labelvalue/100);
                             break;
                         case 1000:
-                            $this->SetValue($id, $labelvalue/1000);
+                            SetValue($id, $labelvalue/1000);
                             break;
                         default:
-                            $this->SetValue($id, $labelvalue);
+                            SetValue($id, $labelvalue);
                     }
 
 
