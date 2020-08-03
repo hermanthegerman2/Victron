@@ -384,7 +384,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                             $labelvalue = false;
                                         }
                                         if (IPS_GetVariable($id)["VariableType"] == 0) {
-                                        SetValueBoolean($id, $labelvalue);
+                                            SetValueBoolean($id, $labelvalue);
                                         }
                                         if (IPS_GetVariable($id)["VariableType"] == 1) {
                                             SetValueInteger($id, $labelvalue);
