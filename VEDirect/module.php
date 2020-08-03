@@ -350,7 +350,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         }
                     }
                     $Ident = implode($this->_getIdentifierByNeedle($needle));
-                    $this->SendDebug("Ident by needle", var_dump($Ident), 0);
+                    $this->SendDebug("Ident by needle", $Ident, 0);
                     if (is_string(isset($Ident))) {
                         $id = $this->GetIdForIdentRecursive($Ident);
                         if (is_int(isset($id))) {
