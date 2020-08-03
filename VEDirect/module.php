@@ -29,10 +29,12 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
         ];
 
         protected $icon_mappings = [
-            'Power' => 'Power'
+            'Load output state' => 'Light',
+            'Relay state' => 'Light',
+            'Panel power' => 'EnergySolar'
         ];
 
-                function __construct($InstanceID)
+        function __construct($InstanceID)
         {
             parent::__construct($InstanceID);
         }
