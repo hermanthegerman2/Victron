@@ -327,7 +327,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             foreach ($this->variable_mapping as $key => $value) {
 
                                 if (array_search($key, explode(",", $this->display_mapping[$PID])) > 0) { // ist die Variable im Array display_mapping dabei ?
-                                    $this->_log("Array auslesen : ", print_r($value));
+                                    $this->_log("Array auslesen : ", implode($value));
                                     if (is_array($value)) {
                                         foreach ($value as $v) {
                                             /*if (is_array($value1)) {
