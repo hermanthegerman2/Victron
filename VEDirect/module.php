@@ -339,37 +339,39 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             }
                         }
                     }
-                    foreach ($this->variable_mapping as $key => $value) {
-                        if (is_array($value)) {
-                            foreach ($value as $v) {
-                            }
-                            if ($label == $key) {
-                                $needle = $value['Name'];
-                                $divider = $value['Divider'];
+                    else {
+                        foreach ($this->variable_mapping as $key => $value) {
+                            if (is_array($value)) {
+                                foreach ($value as $v) {
+                                }
+                                if ($label == $key) {
+                                    $needle = $value['Name'];
+                                    $divider = $value['Divider'];
+                                }
                             }
                         }
-                    }
-                    $Ident = implode($this->_getIdentifierByNeedle($needle));
-                    $this->SendDebug("Ident by needle", $Ident, 0);
-                    if (is_string(isset($Ident))) {
-                        $id = $this->GetIdForIdentRecursive($Ident);
-                        if (is_int(isset($id))) {
-                            $this->SendDebug("Schreiben Wert", "Id: " . $id . " / divisor: " . $divider . "/ value: " . $labelvalue, 0);
-                            switch ($divider) {
-                                case 100:
-                                    SetValue($id, $labelvalue / 100);
-                                    break;
-                                case 1000:
-                                    SetValue($id, $labelvalue / 1000);
-                                    break;
-                                default:
-                                    SetValue($id, $labelvalue);
+                        $Ident = implode($this->_getIdentifierByNeedle($needle));
+                        $this->SendDebug("Ident by needle", $Ident, 0);
+                        if (isset($Ident)) {
+                            $id = $this->GetIdForIdentRecursive($Ident);
+                            if (is_int(isset($id))) {
+                                $this->SendDebug("Schreiben Wert", "Id: " . $id . " / divisor: " . $divider . "/ value: " . $labelvalue, 0);
+                                switch ($divider) {
+                                    case 100:
+                                        SetValue($id, $labelvalue / 100);
+                                        break;
+                                    case 1000:
+                                        SetValue($id, $labelvalue / 1000);
+                                        break;
+                                    default:
+                                        SetValue($id, $labelvalue);
+                                }
+                            } else {
+                                $this->SendDebug("Keine Variablen-Id gefunden !!!", $label . " divisor: " . $divider . " : value: " . $labelvalue, 0);
                             }
                         } else {
-                            $this->SendDebug("Keine Variablen-Id gefunden !!!", $label . " divisor: " . $divider . " : value: " . $labelvalue, 0);
+                            $this->SendDebug("Keinen Variablen-Ident gefunden !!!", $label . " divisor: " . $divider . " : value: " . $labelvalue, 0);
                         }
-                    } else {
-                        $this->SendDebug("Keinen Variablen-Ident gefunden !!!", $label . " divisor: " . $divider . " : value: " . $labelvalue, 0);
                     }
                 }
                 $this->SendDebug("ReceiveData buffer_end", $bufferend, 0);
