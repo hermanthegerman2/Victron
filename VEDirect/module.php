@@ -314,6 +314,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
                             // Gerätevariablen anlegen
 
+                            $position = 0;
                             foreach ($this->variable_mapping as $key => $value) {
                                 if (array_search($key, explode(",", $this->display_mapping[$PID])) > 0) {   // ist die Variable im Array display_mapping dabei ?
                                     if (is_array($value)) {
@@ -323,29 +324,30 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                                 }
                                             }
                                         }
-                                        $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
                                         $ident = $this->InstanceID . '_' . $value['Name'];
-                                        if (is_array($custom_profile)) {
-                                            $this->CreateVariableByIdentifier([
-                                                'parent_id' => $this->InstanceID,
-                                                'name' => $value['Name'],
-                                                'value' => $value['Value'],
-                                                'identifier' => $ident,
-                                                'position' => $value['Position'],
-                                                'custom_profile' => $custom_profile
-                                            ]);
-                                        }
-                                        else {
-                                            $this->CreateVariableByIdentifier([
-                                                'parent_id' => $this->InstanceID,
-                                                'name' => $value['Name'],
-                                                'value' => $value['Value'],
-                                                'identifier' => $ident,
-                                                'position' => $value['Position']
-                                            ]);
-                                        }
+                                        $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
 
+                                        $this->CreateVariableByIdentifier([
+                                            'parent_id' => $this->InstanceID,
+                                            'name' => $value['Name'],
+                                            'value' => $value['Value'],
+                                            'identifier' => $ident,
+                                            'position' => $position,
+                                            'custom_profile' => $custom_profile
+                                        ]);
+                                        $position++;
                                     }
+
+                                }
+                                else {
+                                    $this->CreateVariableByIdentifier([
+                                        'parent_id' => $this->InstanceID,
+                                        'name' => $value['Name'],
+                                        'value' => $value['Value'],
+                                        'identifier' => $ident,
+                                        'position' => $position,
+                                    ]);
+                                    $position++;
                                 }
                             }
                         }
