@@ -197,18 +197,18 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
         {
             $result = false;
             If (Sys_Ping($this->ReadPropertyString("IPAddress"), 2000)) {
-                //IPS_LogMessage("Victron Netzanbindung","Angegebene IP ".$this->ReadPropertyString("IPAddress")." reagiert");
+                $this->_log("Victron Netzanbindung","Angegebene IP ".$this->ReadPropertyString("IPAddress")." reagiert");
                 $this->SendDebug("Netzanbindung", "IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyInteger("Socket")." reagiert", 0);
                 $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
                 if (!$status) {
-                    IPS_LogMessage("Victron Netzanbindung: ","Port ist geschlossen!");
+                    $this->_log("Victron Netzanbindung: ","Port ist geschlossen!");
                     $this->SendDebug("Netzanbindung", "Port ist geschlossen!", 0);
                     If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
                         SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
                     }
                     $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
                     if (!$status) {
-                        IPS_LogMessage(" Netzanbindung: ","Port ist geschlossen!");
+                        $this->_log(" Netzanbindung: ","Port ist geschlossen!");
                         $this->SendDebug("Netzanbindung", "Port ist geschlossen!", 0);
                         If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
                             SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
@@ -218,14 +218,14 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                 }
                 else {
                     fclose($status);
-                    //IPS_LogMessage("Victron Netzanbindung: ","Port ist geöffnet");
+                    $this->_log("Victron Netzanbindung: ","Port ist geöffnet");
                     $this->SendDebug("Netzanbindung", "Port ist geoeffnet", 0);
                     $result = true;
                     $this->SetStatus(102);
                 }
             }
             else {
-                IPS_LogMessage("Victron Netzanbindung: ","IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyInteger("Socket")." reagiert nicht!");
+                $this->_log("Victron Netzanbindung: ","IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyInteger("Socket")." reagiert nicht!");
                 $this->SendDebug("Netzanbindung", "IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyInteger("Socket")." reagiert nicht!", 0);
                 If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
                     SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
@@ -244,7 +244,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
         public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
         {
-            IPS_LogMessage("Victron MessageSink", "Message from SenderID ".$SenderID." with Message ".$Message."\r\n Data: ".print_r($Data, true));
+            $this->_log("Victron MessageSink", "Message from SenderID ".$SenderID." with Message ".$Message."\r\n Data: ".print_r($Data, true));
             switch ($Message) {
                 case 10100:
                     If ($Data[0] == 10103) {
@@ -307,10 +307,10 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         $PID = $this->device_mapping[$PID];
                         // Prüfung ob instance_id gesetzt ?
                         if (empty($this->ReadAttributeInteger('instance_id'))) {
-
+                            $this->IPS_SetIdent($this->InstanceID, $PID);
                             $this->WriteAttributeInteger('instance_id', $this->InstanceID);
                             $this->SendDebug("Victron Gerät gefunden: ", $PID, 0);
-                            IPS_LogMessage("Victron Gerät gefunden: ", $PID);
+                            $this->_log("Victron Gerät gefunden: ", $PID);
 
                             // Gerätevariablen anlegen -> nur die in display_mapping
 
@@ -352,10 +352,10 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     //$this->SendDebug("Schreiben id ", $id." : value: ".$divider." : value: ".$labelvalue, 0);
                     Switch ($divider) {
                         case 100:
-                            $this->SetValueFloat($id, $labelvalue/100);
+                            $this->SetValue($id, $labelvalue/100);
                             break;
                         case 1000:
-                            $this->SetValueFloat($id, $labelvalue/1000);
+                            $this->SetValue($id, $labelvalue/1000);
                             break;
                         default:
                             $this->SetValue($id, $labelvalue);
