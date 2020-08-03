@@ -300,130 +300,59 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     $value = $var[$n];
                     $this->SendDebug("ReceiveData ", $label . '  --->  ' . $value, 0);
 
-                    switch ($label) {
-                        case "V":
-                        case "V2":
-                        case "V3":
-                        case "VS":
-                        case "VM":
-                        case "DM":
-                        case "VPV":
-                        case "I":
-                        case "I2":
-                        case "I3":
-                        case "IL":
-                        case "CE":
-                        case "SOC":
-                        case "H1":
-                        case "H2":
-                        case "H3":
-                        case "H6":
-                        case "H7":
-                        case "H8":
-                        case "H15":
-                        case "H16":
-                            $value = floatval($value) / 1000;
-                            break;
+                    If ($label == "PID") {
+                        // Initiales NAlegen der Kategorie und der Gerätevariablen
+                        $PID = substr($value, 2);
+                        $PID = $this->device_mapping[$PID];
+                        // parent_id gesetzt ?
+                        if (empty($this->ReadAttributeInteger('parent_id'))) {
+                            $parent_id = $this->CreateCategoryByIdentifier($this->InstanceID, $PID, $name = null, $icon = null);
+                            $this->WriteAttributeInteger('parent_id', $parent_id);
+                            $this->SendDebug("Victron Gerät gefunden: ", $PID, 0);
+                            IPS_LogMessage("Victron Gerät gefunden: ", $PID);
 
-                        case "PPV":
-                        case "T":
-                        case "LOAD":
-                        case "P":
-                        case "AR":
-                        case "OR":
-                        case "H4":
-                        case "H5":
-                        case "H9":
-                        case "H10":
-                        case "H11":
-                        case "H12":
-                        case "H13":
-                        case "H14":
-                        case "ERR":
-                        case "CS":
-                        case "HSDS":
-                        case "MODE":
-                        case "WARN":
-                        case "MPPT":
-                            $value = intval($value);
-                            break;
+                            // Gerätevariablen anlegen -> nur die in display_mapping
+                            //If (preg_match("/".$key."/i",$this->display_mapping[$PID]))
 
-                        case "Alarm":
-                        case "Relay":
-                            $value = boolval($value);
-                            break;
-
-                        case "H17":
-                        case "H18":
-                        case "H19":
-                        case "H20":
-                        case "H22":
-                        case "AC_OUT_V":
-                        case "AC_OUT_I":
-                            $value = floatval($value) / 100;
-                            break;
-
-                        case "H21":
-                        case "H23":
-                        case "AC_OUT_S":
-                            $value = floatval($value);
-                            break;
-
-                        case "PID":
-                            // Initiales NAlegen der Kategorie und der Gerätevariablen
-                            $PID = substr($value, 2);
-                            $PID = $this->device_mapping[$PID];
-                            // parent_id gesetzt ?
-                            if (empty($this->ReadAttributeInteger('parent_id'))) {
-                                $parent_id = $this->CreateCategoryByIdentifier($this->InstanceID, $PID, $name = null, $icon = null);
-                                $this->WriteAttributeInteger('parent_id', $parent_id);
-                                $this->SendDebug("Victron Gerät gefunden: ", $PID, 0);
-                                IPS_LogMessage("Victron Gerät gefunden: ", $PID);
-
-                                // Gerätevariablen anlegen -> nur die in display_mapping
-                                //If (preg_match("/".$key."/i",$this->display_mapping[$PID]))
-
-                                foreach ($this->variable_mapping as $key => $value) {
-                                    if (preg_match("/" . $key . "/i", $this->display_mapping[$PID])) {
-                                        if (is_array($value)) {
-                                            foreach ($value as $v) {
-                                                if (is_array($value)) {
-                                                    foreach ($value as $v) {
-                                                    }
+                            foreach ($this->variable_mapping as $key => $value) {
+                                if (preg_match("/" . $key . "/i", $this->display_mapping[$PID])) {
+                                    if (is_array($value)) {
+                                        foreach ($value as $v) {
+                                            if (is_array($value)) {
+                                                foreach ($value as $v) {
                                                 }
                                             }
-                                            $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
-                                            $ident = $parent_id . '_' . $value['Name'];
-
-                                            $this->CreateVariableByIdentifier([
-                                                'parent_id' => $parent_id,
-                                                'name' => $value['Name'],
-                                                'value' => $value['Value'],
-                                                'identifier' => $ident,
-                                                'position' => $value['Position'],
-                                                'custom_profile' => $custom_profile
-                                            ]);
                                         }
-                                    }
+                                        $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
+                                        $ident = $parent_id . '_' . $value['Name'];
 
-                                }
-                            }
-                            break;
-                        case "Checksum":
-                            break;
-                        default:
-                            $parent_id = $this->ReadAttributeInteger('parent_id');
-                            foreach ($this->variable_mapping as $key => $value) {
-                                if (is_array($value)) {
-                                    foreach ($value AS $v) {}
-                                    if  ($label == $key) {
-                                        $needle = $value['Name'];
+                                        $this->CreateVariableByIdentifier([
+                                            'parent_id' => $parent_id,
+                                            'name' => $value['Name'],
+                                            'value' => $value['Value'],
+                                            'identifier' => $ident,
+                                            'position' => $value['Position'],
+                                            'custom_profile' => $custom_profile
+                                        ]);
                                     }
                                 }
                             }
-                            $id[] = $this->_getIdentifierByNeedle($parent_id, $needle);
-                            //$this->SendDebug("Schreiben id ", $id." : value: ".$value, 0);
+                        }
                     }
+                    $parent_id = $this->ReadAttributeInteger('parent_id');
+                    foreach ($this->variable_mapping as $key => $value) {
+                        if (is_array($value)) {
+                            foreach ($value AS $v) {}
+                            if  ($label == $key) {
+                                $needle = $value['Name'];
+                                $divider = $value['Divider'];
+                            }
+                        }
+                    }
+                    $id[] = $this->_getIdentifierByNeedle($parent_id, $needle);
+                    $this->SendDebug("Schreiben id ", $divider." : value: ".$value, 0);
+
+
 
                 }
             }
