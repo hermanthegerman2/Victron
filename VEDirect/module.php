@@ -383,16 +383,18 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                         elseif ($labelvalue = "Off") {
                                             $labelvalue = false;
                                         }
-                                        if (is_bool($labelvalue)) {
+                                        if (IPS_GetVariable($id)["VariableType"] == 0) {
                                         SetValueBoolean($id, $labelvalue);
                                         }
-                                        if (is_int($labelvalue)) {
+                                        if (IPS_GetVariable($id)["VariableType"] == 1) {
                                             SetValueInteger($id, $labelvalue);
                                         }
-                                        if (is_float($labelvalue)) {
+                                        if (IPS_GetVariable($id)["VariableType"] == 2) {
                                             SetValueFloat($id, $labelvalue);
                                         }
-                                        SetValueString($id, $labelvalue);
+                                        if (IPS_GetVariable($id)["VariableType"] == 3) {
+                                            SetValueFloat($id, $labelvalue);
+                                        }
                                         break;
                                     case 100:
                                         SetValueFloat($id, $labelvalue / 100);

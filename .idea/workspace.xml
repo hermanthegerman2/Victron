@@ -350,7 +350,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596479412627</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Form">
+      <created>1596480475640</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1596480475640</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -370,10 +377,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Form" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1992" y="686" width="816" height="161" key="Vcs.Push.Dialog.v2" timestamp="1596479418345">
+    <state x="1992" y="686" width="816" height="161" key="Vcs.Push.Dialog.v2" timestamp="1596480479406">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
-    <state x="1992" y="686" width="816" height="161" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596479418345" />
+    <state x="1992" y="686" width="816" height="161" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596480479406" />
     <state x="2217" y="494" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596479707176">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
