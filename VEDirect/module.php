@@ -34,7 +34,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             'Panel power' => 'EnergySolar'
         ];
         protected $archive_mappings = [
-            'Panel power' => 'Pane_power'
+            'Panel power' => 'Panel_power'
         ];
 
         protected $hidden_mappings = [
