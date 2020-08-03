@@ -363,7 +363,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         }
                     }
                     else {
-                        $this->SendDebug("Keine id !!!",$id." divisor: ".$divider." : value: ".$labelvalue, 0);
+                        $this->SendDebug("Keine Variable angelegt !!!",$label." divisor: ".$divider." : value: ".$labelvalue, 0);
                     }
 
                 }
