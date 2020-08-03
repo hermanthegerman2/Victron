@@ -350,7 +350,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     $Ident = implode($this->_getIdentifierByNeedle($needle));
                     $id = $this->GetIdForIdentRecursive($Ident);
                     if (isset($id)) {
-                        $this->SendDebug("Schreiben Wert",$id." divisor: ".$divider." : value: ".$labelvalue, 0);
+                        $this->SendDebug("Schreiben Wert","Id: ".$id." / divisor: ".$divider."/ value: ".$labelvalue, 0);
                         Switch ($divider) {
                             case 100:
                                 SetValue($id, $labelvalue/100);
@@ -363,7 +363,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         }
                     }
                     else {
-                        $this->SendDebug("Keine id !!!",$id." divisor: ".$divider." : value: ".$labelvalue, 0);
+                        $this->SendDebug("Keine Variable angelegt !!!",$label." divisor: ".$divider." : value: ".$labelvalue, 0);
                     }
 
                 }
