@@ -326,18 +326,6 @@ trait ModuleHelper
     }
 
     /**
-     * create custom variable profile
-     * @param string $profile_id
-     * @param string $name
-     */
-    protected function CreateCustomVariableProfile(string $profile_id, string $name)
-    {
-        /**
-         * will be overwritten by each module.php
-         */
-    }
-
-    /**
      * get variable type by contents
      * @param $value
      * @return int

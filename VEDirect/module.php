@@ -349,14 +349,15 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             }
                         }
                     }
-                    $id = implode($this->_getIdentifierByNeedle($parent_id, $needle));
+                    $Ident = implode($this->_getIdentifierByNeedle($parent_id, $needle));
+                    $id = $this->GetIdForIdentRecursive($Ident);
                     //$this->SendDebug("Schreiben id ", $id." : value: ".$divider." : value: ".$labelvalue, 0);
                     Switch ($divider) {
                         case 100:
-                            $this->SetValue($id, $labelvalue/100);
+                            $this->SetValueFloat($id, $labelvalue/100);
                             break;
                         case 1000:
-                            $this->SetValue($id, $labelvalue/1000);
+                            $this->SetValueFloat($id, $labelvalue/1000);
                             break;
                         default:
                             $this->SetValue($id, $labelvalue);
