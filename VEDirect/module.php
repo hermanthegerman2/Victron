@@ -302,6 +302,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $buffer = $data->{'Buffer'};
             $message = preg_split('/\r\n/', $buffer);
             $bufferend = array_pop($message);
+
             for ($i = 1; $i < count($message); $i++) {
                 //$this->SendDebug("ReceiveData explode", $array[$i], 0);
                 $var = preg_split('/[\t]/', $message[$i]);
