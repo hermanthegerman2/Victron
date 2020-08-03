@@ -182,7 +182,7 @@ trait ModuleHelper
             }
 
             // enable archive
-            if (isset($this->archive_mappings[$name])) {
+            if (in_array($name, $this->archive_mappings)) {
                 AC_SetLoggingStatus($this->archive_id, $variable_id, true);
                 AC_SetAggregationType($this->archive_id, $variable_id, (int)$this->archive_mappings[$name]);
                 IPS_ApplyChanges($this->archive_id);
