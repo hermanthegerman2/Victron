@@ -346,7 +346,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                         ]);
                                         $position++;
                                     }
-                                    else {
+                                    /*else {
                                         $this->CreateVariableByIdentifier([
                                             'parent_id' => $this->InstanceID,
                                             'name' => $value['Name'],
@@ -355,7 +355,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                             'position' => $position,
                                         ]);
                                         $position++;
-                                    }
+                                    }*/
                                 }
 
                             }
