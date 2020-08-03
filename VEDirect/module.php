@@ -348,7 +348,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         }
                     }
                     $Ident = implode($this->_getIdentifierByNeedle($needle));
-                    if (isset($Ident)) {
+                    if (is_int(isset($Ident))) {
                         $id = $this->GetIdForIdentRecursive($Ident);
                         $this->SendDebug("Schreiben Wert","Id: ".$id." / divisor: ".$divider."/ value: ".$labelvalue, 0);
                         Switch ($divider) {
