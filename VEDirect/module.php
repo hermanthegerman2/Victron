@@ -96,7 +96,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
             //"options" => ( "caption" => "Socket", "value" => 0 , "caption" => "Seriell" , "value" => 1));
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-
+            $arrayElements[] = array("type" => "CheckBox", "name" => "Log", "caption" => "enable logging");
             $arraySort = array();
             $arraySort = array("column" => "ServiceTyp", "direction" => "ascending");
             $arrayColumns = array();
