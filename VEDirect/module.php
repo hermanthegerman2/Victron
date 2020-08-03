@@ -382,7 +382,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                     case 1000:
                                         SetValue($id, $labelvalue / 1000);
                                         break;
-                                    default:
+                                    case 1:
                                         if ($labelvalue = "ON") {
                                             $labelvalue = true;
                                         }
