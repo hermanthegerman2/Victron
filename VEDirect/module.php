@@ -58,7 +58,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $this->RegisterPropertyInteger("Socket", 10000);
             $this->RegisterPropertyString("Serial Port", "ttyUSB0");
             $this->RegisterPropertyBoolean("AutoRestart", true);
-            $this->RegisterAttributeInteger("parent_id", NULL);
+            $this->RegisterAttributeInteger("instance_id", NULL);
+            $this->RegisterPropertyBoolean("log", true);
             // Statusvariablen anlegen
             $this->RegisterVariableBoolean("SocketStatus", "SocketStatus", "~Alert.Reversed", 40);
             $this->DisableAction("SocketStatus");
@@ -301,33 +302,31 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     $this->SendDebug("ReceiveData ", $label . '  --->  ' . $labelvalue, 0);
 
                     If ($label == "PID") {
-                        // Initiales NAlegen der Kategorie und der Gerätevariablen
+                        // Initiales Anlegen der Kategorie und der Gerätevariablen
                         $PID = substr($labelvalue, 2);
                         $PID = $this->device_mapping[$PID];
-                        // parent_id gesetzt ?
-                        if (empty($this->ReadAttributeInteger('parent_id'))) {
-                            $parent_id = $this->CreateCategoryByIdentifier($this->InstanceID, $PID, $name = null, $icon = null);
-                            $this->WriteAttributeInteger('parent_id', $parent_id);
+                        // Prüfung ob instance_id gesetzt ?
+                        if (empty($this->ReadAttributeInteger('instance_id'))) {
+
+                            $this->WriteAttributeInteger('instance_id', $this->InstanceID);
                             $this->SendDebug("Victron Gerät gefunden: ", $PID, 0);
                             IPS_LogMessage("Victron Gerät gefunden: ", $PID);
 
                             // Gerätevariablen anlegen -> nur die in display_mapping
-                            //If (preg_match("/".$key."/i",$this->display_mapping[$PID]))
 
                             foreach ($this->variable_mapping as $key => $value) {
                                 if (preg_match("/" . $key . "/i", $this->display_mapping[$PID])) {
                                     if (is_array($value)) {
                                         foreach ($value as $v) {
                                             if (is_array($value)) {
-                                                foreach ($value as $v) {
-                                                }
+                                                foreach ($value as $v) {}
                                             }
                                         }
                                         $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
-                                        $ident = $parent_id . '_' . $value['Name'];
+                                        $ident = $this->InstanceID . '_' . $value['Name'];
 
                                         $this->CreateVariableByIdentifier([
-                                            'parent_id' => $parent_id,
+                                            'parent_id' => $this->InstanceID,
                                             'name' => $value['Name'],
                                             'value' => $value['Value'],
                                             'identifier' => $ident,
@@ -339,7 +338,6 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             }
                         }
                     }
-                    $parent_id = $this->ReadAttributeInteger('parent_id');
                     foreach ($this->variable_mapping as $key => $value) {
                         if (is_array($value)) {
                             foreach ($value AS $v) {}
@@ -349,8 +347,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             }
                         }
                     }
-                    $Ident = implode($this->_getIdentifierByNeedle($parent_id, $needle));
-                    $id = $this->GetIdForIdentRecursive($parent_id, $Ident);
+                    $Ident = implode($this->_getIdentifierByNeedle($needle));
+                    $id = $this->GetIdForIdentRecursive($Ident);
                     //$this->SendDebug("Schreiben id ", $id." : value: ".$divider." : value: ".$labelvalue, 0);
                     Switch ($divider) {
                         case 100:

@@ -58,10 +58,6 @@ trait VictronConstants
         "A10B" => "SmartSolar MPPT VE.Can 250|100"
     ];
 
-    protected $display_mapping = [
-        "SmartSolar MPPT 75|15" => "V,VS,VPV,PPV,I,IL,LOAD,Alarm,Relay,AR,OR,H1,H2,H3,H5,H7,H8,H19,H20,H21,H22,H23,ERR,FW,SER#,HSDS,MODE,WARN,MPPT"
-    ];
-
     protected $variable_mapping = [
         "V" => array('Position' => 1, 'Name' => 'Main or channel 1 (battery) voltage', 'custom_profile'  => '~Volt', 'Divider' => 1000, 'Value' => 0.0),
         "V2" => array('Position' => 2, 'Name' => 'Channel 2 (battery) voltage', 'custom_profile' => '~Volt', 'Divider' => 1000, 'Value' => 0.0),
@@ -75,16 +71,16 @@ trait VictronConstants
         "I2" => array('Position' => 10, 'Name' => 'Channel 2 battery current', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 0.0),
         "I3" => array('Position' => 11, 'Name' => 'Channel 3 battery current', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 0.0),
         "IL" => array('Position' => 12, 'Name' => 'Load current', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 0.0),
-        "LOAD" => array('Position' => 13, 'Name' => 'Load output state', 'custom_profile' => array('Name' => 'Load_output_state', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Divider' => NULL, 'Value' => 0),
+        "LOAD" => array('Position' => 13, 'Name' => 'Load output state', 'custom_profile' => array('Name' => 'Load output state', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 1, 'steps' => ''), 'Divider' => NULL, 'Value' => 0),
         "T" => array('Position' => 14, 'Name' => 'Battery temperature', 'custom_profile' => '~Temperature', 'Divider' => 1, 'Value' => 0.0),
         "P" => array('Position' => 15, 'Name' => 'Instantaneous power', 'custom_profile' => '~Watt.3680', 'Divider' => 1, 'Value' => 0.0),
         "CE" => array('Position' => 16, 'Name' => 'Consumed Amp Hours', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 0.0),
         "SOC" => array('Position' => 17, 'Name' => 'State-of-charge', 'custom_profile' => '~Intensity.100', 'Divider' => 1000, 'Value' => 0.0),
         "TTG" => array('Position' => 18, 'Name' => 'Time-to-go', 'custom_profile' => array('Name' => 'Time_to_go', 'icon' => '', 'prefix'  => '', 'suffix' => ' min', 'min' => '', 'max' => 100, 'steps' => 1), 'Divider' => NULL, 'Value' => 0),
-        "Alarm" => array('Position' => 19, 'Name' => 'Alarm condition active', 'custom_profile' => array('Name' => 'Alarm_condition_active', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Divider' => NULL, 'Value' => FALSE),
-        "Relay" => array('Position' => 20, 'Name' => 'Relay state', 'custom_profile'  => array('Name' => 'Relay_state', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Divider' => NULL, 'Value' => FALSE),
-        "AR" => array('Position' => 21, 'Name' => 'Alarm reason', 'custom_profile'  => array('Name' => 'Alarm_reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Divider' => NULL, 'Value' => 0),
-        "OR" => array('Position' => 22, 'Name' => 'Off reason', 'custom_profile'  => array('Name' => 'Off_reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 7, 'steps' => 1), 'Divider' => NULL, 'Value' => 0),
+        "Alarm" => array('Position' => 19, 'Name' => 'Alarm condition active', 'custom_profile' => array('Name' => 'Alarm condition active', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 1, 'steps' => ''), 'Divider' => NULL, 'Value' => FALSE),
+        "Relay" => array('Position' => 20, 'Name' => 'Relay state', 'custom_profile'  => array('Name' => 'Relay state', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 1, 'steps' => ''), 'Divider' => NULL, 'Value' => FALSE),
+        "AR" => array('Position' => 21, 'Name' => 'Alarm reason', 'custom_profile'  => array('Name' => 'Alarm reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 8192, 'steps' => ''), 'Divider' => NULL, 'Value' => 0),
+        "OR" => array('Position' => 22, 'Name' => 'Off reason', 'custom_profile'  => array('Name' => 'Off reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 128, 'steps' => 1), 'Divider' => NULL, 'Value' => 0),
         "H1" => array('Position' => 23, 'Name' => 'Depth of the deepest discharge', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 0.0),
         "H2" => array('Position' => 24, 'Name' => 'Depth of the last discharge', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 0.0),
         "H3" => array('Position' => 25, 'Name' => 'Depth of the average discharge', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 0.0),
@@ -108,20 +104,23 @@ trait VictronConstants
         "H21" => array('Position' => 43, 'Name' => 'Maximum power today', 'custom_profile' => '~Watt.3680', 'Divider' => 1, 'Value' => 0.0),
         "H22" => array('Position' => 44, 'Name' => 'Yield yesterday', 'custom_profile' => '~Electricity', 'Divider' => 100, 'Value' => 0.0),
         "H23" => array('Position' => 45, 'Name' => 'Maximum power yesterday', 'custom_profile' => '~Watt.3680', 'Divider' => 1, 'Value' => 0.0),
-        "ERR" => array('Position' => 46, 'Name' => 'Error code', 'custom_profile'  => array('Name' => 'Error_code', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Divider' => NULL, 'Value' => 0),
-        "CS" => array('Position' => 47, 'Name' => 'State of operation', 'custom_profile'  => array('Name' => 'State_of_operation', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 255, 'steps' => 1), 'Divider' => NULL, 'Value' => 0),
+        "ERR" => array('Position' => 46, 'Name' => 'Error code', 'custom_profile' => array('Name' => 'Error code', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 128, 'steps' => ''), 'Divider' => NULL, 'Value' => 0),
+        "CS" => array('Position' => 47, 'Name' => 'State of operation', 'custom_profile' => array('Name' => 'State of operation', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 255, 'steps' => 1), 'Divider' => NULL, 'Value' => 0),
         "BMV" => array('Position' => 48, 'Name' => 'Model description (deprecated)', 'custom_profile'  => '', 'Divider' => NULL, 'Value' => ''),
         "FW" => array('Position' => 49, 'Name' => 'Firmware version (16 bit)', 'custom_profile'  => '', 'Divider' => NULL, 'Value' => ''),
         "FWE" => array('Position' => 50, 'Name' => 'Firmware version (24 bit)', 'custom_profile'  => '', 'Divider' => NULL, 'Value' => ''),
-        //"PID" => array('Position' => 51, 'Name' => 'Product ID', 'custom_profile'  => '', 'Divider' => NULL, 'Value' => ''),
+        "PID" => array('Position' => 51, 'Name' => 'Product ID', 'custom_profile'  => '', 'Divider' => NULL, 'Value' => ''),
         "SER#" => array('Position' => 52, 'Name' => 'Serial number', 'custom_profile'  => '', 'Divider' => NULL, 'Value' => ''),
-        "HSDS" => array('Position' => 53, 'Name' => 'Day sequence number', 'custom_profile'  => 'State_of_operation', 'Divider' => NULL, 'Value' => 0),
-        "MODE" => array('Position' => 54, 'Name' => 'Device mode', 'custom_profile' => 'Device_mode', 'Divider' => NULL, 'Value' => 0),
+        "HSDS" => array('Position' => 53, 'Name' => 'Day sequence number', 'custom_profile'  => '', 'Divider' => NULL, 'Value' => 0),
+        "MODE" => array('Position' => 54, 'Name' => 'Device mode', 'custom_profile' => array('Name' => 'Device mode', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 16, 'steps' => 1), 'Divider' => NULL, 'Value' => 0),
         "AC_OUT_V" => array('Position' => 55, 'Name' => 'AC output voltage', 'custom_profile' => '~Volt', 'Divider' => 1, 'Value' => 0.0),
         "AC_OUT_I" => array('Position' => 56, 'Name' => 'AC output current', 'custom_profile' => '~Ampere', 'Divider' => 1, 'Value' => 0.0),
         "AC_OUT_S" => array('Position' => 57, 'Name' => 'AC output apparent power', 'custom_profile' => '~Power', 'Divider' => 1, 'Value' => 0.0),
-        "WARN" => array('Position' => 58, 'Name' => 'Warning reason', 'custom_profile' => array('Name' => 'Warning_reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Divider' => NULL, 'Value' => 0),
-        "MPPT" => array('Position' => 59, 'Name' => 'Tracker operation mode', 'custom_profile' => array('Name' => 'Tracker_operation_mode', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 2, 'steps' => 1), 'Divider' => NULL, 'Value' => 0)
+        "WARN" => array('Position' => 58, 'Name' => 'Warning reason', 'custom_profile' => array('Name' => 'Warning reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Divider' => NULL, 'Value' => 0),
+        "MPPT" => array('Position' => 59, 'Name' => 'Tracker operation mode', 'custom_profile' => array('Name' => 'Tracker operation mode', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 2, 'steps' => 1), 'Divider' => NULL, 'Value' => 0)
+    ];
 
+    protected $display_mapping = [
+        "SmartSolar MPPT 75|15" => "V,VS,VPV,PPV,I,IL,LOAD,Alarm,Relay,AR,OR,H1,H2,H3,H5,H7,H8,H19,H20,H21,H22,H23,ERR,FW,PID,SER#,HSDS,MODE,WARN,MPPT"
     ];
 }

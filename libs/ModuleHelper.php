@@ -398,13 +398,13 @@ trait ModuleHelper
      * @param string $Ident
      * @return bool|int
      */
-    protected function GetIdForIdentRecursive($parent_id, string $Ident)
+    protected function GetIdForIdentRecursive( string $Ident)
     {
         if ($id = $this->GetIdForIdent($Ident)) {
             return $id;
         }
 
-        $object = IPS_GetObject($$parent_id);
+        $object = IPS_GetObject($this->InstanceID);
         foreach ($object['ChildrenIDs'] AS $children_id) {
             if ($id = IPS_GetObjectIDByIdent($Ident, $children_id)) {
                 return $id;
@@ -484,13 +484,13 @@ trait ModuleHelper
      * @param $needle
      * @return array
      */
-    protected function _getIdentifierByNeedle($parent_id, $needle)
+    protected function _getIdentifierByNeedle($needle)
     {
         $needle = str_replace(' ', '_', $needle);
 
         $idents = [];
         if ($needle) {
-            foreach (IPS_GetChildrenIDs($parent_id) AS $object_ids) {
+            foreach (IPS_GetChildrenIDs($this->InstanceID) AS $object_ids) {
                 $object = IPS_GetObject($object_ids);
 
                 if (strstr($object['ObjectIdent'], '_' . $needle)) {
