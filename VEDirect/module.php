@@ -402,7 +402,6 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                     case 1000:
                                         SetValueFloat($id, $labelvalue / 1000);
                                         break;
-
                                 }
                             }
                             else {
