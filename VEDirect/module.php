@@ -316,7 +316,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         $PID = $this->device_mapping[$PID];
                         // Prüfung ob instance_id gesetzt ?
                         if (empty($this->ReadAttributeInteger('instance_id'))) {
-                            IPS_SetIdent($this->InstanceID, $PID);
+                            //IPS_SetIdent($this->InstanceID, $PID);
                             $this->WriteAttributeInteger('instance_id', $this->InstanceID);
                             $this->SendDebug("Victron Gerät gefunden: ", $PID, 0);
                             $this->_log("Victron Gerät gefunden: ", $PID);
@@ -362,6 +362,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         }
                     }
                     elseif ($label == "Checksum") {
+                        $this->SendDebug("Victron Checksum", $labelvalue, 0);
                         break;
                     }
                     else {
