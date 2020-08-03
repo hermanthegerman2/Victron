@@ -265,7 +265,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     break;
                 case 11102:
                     $this->SendDebug("MessageSink", "Instanz  ".$SenderID." wurde getrennt", 0);
-                    //IPS_LogMessage("Victron MessageSink", "Instanz  ".$SenderID." wurde getrennt");
+                    $this->_log("Victron MessageSink", "Instanz  ".$SenderID." wurde getrennt");
                     break;
                 case 10505:
                     If ($Data[0] == 102) {
@@ -327,7 +327,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             foreach ($this->variable_mapping as $key => $value) {
 
                                 if (array_search($key, explode(",", $this->display_mapping[$PID])) > 0) { // ist die Variable im Array display_mapping dabei ?
-                                    $this->_log("Array auslesen : ", implode($value));
+                                    $this->_log("Array auslesen : ", print_r($value));
                                     if (is_array($value)) {
                                         foreach ($value as $v) {
                                             /*if (is_array($value)) {
