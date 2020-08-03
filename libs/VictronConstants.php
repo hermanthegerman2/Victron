@@ -27,7 +27,7 @@ trait VictronConstants
         "A050" => "SmartSolar MPPT 250|100",
         "A051" => "SmartSolar MPPT 150|100",
         "A052" => "SmartSolar MPPT 150|85",
-        "A053" => "SmartSolar MPPT 75|15",
+        "A053" => "SmartSolar MPPT 75/15",
         "A054" => "SmartSolar MPPT 75|10",
         "A055" => "SmartSolar MPPT 100|15",
         "A056" => "SmartSolar MPPT 100|30",
@@ -121,6 +121,6 @@ trait VictronConstants
     ];
 
     protected $display_mapping = [
-        "SmartSolar MPPT 75|15" => "V,VS,VPV,PPV,I,IL,LOAD,Alarm,Relay,AR,OR,H1,H2,H3,H5,H7,H8,H19,H20,H21,H22,H23,ERR,CS,FW,SER#,HSDS,MODE,WARN,MPPT"
+        "SmartSolar MPPT 75/15" => "V,VS,VPV,PPV,I,IL,LOAD,Alarm,Relay,AR,OR,H1,H2,H3,H5,H7,H8,H19,H20,H21,H22,H23,ERR,CS,FW,SER#,HSDS,MODE,WARN,MPPT"
     ];
 }
