@@ -398,13 +398,13 @@ trait ModuleHelper
      * @param string $Ident
      * @return bool|int
      */
-    protected function GetIdForIdentRecursive(string $Ident)
+    protected function GetIdForIdentRecursive($parent_id, string $Ident)
     {
         if ($id = $this->GetIdForIdent($Ident)) {
             return $id;
         }
 
-        $object = IPS_GetObject($this->InstanceID);
+        $object = IPS_GetObject($$parent_id);
         foreach ($object['ChildrenIDs'] AS $children_id) {
             if ($id = IPS_GetObjectIDByIdent($Ident, $children_id)) {
                 return $id;
