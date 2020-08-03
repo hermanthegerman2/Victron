@@ -310,13 +310,12 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     $labelvalue = $var[$n];
                     $this->SendDebug("ReceiveData ", $label . '  --->  ' . $labelvalue, 0);
 
-                    if ($label == "PID") {
+                    if (($label == "PID") && (isset($this->ReadAttributeInteger('instance_id')))) {
                         // Initiales Anlegen der Kategorie und der Gerätevariablen
                         $PID = substr($labelvalue, 2);
                         $PID = $this->device_mapping[$PID];
                         // Prüfung ob instance_id gesetzt ?
                         if (empty($this->ReadAttributeInteger('instance_id'))) {
-                            IPS_SetIdent($this->InstanceID, $PID);
                             $this->WriteAttributeInteger('instance_id', $this->InstanceID);
                             $this->SendDebug("Victron Gerät gefunden: ", $PID, 0);
                             $this->_log("Victron Gerät gefunden: ", $PID);
@@ -326,7 +325,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             $position = 0;
                             foreach ($this->variable_mapping as $key => $value) {
 
-                                if (array_search($key, $this->display_mapping[$PID]) == true) { // ist die Variable im Array display_mapping dabei ?
+                                if (array_search($key, $this->display_mapping[$PID]) == true) {         // ist die Variable im Array display_mapping dabei ?
                                     $ident = $this->InstanceID . '_' . $value['Name'];
 
                                     $this->CreateVariableByIdentifier([
@@ -340,7 +339,6 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                     ]);
                                    $position++;
                                 }
-
                             }
                         }
                     }
