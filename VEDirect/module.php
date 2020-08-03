@@ -381,6 +381,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
         protected function CreateCustomVariableProfile(string $profile_id, string $name)
         {
+            $this->_log("CreateCustomVariableProfile: ", $profile_id." : ".$name);
             switch ($name):
                 case 'Load_output_state':
                     IPS_CreateVariableProfile($profile_id, 0); // boolean
