@@ -295,13 +295,13 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $bufferend = array_pop($message);
             for ($i = 1; $i < count($message); $i++) {
                 //$this->SendDebug("ReceiveData explode", $array[$i], 0);
-                $var= preg_split('/[\t]/', $message[$i]);
+                $var = preg_split('/[\t]/', $message[$i]);
                 for ($n = 1; $n < count($var); $n++) {
                     $label = $var[$n - 1];
                     $labelvalue = $var[$n];
                     $this->SendDebug("ReceiveData ", $label . '  --->  ' . $labelvalue, 0);
 
-                    If ($label == "PID") {
+                    if ($label == "PID") {
                         // Initiales Anlegen der Kategorie und der Gerätevariablen
                         $PID = substr($labelvalue, 2);
                         $PID = $this->device_mapping[$PID];
@@ -319,7 +319,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                     if (is_array($value)) {
                                         foreach ($value as $v) {
                                             if (is_array($value)) {
-                                                foreach ($value as $v) {}
+                                                foreach ($value as $v) {
+                                                }
                                             }
                                         }
                                         $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
@@ -340,39 +341,40 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     }
                     foreach ($this->variable_mapping as $key => $value) {
                         if (is_array($value)) {
-                            foreach ($value AS $v) {}
-                            if  ($label == $key) {
+                            foreach ($value as $v) {
+                            }
+                            if ($label == $key) {
                                 $needle = $value['Name'];
                                 $divider = $value['Divider'];
                             }
                         }
                     }
                     $Ident = implode($this->_getIdentifierByNeedle($needle));
-                    if (is_str(isset($Ident))) {
+                    if (is_string(isset($Ident))) {
                         $id = $this->GetIdForIdentRecursive($Ident);
-                        $this->SendDebug("Schreiben Wert","Id: ".$id." / divisor: ".$divider."/ value: ".$labelvalue, 0);
-                        Switch ($divider) {
-                            case 100:
-                                SetValue($id, $labelvalue/100);
-                                break;
-                            case 1000:
-                                SetValue($id, $labelvalue/1000);
-                                break;
-                            default:
-                                SetValue($id, $labelvalue);
+                        if (is_int(isset($id))) {
+                            $this->SendDebug("Schreiben Wert", "Id: " . $id . " / divisor: " . $divider . "/ value: " . $labelvalue, 0);
+                            switch ($divider) {
+                                case 100:
+                                    SetValue($id, $labelvalue / 100);
+                                    break;
+                                case 1000:
+                                    SetValue($id, $labelvalue / 1000);
+                                    break;
+                                default:
+                                    SetValue($id, $labelvalue);
+                            }
+                        } else {
+                            $this->SendDebug("Keine Variablen-Id gefunden !!!", $label . " divisor: " . $divider . " : value: " . $labelvalue, 0);
                         }
+                    } else {
+                        $this->SendDebug("Keinen Variablen-Ident gefunden !!!", $label . " divisor: " . $divider . " : value: " . $labelvalue, 0);
                     }
-                    else {
-                        $this->SendDebug("Keine Variable angelegt !!!",$label." divisor: ".$divider." : value: ".$labelvalue, 0);
-                    }
-
                 }
+                $this->SendDebug("ReceiveData buffer_end", $bufferend, 0);
             }
-            $this->SendDebug("ReceiveData buffer_end", $bufferend, 0);
-
-
-
         }
+        
         /**
          * create custom variable profile
          * @param string $profile_id
