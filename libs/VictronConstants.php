@@ -77,7 +77,7 @@ trait VictronConstants
         "CE" => array('Name' => 'Consumed Amp Hours', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 0.0),
         "SOC" => array('Name' => 'State-of-charge', 'custom_profile' => '~Intensity.100', 'Divider' => 1000, 'Value' => 0.0),
         "TTG" => array('Name' => 'Time-to-go', 'custom_profile' => array('id' => 'Time_to_go', 'icon' => '', 'prefix' => '', 'suffix' => ' min', 'min' => '', 'max' => 100, 'steps' => 1), 'Divider' => 1, 'Value' => 0),
-        "Alarm" => array('Name' => 'Alarm condition active', 'custom_profile' => array('id' => 'Alarm_condition_active', 'icon' => '', 'prefix' => '', 'suffix' => '', 'min' => '', 'max' => 1, 'steps' => '', 'values' => array('values' => 'On', 'values' => 'Off')), 'Divider' => 1, 'Value' => FALSE),
+        "Alarm" => array('Name' => 'Alarm condition active', 'custom_profile' => array('id' => 'Alarm_condition_active', 'icon' => '', 'prefix' => '', 'suffix' => '', 'min' => '', 'max' => 1, 'steps' => '', 'values' => array('id' => 'Alarm_condition_active', 'values' => 'On', 'values' => 'Off')), 'Divider' => 1, 'Value' => FALSE),
         "Relay" => array('Name' => 'Relay state', 'custom_profile' => array('id' => 'Relay_state', 'icon' => '', 'prefix' => '', 'suffix' => '', 'min' => '', 'max' => 1, 'steps' => ''), 'Divider' => 1, 'Value' => FALSE),
         "AR" => array('Name' => 'Alarm reason', 'custom_profile' => array('id' => 'Alarm_reason', 'icon' => '', 'prefix' => '', 'suffix' => '', 'min' => '', 'max' => 8192, 'steps' => ''), 'Divider' => 1, 'Value' => 0),
         "OR" => array('Name' => 'Off reason', 'custom_profile' => array('id' => 'Off_reason', 'icon' => '', 'prefix' => '', 'suffix' => '', 'min' => '', 'max' => 128, 'steps' => 1), 'Divider' => 1, 'Value' => 0),
