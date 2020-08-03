@@ -310,7 +310,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     $labelvalue = $var[$n];
                     $this->SendDebug("ReceiveData ", $label . '  --->  ' . $labelvalue, 0);
 
-                    if (($label == "PID") && (isset($this->ReadAttributeInteger('instance_id')))) {
+                    if ($label == "PID" && isset($this->ReadAttributeInteger('instance_id'))) {
                         // Initiales Anlegen der Kategorie und der Gerätevariablen
                         $PID = substr($labelvalue, 2);
                         $PID = $this->device_mapping[$PID];
