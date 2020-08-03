@@ -117,10 +117,10 @@ trait VictronConstants
         "AC_OUT_I" => array('Position' => 56, 'Name' => 'AC output current', 'custom_profile' => '~Ampere', 'Divider' => 1, 'Value' => 0.0),
         "AC_OUT_S" => array('Position' => 57, 'Name' => 'AC output apparent power', 'custom_profile' => '~Power', 'Divider' => 1, 'Value' => 0.0),
         "WARN" => array('Position' => 58, 'Name' => 'Warning reason', 'custom_profile' => array('Name' => 'Warning reason', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => '', 'steps' => ''), 'Divider' => NULL, 'Value' => 0),
-        "MPPT" => array('Position' => 59, 'Name' => 'Tracker operation mode', 'custom_profile' => array('Name' => 'Tracker operation mode', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 2, 'steps' => 1), 'Divider' => NULL, 'Value' => 0)
+        "MPPT" => array('Position' => 59, 'Name' => 'Tracker operation mode', 'custom_profile' => array('Name' => 'Tracker operation mode', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => 0, 'max' => 2, 'steps' => 1), 'Divider' => NULL, 'Value' => 0)
     ];
 
     protected $display_mapping = [
-        "SmartSolar MPPT 75/15" => "V,VS,VPV,PPV,I,IL,LOAD,Alarm,Relay,AR,OR,H1,H2,H3,H5,H7,H8,H19,H20,H21,H22,H23,ERR,CS,FW,SER#,HSDS,MODE,WARN,MPPT"
+        "SmartSolar MPPT 75/15" => "V,VPV,PPV,I,IL,LOAD,Alarm,Relay,AR,OR,H1,H2,H3,H5,H7,H8,H19,H20,H21,H22,H23,ERR,CS,FW,SER#,HSDS,MODE,WARN,MPPT"
     ];
 }

@@ -312,10 +312,10 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             $this->SendDebug("Victron Gerät gefunden: ", $PID, 0);
                             $this->_log("Victron Gerät gefunden: ", $PID);
 
-                            // Gerätevariablen anlegen -> nur die in display_mapping
+                            // Gerätevariablen anlegen
 
                             foreach ($this->variable_mapping as $key => $value) {
-                                if (preg_match("/" . $key . "/i", $this->display_mapping[$PID])) {
+                                if (array_search($key, explode(",", $this->display_mapping[$PID])) > 0) {   // ist die Variable im Array display_mapping dabei ?
                                     if (is_array($value)) {
                                         foreach ($value as $v) {
                                             if (is_array($value)) {
@@ -325,15 +325,26 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                         }
                                         $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
                                         $ident = $this->InstanceID . '_' . $value['Name'];
+                                        if (is_array($custom_profile)) {
+                                            $this->CreateVariableByIdentifier([
+                                                'parent_id' => $this->InstanceID,
+                                                'name' => $value['Name'],
+                                                'value' => $value['Value'],
+                                                'identifier' => $ident,
+                                                'position' => $value['Position'],
+                                                'custom_profile' => $custom_profile
+                                            ]);
+                                        }
+                                        else {
+                                            $this->CreateVariableByIdentifier([
+                                                'parent_id' => $this->InstanceID,
+                                                'name' => $value['Name'],
+                                                'value' => $value['Value'],
+                                                'identifier' => $ident,
+                                                'position' => $value['Position']
+                                            ]);
+                                        }
 
-                                        $this->CreateVariableByIdentifier([
-                                            'parent_id' => $this->InstanceID,
-                                            'name' => $value['Name'],
-                                            'value' => $value['Value'],
-                                            'identifier' => $ident,
-                                            'position' => $value['Position'],
-                                            'custom_profile' => $custom_profile
-                                        ]);
                                     }
                                 }
                             }
