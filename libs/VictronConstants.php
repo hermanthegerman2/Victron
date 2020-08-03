@@ -71,7 +71,7 @@ trait VictronConstants
         "I2" => array('Position' => 10, 'Name' => 'Channel 2 battery current', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 0.0),
         "I3" => array('Position' => 11, 'Name' => 'Channel 3 battery current', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 0.0),
         "IL" => array('Position' => 12, 'Name' => 'Load current', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 0.0),
-        "LOAD" => array('Position' => 13, 'Name' => 'Load output state', 'custom_profile' => array('Name' => 'Load output state', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 1, 'steps' => ''), 'Divider' => NULL, 'Value' => 0),
+        "LOAD" => array('Position' => 13, 'Name' => 'Load output state', 'custom_profile' => array('Name' => 'Load output state', 'icon' => '', 'prefix'  => '', 'suffix' => '', 'min' => '', 'max' => 1, 'steps' => ''), 'Divider' => NULL, 'Value' => FALSE),
         "T" => array('Position' => 14, 'Name' => 'Battery temperature', 'custom_profile' => '~Temperature', 'Divider' => 1, 'Value' => 0.0),
         "P" => array('Position' => 15, 'Name' => 'Instantaneous power', 'custom_profile' => '~Watt.3680', 'Divider' => 1, 'Value' => 0.0),
         "CE" => array('Position' => 16, 'Name' => 'Consumed Amp Hours', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 0.0),
