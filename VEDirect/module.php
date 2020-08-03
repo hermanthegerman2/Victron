@@ -339,6 +339,9 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             }
                         }
                     }
+                    elseif ($label == "Checksum") {
+                        break;
+                    }
                     else {
                         foreach ($this->variable_mapping as $key => $value) {
                             if (is_array($value)) {
