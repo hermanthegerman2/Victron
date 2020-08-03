@@ -388,7 +388,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                             SetValueFloat($id, $labelvalue);
                                         }
                                         if (IPS_GetVariable($id)["VariableType"] == 3) {
-                                            SetValueFloat($id, $labelvalue);
+                                            SetValueString($id, $labelvalue);
                                         }
                                         break;
                                     case 100:
