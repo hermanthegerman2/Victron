@@ -368,6 +368,12 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                         SetValue($id, $labelvalue / 1000);
                                         break;
                                     default:
+                                        if ($labelvalue = "ON") {
+                                            $labelvalue = true;
+                                        }
+                                        elseif ($labelvalue = "Off") {
+                                            $labelvalue = false;
+                                        }
                                         SetValue($id, $labelvalue);
                                 }
                             }
