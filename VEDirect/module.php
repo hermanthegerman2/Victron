@@ -334,7 +334,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                             }
                                         }
                                         $ident = $this->InstanceID . '_' . $value['Name'];
-                                        $custom_profile = isset($v['custom_profile']) && $value['custom_profile'] ? $v['custom_profile'] : false;
+                                        $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
 
                                         $this->CreateVariableByIdentifier([
                                             'parent_id' => $this->InstanceID,
