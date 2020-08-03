@@ -90,7 +90,7 @@ trait VictronConstants
         "H7" => array('Name' => 'Minimum main battery voltage', 'custom_profile' => '~Volt', 'Divider' => 1000, 'Value' => 0.0),
         "H8" => array('Name' => 'Maximum main battery voltage', 'custom_profile' => '~Volt', 'Divider' => 1000, 'Value' => 0.0),
         "H9" => array('Name' => 'Number of seconds since last full charge', 'custom_profile' => '', 'Divider' => NULL, 'Value' => 0),
-        "H10" => array('Name' => 'Number of automatic synchronizations', 'custom_profile'  => '', 'Divider' => NULL, 'Value' => 0),
+        "H10" => array('Name' => 'Number of automatic synchronizations', 'custom_profile' => '', 'Divider' => NULL, 'Value' => 0),
         "H11" => array('Name' => 'Number of low main voltage alarms', 'custom_profile' => '', 'Divider' => NULL, 'Value' => 0),
         "H12" => array('Name' => 'Number of high main voltage alarms', 'custom_profile' => '', 'Divider' => NULL, 'Value' => 0),
         "H13" => array('Name' => 'Number of low auxiliary voltage alarms', 'custom_profile' => '', 'Divider' => NULL, 'Value' => 0),

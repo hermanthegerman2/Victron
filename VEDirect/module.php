@@ -38,8 +38,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
         ];
 
         protected $hidden_mappings = [
-            'Serial number' => 'Serial_number',
-            'Firmware version' => 'Firmware version'
+            'Off reason' => 'Off_reason'
         ];
 
         function __construct($InstanceID)
