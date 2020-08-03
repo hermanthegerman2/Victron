@@ -327,14 +327,14 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             foreach ($this->variable_mapping as $key => $value) {
                                 if (array_search($key, explode(",", $this->display_mapping[$PID])) > 0) {   // ist die Variable im Array display_mapping dabei ?
                                     if (is_array($value)) {
-                                        foreach ($value as $v) {
-                                            if (is_array($value)) {
+                                        /*foreach ($value as $k => $value1) {
+                                            if (is_array($value1)) {
                                                 foreach ($value as $v) {
                                                 }
                                             }
-                                        }
+                                        }*/
                                         $ident = $this->InstanceID . '_' . $value['Name'];
-                                        $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
+                                        //$custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
 
                                         $this->CreateVariableByIdentifier([
                                             'parent_id' => $this->InstanceID,
@@ -342,7 +342,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                             'value' => $value['Value'],
                                             'identifier' => $ident,
                                             'position' => $position,
-                                            'custom_profile' => $custom_profile
+                                            'custom_profile' => $value['$custom_profile']
                                         ]);
                                         $position++;
                                     }
