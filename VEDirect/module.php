@@ -33,6 +33,14 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             'Relay state' => 'Light',
             'Panel power' => 'EnergySolar'
         ];
+        protected $archive_mappings = [
+            'Panel power' => 'Pane_power'
+        ];
+
+        protected $hidden_mappings = [
+            'Serial number' => 'Serial_number',
+            'Firmware version' => 'Firmware version'
+        ];
 
         function __construct($InstanceID)
         {
