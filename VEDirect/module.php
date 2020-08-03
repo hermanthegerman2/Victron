@@ -297,12 +297,12 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                 $var= preg_split('/[\t]/', $message[$i]);
                 for ($n = 1; $n < count($var); $n++) {
                     $label = $var[$n - 1];
-                    $value = $var[$n];
-                    $this->SendDebug("ReceiveData ", $label . '  --->  ' . $value, 0);
+                    $labelvalue = $var[$n];
+                    $this->SendDebug("ReceiveData ", $label . '  --->  ' . $labelvalue, 0);
 
                     If ($label == "PID") {
                         // Initiales NAlegen der Kategorie und der Gerätevariablen
-                        $PID = substr($value, 2);
+                        $PID = substr($labelvalue, 2);
                         $PID = $this->device_mapping[$PID];
                         // parent_id gesetzt ?
                         if (empty($this->ReadAttributeInteger('parent_id'))) {
@@ -350,7 +350,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         }
                     }
                     $id[] = $this->_getIdentifierByNeedle($parent_id, $needle);
-                    $this->SendDebug("Schreiben id ", $divider." : value: ".$value, 0);
+                    $this->SendDebug("Schreiben id ", $divider." : value: ".$labelvalue, 0);
 
 
 
