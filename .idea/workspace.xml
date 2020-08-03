@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="743ffc69-5e4a-46cd-b509-289612cf2695" name="Default Changelist" comment="" />
+    <list default="true" id="743ffc69-5e4a-46cd-b509-289612cf2695" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/VictronConstants.php" beforeDir="false" afterPath="$PROJECT_DIR$/libs/VictronConstants.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -242,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596469605821</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Form">
+      <created>1596469809177</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1596469809177</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -262,9 +272,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="Form" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1992" y="686" width="816" height="161" key="Vcs.Push.Dialog.v2" timestamp="1596468139498">
+    <state x="1992" y="686" width="816" height="161" key="Vcs.Push.Dialog.v2" timestamp="1596469812567">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
-    <state x="1992" y="686" width="816" height="161" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596468139498" />
+    <state x="1992" y="686" width="816" height="161" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596469812567" />
+    <state x="2217" y="494" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596471395099">
+      <screen x="1440" y="0" width="1920" height="1160" />
+    </state>
+    <state x="2217" y="494" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596471395099" />
   </component>
 </project>
