@@ -328,9 +328,9 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
                                 if (array_search($key, $this->display_mapping[$PID]) == true) { // ist die Variable im Array display_mapping dabei ?
                                     $this->_log("Array auslesen : ", $value);
-                                    if (is_array($value)) {
+
                                         $ident = $this->InstanceID . '_' . $value['Name'];
-                                        $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
+                                        $custom_profile = isset($value['custom_profile']) ? $value['custom_profile'] : false;
                                         $this->_log("CreateVariableByIdentifier : ", $custom_profile);
 
                                         $this->CreateVariableByIdentifier([
@@ -339,10 +339,11 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                             'value' => $value['Value'],
                                             'identifier' => $ident,
                                             'position' => $position,
+                                            'icon' => $value['icon'],
                                             'custom_profile' => $custom_profile
                                         ]);
                                         $position++;
-                                    }
+
                                 }
 
                             }
