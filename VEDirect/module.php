@@ -376,12 +376,6 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             if (isset($id)) {
                                 $this->SendDebug("Schreiben Wert", "Id: " . $id . " / divisor: " . $divider . "/ value: " . $labelvalue, 0);
                                 switch ($divider) {
-                                    case 100:
-                                        SetValue($id, $labelvalue / 100);
-                                        break;
-                                    case 1000:
-                                        SetValue($id, $labelvalue / 1000);
-                                        break;
                                     case 1:
                                         if ($labelvalue = "ON") {
                                             $labelvalue = true;
@@ -389,7 +383,24 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                         elseif ($labelvalue = "Off") {
                                             $labelvalue = false;
                                         }
-                                        SetValue($id, $labelvalue);
+                                        if (is_bool($labelvalue)) {
+                                        SetValueBoolean($id, $labelvalue);
+                                        }
+                                        if (is_int($labelvalue)) {
+                                            SetValueInteger($id, $labelvalue);
+                                        }
+                                        if (is_float($labelvalue)) {
+                                            SetValueFloat($id, $labelvalue);
+                                        }
+                                        SetValueString($id, $labelvalue);
+                                        break;
+                                    case 100:
+                                        SetValueFloat($id, $labelvalue / 100);
+                                        break;
+                                    case 1000:
+                                        SetValueFloat($id, $labelvalue / 1000);
+                                        break;
+
                                 }
                             }
                             else {
