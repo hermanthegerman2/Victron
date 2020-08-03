@@ -165,7 +165,7 @@ trait ModuleHelper
         $variable_id = @IPS_GetObjectIDByIdent($identifier, $parent_id);
 
         // set type of variable
-        $type = $this->GetVariableType($value);
+        $type = $value; //$this->GetVariableType($value);
 
         // if variable doesn't exist, create it!
         if ($variable_id === false) {
