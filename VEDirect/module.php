@@ -354,7 +354,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         $this->SendDebug("Ident by needle", $Ident, 0);
                         if (isset($Ident)) {
                             $id = $this->GetIdForIdentRecursive($Ident);
-                            if (is_int(isset($id))) {
+                            $this->SendDebug("IdForIdentRecursive", $id, 0);
+                            if (isset($id)) {
                                 $this->SendDebug("Schreiben Wert", "Id: " . $id . " / divisor: " . $divider . "/ value: " . $labelvalue, 0);
                                 switch ($divider) {
                                     case 100:
@@ -366,7 +367,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                     default:
                                         SetValue($id, $labelvalue);
                                 }
-                            } else {
+                            }
+                            else {
                                 $this->SendDebug("Keine Variablen-Id gefunden !!!", $label . " divisor: " . $divider . " : value: " . $labelvalue, 0);
                             }
                         } else {
