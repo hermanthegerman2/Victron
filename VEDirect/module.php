@@ -349,20 +349,22 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     }
                     $Ident = implode($this->_getIdentifierByNeedle($needle));
                     $id = $this->GetIdForIdentRecursive($Ident);
-                    $this->SendDebug("Schreiben Wert",$id." divisor: ".$divider." : value: ".$labelvalue, 0);
-                    Switch ($divider) {
-                        case 100:
-                            SetValue($id, $labelvalue/100);
-                            break;
-                        case 1000:
-                            SetValue($id, $labelvalue/1000);
-                            break;
-                        default:
-                            SetValue($id, $labelvalue);
+                    if (is_numeric($id)) {
+                        $this->SendDebug("Schreiben Wert",$id." divisor: ".$divider." : value: ".$labelvalue, 0);
+                        Switch ($divider) {
+                            case 100:
+                                SetValue($id, $labelvalue/100);
+                                break;
+                            case 1000:
+                                SetValue($id, $labelvalue/1000);
+                                break;
+                            default:
+                                SetValue($id, $labelvalue);
+                        }
                     }
-
-
-
+                    else {
+                        $this->SendDebug("Keine id !!!",$id." divisor: ".$divider." : value: ".$labelvalue, 0);
+                    }
 
                 }
             }
