@@ -337,18 +337,18 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                         ]);
                                         $position++;
                                     }
+                                    else {
+                                        $this->CreateVariableByIdentifier([
+                                            'parent_id' => $this->InstanceID,
+                                            'name' => $value['Name'],
+                                            'value' => $value['Value'],
+                                            'identifier' => $ident,
+                                            'position' => $position,
+                                        ]);
+                                        $position++;
+                                    }
+                                }
 
-                                }
-                                else {
-                                    $this->CreateVariableByIdentifier([
-                                        'parent_id' => $this->InstanceID,
-                                        'name' => $value['Name'],
-                                        'value' => $value['Value'],
-                                        'identifier' => $ident,
-                                        'position' => $position,
-                                    ]);
-                                    $position++;
-                                }
                             }
                         }
                     }
