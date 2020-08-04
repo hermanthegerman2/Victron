@@ -327,7 +327,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
                                 if (array_search($key, $this->display_mapping[$PID]) == true) {         // ist die Variable im Array display_mapping dabei ?
                                     $ident = $this->InstanceID . '_' . $value['Name'];
-
+                                    $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
                                     $this->CreateVariableByIdentifier([
                                         'parent_id' => $this->InstanceID,
                                         'name' => $value['Name'],
@@ -335,7 +335,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                         'identifier' => $ident,
                                         'position' => $position,
                                         'icon' => $value['icon'],
-                                        'custom_profile' => $value['custom_profile']
+                                        'custom_profile' => $custom_profile
                                     ]);
                                    $position++;
                                 }
