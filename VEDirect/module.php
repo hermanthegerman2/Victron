@@ -175,23 +175,23 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     {
                         $Result = @IPS_ApplyChanges($ParentID);
                         If ($Result) {
-                            $this->_log("ApplyChanges", "Einrichtung des Client Socket erfolgreich", 1);
+                            $this->_log("ApplyChanges", "Einrichtung des Client Socket erfolgreich", true);
                         }
                         else {
-                            $this->_log("ApplyChanges", "Einrichtung des Client Socket nicht erfolgreich!", 1);
+                            $this->_log("ApplyChanges", "Einrichtung des Client Socket nicht erfolgreich!", true);
                         }
                     }
                 }
 
                 If (($this->ConnectionTest()) AND ($this->ReadPropertyBoolean("Open") == true))  {
                     $this->SetSummary($this->ReadPropertyString('IPAddress'));
-                    $this->_log("ApplyChanges", "Starte Vorbereitung", 1);
+                    $this->_log("ApplyChanges", "Starte Vorbereitung", true);
                     If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == false) {
                         SetValueBoolean($this->GetIDForIdent("SocketStatus"), true);
                     }
 
                     // Vorbereitung beendet
-                    $this->_log("ApplyChanges", "Beende Vorbereitung", 1);
+                    $this->_log("ApplyChanges", "Beende Vorbereitung", true);
                     $this->SetBuffer("ModuleReady", 1);
 
                     $this->SetStatus(102);
@@ -216,16 +216,16 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
         {
             $result = false;
             If (Sys_Ping($this->ReadPropertyString("IPAddress"), 2000)) {
-                $this->_log("Victron Netzanbindung","Angegebene IP ".$this->ReadPropertyString("IPAddress")." reagiert",1);
+                $this->_log("Victron Netzanbindung","Angegebene IP ".$this->ReadPropertyString("IPAddress")." reagiert",true);
                 $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
                 if (!$status) {
-                    $this->_log("Victron Netzanbindung: ","Port ist geschlossen!", 1);
+                    $this->_log("Victron Netzanbindung: ","Port ist geschlossen!", true);
                     If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
                         SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
                     }
                     $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
                     if (!$status) {
-                        $this->_log(" Netzanbindung: ","Port ist geschlossen!", 1);
+                        $this->_log(" Netzanbindung: ","Port ist geschlossen!", true);
                         If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
                             SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
                         }
@@ -234,13 +234,13 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                 }
                 else {
                     fclose($status);
-                    $this->_log("Victron Netzanbindung: ","Port ist geöffnet", 1);
+                    $this->_log("Victron Netzanbindung: ","Port ist geöffnet", true);
                     $result = true;
                     $this->SetStatus(102);
                 }
             }
             else {
-                $this->_log("Victron Netzanbindung: ","IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyInteger("Socket")." reagiert nicht!", 1);
+                $this->_log("Victron Netzanbindung: ","IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyInteger("Socket")." reagiert nicht!", true);
                 If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
                     SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
                 }
@@ -266,10 +266,10 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     }
                     break;
                 case 11101:
-                    $this->_log("Victron MessageSink", "Instanz ".$SenderID." wurde verbunden",1);
+                    $this->_log("Victron MessageSink", "Instanz ".$SenderID." wurde verbunden",true);
                     break;
                 case 11102:
-                    $this->_log("Victron MessageSink", "Instanz  ".$SenderID." wurde getrennt",1);
+                    $this->_log("Victron MessageSink", "Instanz  ".$SenderID." wurde getrennt",true);
                     break;
                 case 10505:
                     If ($Data[0] == 102) {
@@ -310,7 +310,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
         {
             //$receive = json_decode($JSONString);
             $data = json_decode($JSONString);
-            $this->_log("ReceiveData Utf-8", utf8_decode($data->Buffer), 1);
+            $this->_log("ReceiveData Utf-8", utf8_decode($data->Buffer), true);
             $buffer = $data->{'Buffer'};
             $message = preg_split('/\r\n/', $buffer);
             $bufferend = array_pop($message);
@@ -320,7 +320,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                 for ($n = 1; $n < count($var); $n++) {
                     $label = $var[$n - 1];
                     $labelvalue = $var[$n];
-                    $this->_log("ReceiveData ", $label . '  --->  ' . $labelvalue, 1);
+                    $this->_log("ReceiveData ", $label . '  --->  ' . $labelvalue, true);
 
                     if (($label == "PID" ) && (!$this->ReadAttributeInteger('instance_id'))) {
                         // Initiales Anlegen der Kategorie und der Gerätevariablen
@@ -329,14 +329,14 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         // Prüfung ob instance_id gesetzt ?
                         if (empty($this->ReadAttributeInteger('instance_id'))) {
                             $this->WriteAttributeInteger('instance_id', $this->InstanceID);
-                            $this->_log("Victron Gerät gefunden: ", $PID,1);
+                            $this->_log("Victron Gerät gefunden: ", $PID,true);
 
                             // Gerätevariablen anlegen
 
                             $position = 0;
                             foreach ($this->variable_mapping as $key => $value) {
                                 $DisplayedValues = $this->device_mapping[$PID]['DisplayedValues'];
-                                $this->_log("Victron Gerät gefunden: ", json_encode($DisplayedValues),1);
+                                $this->_log("Victron Gerät gefunden: ", json_encode($DisplayedValues),true);
                                 if (in_array($key, $DisplayedValues) == true) {         // ist die Variable im Array display_mapping dabei ?
                                     $ident = $this->InstanceID . '_' . $value['Name'];
                                     $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
@@ -355,7 +355,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         }
                     }
                     elseif ($label == "Checksum") {
-                        $this->_log("Victron Checksum", $labelvalue, 1);
+                        $this->_log("Victron Checksum", $labelvalue, true);
                         break;
                     }
                     else {
@@ -366,12 +366,12 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             }
                         }
                         $Ident = implode($this->_getIdentifierByNeedle($needle));
-                        $this->_log("Ident by needle", $Ident, 1);
+                        $this->_log("Ident by needle", $Ident, true);
                         if(strpos($Ident,"VEDirect")!==false) {
                             $id = $this->GetIdForIdentRecursive($Ident);
-                            $this->_log("IdForIdentRecursive", $id, 1);
+                            $this->_log("IdForIdentRecursive", $id, true);
                             if (isset($id)) {
-                                $this->_log("Schreiben Wert", "Id: " . $id . " / divisor: " . $divider . "/ value: " . $labelvalue, 1);
+                                $this->_log("Schreiben Wert", "Id: " . $id . " / divisor: " . $divider . "/ value: " . $labelvalue, true);
                                 switch ($divider) {
                                     case 1:
                                         if ($labelvalue == "ON") {
@@ -406,14 +406,14 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                 }
                             }
                             else {
-                                $this->_log("Keine Variablen-Id gefunden !!!", $label . " divisor: " . $divider . " : value: " . $labelvalue, 1);
+                                $this->_log("Keine Variablen-Id gefunden !!!", $label . " divisor: " . $divider . " : value: " . $labelvalue, true);
                             }
                         } else {
-                            $this->_log("Keinen Variablen-Ident gefunden !!!", $label . " divisor: " . $divider . " : value: " . $labelvalue, 1);
+                            $this->_log("Keinen Variablen-Ident gefunden !!!", $label . " divisor: " . $divider . " : value: " . $labelvalue, true);
                         }
                     }
                 }
-                $this->_log("ReceiveData buffer_end", $bufferend, 1);
+                $this->_log("ReceiveData buffer_end", $bufferend, true);
             }
         }
 
@@ -426,7 +426,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
         public function LoadOutputControl(bool $value)
         {
             $value (!$value) ? 4 : 0;
-            $this->_log("Victron Senden:", "LoadOutputControl Value: ".$value, 1);
+            $this->_log("Victron Senden:", "LoadOutputControl Value: ".$value, true);
             $payload = '8'.'ABED'.'00'.hexdec($value);
             $result = $this->TransmitData($payload);
             return (!$result) ? true : false;
@@ -446,8 +446,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                 return FALSE;
             }
 
-            $this->_log("Checksum:", "Len: ".$len, 1);
-            $this->_log("Test:",  "Checksum received: ".$payload[$len-2].$payload[$len-1],1);
+            $this->_log("Checksum:", "Len: ".$len, true);
+            $this->_log("Test:",  "Checksum received: ".$payload[$len-2].$payload[$len-1],true);
 
             $checksum_calc = (0x55 - hexdec($payload[0]));
             for($i=1; $i < $len-2; $i=$i+2) {
@@ -458,7 +458,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             }
             else {
                 $checksum_calc = $checksum_calc & 0x000000FF;
-                $this->_log("Test:",  "Checksum calculated: ".dechex($checksum_calc),1);
+                $this->_log("Test:",  "Checksum calculated: ".dechex($checksum_calc),true);
                 $checksum_rec = hexdec($payload[$len-2].$payload[$len-1]);
                 if ($checksum_calc == $checksum_rec) {
                     return TRUE;
@@ -478,7 +478,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
         protected function CreateCustomVariableProfile(string $profile_id, string $name)
         {
-            $this->_log("CreateCustomVariableProfile: ", $profile_id." : ".$name,1);
+            $this->_log("CreateCustomVariableProfile: ", $profile_id." : ".$name,true);
             switch ($name):
                 case 'Load_output_state':
                     IPS_CreateVariableProfile($profile_id, 0); // boolean
