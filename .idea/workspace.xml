@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="743ffc69-5e4a-46cd-b509-289612cf2695" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VEDirect/module.php" beforeDir="false" afterPath="$PROJECT_DIR$/VEDirect/module.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/VictronConstants.php" beforeDir="false" afterPath="$PROJECT_DIR$/libs/VictronConstants.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,20 +38,6 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="TaskManager">
-    <task id="LOCAL-00043" summary="Form">
-      <created>1596478052812</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1596478052812</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Form">
-      <created>1596478747480</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1596478747480</updated>
-    </task>
     <task id="LOCAL-00045" summary="Form">
       <created>1596479412627</created>
       <option name="number" value="00045" />
@@ -388,7 +374,21 @@
       <option name="project" value="LOCAL" />
       <updated>1596572639817</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="Form">
+      <created>1596572888679</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1596572888679</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Form">
+      <created>1596572980763</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1596572980763</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -412,17 +412,17 @@
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
     <state x="1854" y="235" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596482550120" />
-    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2" timestamp="1596572643079">
+    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2" timestamp="1596572984997">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
-    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596572643079" />
+    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596572984997" />
     <state x="2217" y="494" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596545516158">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
     <state x="2217" y="494" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596545516158" />
-    <state x="2056" y="270" width="672" height="677" key="run.anything.popup" timestamp="1596482521058">
+    <state x="2056" y="270" width="672" height="677" key="run.anything.popup" timestamp="1596572903902">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
-    <state x="2056" y="270" width="672" height="677" key="run.anything.popup/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596482521058" />
+    <state x="2056" y="270" width="672" height="677" key="run.anything.popup/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596572903902" />
   </component>
 </project>
