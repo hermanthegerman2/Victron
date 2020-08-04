@@ -71,7 +71,7 @@ trait VictronConstants
         "I2" => array('Name' => 'Channel 2 battery current', 'icon' => 'EnergySolar', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 2),
         "I3" => array('Name' => 'Channel 3 battery current', 'icon' => 'EnergySolar', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 2),
         "IL" => array('Name' => 'Load current', 'icon' => 'EnergySolar', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 2),
-        "LOAD" => array('Name' => 'Load output state', 'icon' => 'EnergySolar', 'custom_profile' => array('icon' => '', 'min' => 0, 'max' => 1, 'steps' => 1), 'Divider' => 1, 'Value' => 0),
+        "LOAD" => array('Name' => 'Load output state', 'icon' => 'EnergySolar',  'Divider' => 1, 'Value' => 0),//'custom_profile' => array('icon' => '', 'min' => 0, 'max' => 1, 'steps' => 1),
         "T" => array('Name' => 'Battery temperature', 'icon' => 'EnergySolar', 'custom_profile' => '~Temperature', 'Divider' => 1, 'Value' => 2),
         "P" => array('Name' => 'Instantaneous power', 'icon' => 'EnergySolar', 'custom_profile' => '~Watt.3680', 'Divider' => 1, 'Value' => 2),
         "CE" => array('Name' => 'Consumed Amp Hours', 'icon' => 'EnergySolar', 'custom_profile' => '~Ampere', 'Divider' => 1000, 'Value' => 2),
