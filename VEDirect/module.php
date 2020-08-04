@@ -325,7 +325,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     if (($label == "PID" ) && (!$this->ReadAttributeInteger('instance_id'))) {
                         // Initiales Anlegen der Kategorie und der Gerätevariablen
                         $PID = substr($labelvalue, 2);
-                        $PID = $this->display_mapping[$PID];
+                        $PID = $this->display_mapping[$PID][0];
                         // Prüfung ob instance_id gesetzt ?
                         if (empty($this->ReadAttributeInteger('instance_id'))) {
                             $this->WriteAttributeInteger('instance_id', $this->InstanceID);
