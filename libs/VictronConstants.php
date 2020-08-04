@@ -6,35 +6,7 @@ namespace Constants;
 
 trait VictronConstants
 {
-    protected $profile_mappings = [
-        'Load output state' => 'Load_output_state',
-        'Alarm condition active' => 'Alarm_condition_active',
-        'Time-to-go' => 'Time_to_go',
-        'Relay state' => 'Relay_state',
-        'Alarm reason' => 'Alarm_reason',
-        'Off reason' => 'Off_reason',
-        'State of operation' => 'State_of_operation',
-        'Error code' => 'Error_code',
-        'Device mode' => 'Device_mode',
-        'Warning reason' => 'Warning_reason',
-        'Tracker operation mode' => 'Tracker_operation_mode'
-    ];
-
-    protected $icon_mappings = [
-        'Load output state' => 'Light',
-        'Relay state' => 'Light',
-        'Panel power' => 'EnergySolar'
-    ];
-
-    protected $archive_mappings = [
-        'Panel power' => 'Panel_power'
-    ];
-
-    protected $hidden_mappings = [
-        'Off reason' => 'Off_reason'
-    ];
-
-    protected $variable_mapping = [
+     protected $variable_mapping = [
         "V" => array('Name' => 'Main battery voltage', 'icon' => 'EnergySolar', 'custom_profile' => '~Volt', 'Divider' => 1000, 'Value' => 2),
         "V2" => array('Name' => 'Channel 2 battery voltage', 'icon' => 'EnergySolar', 'custom_profile' => '~Volt', 'Divider' => 1000, 'Value' => 2),
         "V3" => array('Name' => 'Channel 3 battery voltage', 'icon' => 'EnergySolar', 'custom_profile' => '~Volt', 'Divider' => 1000, 'Value' => 2),
