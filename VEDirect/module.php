@@ -297,11 +297,11 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 		{
             // send to io
             $this->SetBuffer("lastcommand",$payload);
-            $this->_log("Sendcommand:", $payload, true);
+            $this->_log("Victron","Sendcommand:". $payload, true);
             $calc = $this->checksum("$payload");
-            $this->_log("Checksum:", $calc, true);
+            $this->_log("Victron","Checksum:". $calc, true);
             $payload = ":".$payload.$calc."\n";
-            $this->_log("Sendcomplete:", $payload, true);
+            $this->_log("Victron","Sendcomplete:". $payload, true);
             $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $payload))); // Interface GUI
             return $result;
 		}
@@ -367,9 +367,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         //$this->_log("Ident by needle", $Ident, true);
                         if(strpos($Ident,"VEDirect")!==false) {
                             $id = $this->GetIdForIdentRecursive($Ident);
-                            //$this->_log("IdForIdentRecursive", $id, true);
                             if (isset($id)) {
-                                //$this->_log("Schreiben Wert", "Id: " . $id . " / divisor: " . $divider . "/ value: " . $labelvalue, true);
+                                $this->_log("Victron", "Schreibe ". $labelvalue . " / " . $divider . " in Variable Id:" . $id, true);
                                 switch ($divider) {
                                     case 1:
                                         if ($labelvalue == "ON") {
@@ -403,10 +402,10 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                 }
                             }
                             else {
-                                $this->_log("Keine Variablen-Id gefunden !!!", $label . " divisor: " . $divider . " : value: " . $labelvalue, true);
+                                $this->_log("Victron", "Keine Variablen-Id gefunden !!!", true);
                             }
                         } else {
-                            $this->_log("Keinen Variablen-Ident gefunden !!!", $label . " divisor: " . $divider . " : value: " . $labelvalue, true);
+                            $this->_log("Victron", "Keinen Variablen-Ident für den Key: ".$label . " gefunden", true);
                         }
                     }
                 }
@@ -443,8 +442,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                 return FALSE;
             }
 
-            $this->_log("Checksum:", "Len: ".$len, true);
-            $this->_log("Test:",  "Checksum received: ".$payload[$len-2].$payload[$len-1],true);
+            $this->_log("Victron","Checksum: Len: ".$len, true);
+            $this->_log("Victron","Test: Checksum received: ".$payload[$len-2].$payload[$len-1],true);
 
             $checksum_calc = (0x55 - hexdec($payload[0]));
             for($i=1; $i < $len-2; $i=$i+2) {
@@ -455,7 +454,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             }
             else {
                 $checksum_calc = $checksum_calc & 0x000000FF;
-                $this->_log("Test:",  "Checksum calculated: ".dechex($checksum_calc),true);
+                $this->_log("Victron","Test: Checksum calculated: ".dechex($checksum_calc),true);
                 $checksum_rec = hexdec($payload[$len-2].$payload[$len-1]);
                 if ($checksum_calc == $checksum_rec) {
                     return TRUE;
@@ -475,7 +474,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
         protected function CreateCustomVariableProfile(string $profile_id, string $name)
         {
-            $this->_log("CreateCustomVariableProfile: ", $profile_id." : ".$name,true);
+            $this->_log("Victron","CreateCustomVariableProfile: ". $profile_id." : ".$name,true);
             switch ($name):
                 case 'Load_output_state':
                     IPS_CreateVariableProfile($profile_id, 0); // boolean
