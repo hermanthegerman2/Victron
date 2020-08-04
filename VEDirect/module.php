@@ -69,7 +69,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $this->RegisterPropertyBoolean("AutoRestart", true);
             $this->RegisterAttributeInteger("instance_id", NULL);
             $this->RegisterAttributeBoolean("LoadOutput", NULL);
-            $this->RegisterPropertyBoolean("Log", true);
+            $this->RegisterPropertyBoolean("log", true);
             // Statusvariablen anlegen
             $this->RegisterVariableBoolean("SocketStatus", "SocketStatus", "~Alert.Reversed", 40);
             $this->DisableAction("SocketStatus");
@@ -99,7 +99,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
             $arrayElements[] = array("type" => "CheckBox", "name" => "Log", "caption" => "enable logging");
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-            $arrayElements[] = array("type" => "CheckBox", "name" => "LoadOutput", "caption" => "enable Load output");
+
             $arraySort = array();
             $arraySort = array("column" => "ServiceTyp", "direction" => "ascending");
             $arrayColumns = array();
@@ -119,6 +119,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $arrayActions = array();
             If ($this->ReadPropertyBoolean("Open") == true) {
                 $arrayActions[] = array("type" => "Label", "label" => "Aktuell sind keine Testfunktionen definiert");
+                $arrayActions[] = array("type" => "CheckBox", "name" => "LoadOutput", "caption" => "enable Load output");
             }
             else {
                 $arrayActions[] = array("type" => "Label", "label" => "Diese Funktionen stehen erst nach Eingabe und Übernahme der erforderlichen Daten zur Verfügung!");
