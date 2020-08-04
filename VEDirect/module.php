@@ -380,7 +380,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                             $labelvalue = false;
                                         }
                                         if (($label == "PID" ) {
-                                            $labelvalue = $this->device_mapping[substr($labelvalue, 2)]['DeviceName'];;
+                                            $labelvalue = $this->device_mapping[substr($labelvalue, 2)]['DeviceName'];
                                         }
                                         if (IPS_GetVariable($id)["VariableType"] == 0) {
                                             SetValueBoolean($id, $labelvalue);
