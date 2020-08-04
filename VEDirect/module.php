@@ -325,11 +325,11 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     if (($label == "PID" ) && (!$this->ReadAttributeInteger('instance_id'))) {
                         // Initiales Anlegen der Kategorie und der Gerätevariablen
                         $PID = substr($labelvalue, 2);
-                        $PID = $this->device_mapping[$PID]['DeviceName'];
+                        $DeviceName = $this->device_mapping[$PID]['DeviceName'];
                         // Prüfung ob instance_id gesetzt ?
                         if (empty($this->ReadAttributeInteger('instance_id'))) {
                             $this->WriteAttributeInteger('instance_id', $this->InstanceID);
-                            $this->_log("Victron Gerät gefunden: ", $PID,true);
+                            $this->_log("Victron Gerät gefunden: ", $DeviceName,true);
 
                             // Gerätevariablen anlegen
 
