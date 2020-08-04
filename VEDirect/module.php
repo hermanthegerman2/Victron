@@ -498,7 +498,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     IPS_SetVariableProfileAssociation($profile_id,119,$this->Translate('User settings invalid'),"",0xFFFFFF);
                     break;
                 case 'Device_mode':
-                    IIPS_CreateVariableProfile($profile_id, 1); // integer
+                    IPS_CreateVariableProfile($profile_id, 1); // integer
                     IPS_SetVariableProfileAssociation($profile_id,1,$this->Translate('VE_REG_MODE_CHARGER'),"",0xFFFFFF);
                     IPS_SetVariableProfileAssociation($profile_id,2,$this->Translate('VE_REG_MODE_INVERTER'),"",0xFFFFFF);
                     IPS_SetVariableProfileAssociation($profile_id,4,$this->Translate('VE_REG_MODE_OFF'),"",0xFFFFFF);
