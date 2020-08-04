@@ -413,8 +413,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             switch ($name):
                 case 'Load_output_state':
                     IPS_CreateVariableProfile($profile_id, 0); // boolean
-                    IPS_SetVariableProfileAssociation("Load_output_state",0,$this->Translate('Off'),"",0xFFFFFF);
-                    IPS_SetVariableProfileAssociation("Load_output_state",1,$this->Translate('On'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation($profile_id,0,$this->Translate('Off'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation($profile_id,1,$this->Translate('On'),"",0xFFFFFF);
                     break;
                 case 'Alarm_condition_active':
                     IPS_CreateVariableProfile($profile_id, 0); // boolean
