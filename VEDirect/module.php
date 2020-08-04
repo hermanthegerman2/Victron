@@ -174,23 +174,23 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     {
                         $Result = @IPS_ApplyChanges($ParentID);
                         If ($Result) {
-                            $this->SendDebug("ApplyChanges", "Einrichtung des Client Socket erfolgreich", 0);
+                            $this->_log("ApplyChanges", "Einrichtung des Client Socket erfolgreich", 1);
                         }
                         else {
-                            $this->SendDebug("ApplyChanges", "Einrichtung des Client Socket nicht erfolgreich!", 0);
+                            $this->_log("ApplyChanges", "Einrichtung des Client Socket nicht erfolgreich!", 1);
                         }
                     }
                 }
 
                 If (($this->ConnectionTest()) AND ($this->ReadPropertyBoolean("Open") == true))  {
                     $this->SetSummary($this->ReadPropertyString('IPAddress'));
-                    $this->SendDebug("ApplyChanges", "Starte Vorbereitung", 0);
+                    $this->_log("ApplyChanges", "Starte Vorbereitung", 1);
                     If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == false) {
                         SetValueBoolean($this->GetIDForIdent("SocketStatus"), true);
                     }
 
                     // Vorbereitung beendet
-                    $this->SendDebug("ApplyChanges", "Beende Vorbereitung", 0);
+                    $this->_log("ApplyChanges", "Beende Vorbereitung", 1);
                     $this->SetBuffer("ModuleReady", 1);
 
                     $this->SetStatus(102);
