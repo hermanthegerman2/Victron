@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="743ffc69-5e4a-46cd-b509-289612cf2695" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VEDirect/module.php" beforeDir="false" afterPath="$PROJECT_DIR$/VEDirect/module.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ModuleHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/libs/ModuleHelper.php" afterDir="false" />
-    </list>
+    <list default="true" id="743ffc69-5e4a-46cd-b509-289612cf2695" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,20 +35,6 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="TaskManager">
-    <task id="LOCAL-00054" summary="Form">
-      <created>1596486971674</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1596486971674</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Form">
-      <created>1596487072987</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1596487072987</updated>
-    </task>
     <task id="LOCAL-00056" summary="Form">
       <created>1596487644022</created>
       <option name="number" value="00056" />
@@ -389,7 +371,21 @@
       <option name="project" value="LOCAL" />
       <updated>1596576928155</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="Form">
+      <created>1596577375566</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1596577375566</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Form">
+      <created>1596577559539</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1596577559539</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -413,10 +409,10 @@
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
     <state x="1854" y="235" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596482550120" />
-    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2" timestamp="1596576931892">
+    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2" timestamp="1596577562242">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
-    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596576931892" />
+    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596577562242" />
     <state x="2217" y="494" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596545516158">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
@@ -425,5 +421,9 @@
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
     <state x="2056" y="270" width="672" height="677" key="run.anything.popup/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596572903902" />
+    <state x="2063" y="255" width="672" height="678" key="search.everywhere.popup" timestamp="1596577449693">
+      <screen x="1440" y="0" width="1920" height="1160" />
+    </state>
+    <state x="2063" y="255" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596577449693" />
   </component>
 </project>

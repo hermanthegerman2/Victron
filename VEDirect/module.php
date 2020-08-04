@@ -324,8 +324,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
                     if (($label == "PID" ) && (!$this->ReadAttributeInteger('instance_id'))) {
                         // Initiales Anlegen der Kategorie und der Gerätevariablen
-                        $PID = substr($labelvalue, 2);
-                        $DeviceName = $this->device_mapping[$PID]['DeviceName'];
+                        $DeviceName = $this->device_mapping[substr($labelvalue, 2)]['DeviceName'];
                         // Prüfung ob instance_id gesetzt ?
                         if (empty($this->ReadAttributeInteger('instance_id'))) {
                             $this->WriteAttributeInteger('instance_id', $this->InstanceID);
@@ -335,7 +334,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
                             $position = 0;
                             foreach ($this->variable_mapping as $key => $value) {
-                                $DisplayedValues = $this->device_mapping[$PID]['DisplayedValues'];
+                                $DisplayedValues = $this->device_mapping[substr($labelvalue, 2)]['DisplayedValues'];
                                 $this->_log("Victron", "lege Variablen an: ".$DisplayedValues,true);
                                 if (in_array($key, $DisplayedValues) == true) {         // ist die Variable im Array display_mapping dabei ?
                                     $ident = $this->InstanceID . '_' . $value['Name'];
@@ -380,9 +379,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                         elseif ($labelvalue == "Off") {
                                             $labelvalue = false;
                                         }
-                                        if (($label == "PID" ) && (!$this->ReadAttributeInteger('instance_id'))) {
-                                            $PID = substr($labelvalue, 2);
-                                            $labelvalue = $this->device_mapping[$PID]['DeviceName'];;
+                                        if (($label == "PID" ) {
+                                            $labelvalue = $this->device_mapping[substr($labelvalue, 2)]['DeviceName'];;
                                         }
                                         if (IPS_GetVariable($id)["VariableType"] == 0) {
                                             SetValueBoolean($id, $labelvalue);
