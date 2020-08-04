@@ -315,7 +315,6 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $bufferend = array_pop($message);
 
             for ($i = 1; $i < count($message); $i++) {
-                $this->_log("ReceiveData explode", $array[$i], 1);
                 $var = preg_split('/[\t]/', $message[$i]);
                 for ($n = 1; $n < count($var); $n++) {
                     $label = $var[$n - 1];
