@@ -88,35 +88,15 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $arrayElements = array();
             $arrayElements[] = array("type" => "CheckBox", "name" => "Open", "caption" => "active");
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-            $arrayElements[] = array("type" => "Select", "name" => "Selection", "caption" => "Connection", "options" => array("caption" => "IP Socket", "value" => false, "caption" => "Serial Port", "value" => true ));
-            $arraySort = array();
-            $arraySort = array("column" => "Schnittstelle", "direction" => "ascending");
-            $arrayColumns = array();
-            $arrayColumns[] = array("label" => "Service", "name" => "Serial Port", "width" => "200px", "add" => "");
-            $arrayColumns[] = array("label" => "Status", "name" => "Socket", "width" => "auto", "add" => "");
+            //$arrayElements[] = array("type" => "Select", "name" => "Selection", "caption" => "Connection", "options" => array("caption" => "IP Socket", "value" => false, "caption" => "Serial Port", "value" => true ));
 
 
+            $arrayElements[] = array("label" => "Service", "name" => "Serial Port", "width" => "200px", "add" => "");
+            $arrayElements[] = array("label" => "Status", "name" => "Socket", "width" => "auto", "add" => "");
 
-            //"options" => ( "caption" => "Socket", "value" => 0 , "caption" => "Seriell" , "value" => 1));
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
             $arrayElements[] = array("type" => "CheckBox", "name" => "log", "caption" => "enable logging");
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-
-            $arraySort = array();
-            $arraySort = array("column" => "ServiceTyp", "direction" => "ascending");
-            $arrayColumns = array();
-            $arrayColumns[] = array("label" => "Service", "name" => "ServiceTyp", "width" => "200px", "add" => "");
-            $arrayColumns[] = array("label" => "Status", "name" => "ServiceStatus", "width" => "auto", "add" => "");
-
-            $arraySort = array();
-            $arraySort = array("column" => "DeviceTyp", "direction" => "ascending");
-            $arrayColumns = array();
-            $arrayColumns[] = array("label" => "Typ", "name" => "DeviceTyp", "width" => "120px", "add" => "");
-            $arrayColumns[] = array("label" => "Adresse", "name" => "DeviceAddress", "width" => "60px", "add" => "");
-            $arrayColumns[] = array("label" => "Bus", "name" => "DeviceBus", "width" => "60px", "add" => "");
-            $arrayColumns[] = array("label" => "Instanz ID", "name" => "InstanceID", "width" => "70px", "add" => "");
-            $arrayColumns[] = array("label" => "Status", "name" => "DeviceStatus", "width" => "auto", "add" => "");
-
 
             $arrayActions = array();
             If ($this->ReadPropertyBoolean("Open") == true) {
