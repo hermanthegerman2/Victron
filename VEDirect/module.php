@@ -309,13 +309,13 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
         {
             //$receive = json_decode($JSONString);
             $data = json_decode($JSONString);
-            //$this->SendDebug("ReceiveData Utf-8", utf8_decode($data->Buffer), 0);
+            $this->_log("ReceiveData Utf-8", utf8_decode($data->Buffer), 1);
             $buffer = $data->{'Buffer'};
             $message = preg_split('/\r\n/', $buffer);
             $bufferend = array_pop($message);
 
             for ($i = 1; $i < count($message); $i++) {
-                //$this->SendDebug("ReceiveData explode", $array[$i], 0);
+                $this->_log("ReceiveData explode", $array[$i], 1);
                 $var = preg_split('/[\t]/', $message[$i]);
                 for ($n = 1; $n < count($var); $n++) {
                     $label = $var[$n - 1];
@@ -325,7 +325,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     if (($label == "PID" ) && (!$this->ReadAttributeInteger('instance_id'))) {
                         // Initiales Anlegen der Kategorie und der Gerätevariablen
                         $PID = substr($labelvalue, 2);
-                        $PID = $this->device_mapping[$PID];
+                        $PID = $this->display_mapping[$PID];
                         // Prüfung ob instance_id gesetzt ?
                         if (empty($this->ReadAttributeInteger('instance_id'))) {
                             $this->WriteAttributeInteger('instance_id', $this->InstanceID);
