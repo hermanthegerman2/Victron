@@ -201,6 +201,12 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                 }
             }
             else {
+                if ($this->ReadPropertyBoolean("LoadOutput") == true) {
+                    $this->LoadOutputControl(true);
+                }
+                else {
+                    $this->LoadOutputControl(false);
+                }
                 return;
             }
         }
