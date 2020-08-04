@@ -335,7 +335,6 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             $position = 0;
                             foreach ($this->variable_mapping as $key => $value) {
                                 $DisplayedValues = $this->device_mapping[substr($labelvalue, 2)]['DisplayedValues'];
-                                $this->_log("Victron", "lege Variablen an: ".$DisplayedValues,true);
                                 if (in_array($key, $DisplayedValues) == true) {         // ist die Variable im Array display_mapping dabei ?
                                     $ident = $this->InstanceID . '_' . $value['Name'];
                                     $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
