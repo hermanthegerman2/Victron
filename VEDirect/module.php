@@ -64,7 +64,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             //$this->ConnectParent("{6DC3D946-0D31-450F-A8C6-C42DB8D7D4F1}");
             // Modul-Eigenschaftserstellung
             $this->RegisterPropertyBoolean("Open", true);
-            $this->RegisterPropertyBoolean("Selection", false);
+            $this->RegisterPropertyInteger("Selection", NULL);
             $this->RegisterPropertyString("IPAddress", "192.168.2.2");
             $this->RegisterPropertyInteger("Socket", 10000);
             $this->RegisterPropertyString("Serial Port", "ttyUSB0");
@@ -88,7 +88,17 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $arrayElements = array();
             $arrayElements[] = array("type" => "CheckBox", "name" => "Open", "caption" => "active");
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-            //$arrayElements[] = array("type" => "Select", "name" => "Selection", "caption" => "Connection", "options" => array("caption" => "IP Socket", "value" => false, "caption" => "Serial Port", "value" => true ));
+            $arrayElements[] = array("type" => "Select", "name" => "Selection", "caption" => "Connection", "options" => array (
+                0 =>
+                    array(
+                        'caption' => 'Socket',
+                        'value' => 0,
+                    ),
+                1 =>
+                    array(
+                        'caption' => 'Seriell',
+                        'value' => 1,
+                    )));
 
 
             $arrayElements[] = array("label" => "Service", "name" => "Serial Port", "width" => "200px", "add" => "");
