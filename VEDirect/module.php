@@ -288,9 +288,17 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 			parent::Destroy();
 		}
 
-		public function Send(string $Text)
+		public function TransmitData(string $payload)
 		{
-			$this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $Text)));
+            // send to io
+            $this->SetBuffer("lastcommand",$payload);
+            $this->SendDebug("Sendcommand:", $payload, 0);
+            $calc = $this->checksum("$payload");
+            $this->SendDebug("Checksum:", $calc, 0);
+            $payload = ":".$payload.$calc."\n";
+            $this->SendDebug("Sendcomplete:", $payload, 0);
+            $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $payload))); // Interface GUI
+            return $result;
 		}
 
         public function ReceiveData($JSONString)
@@ -398,6 +406,43 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     }
                 }
                 $this->SendDebug("ReceiveData buffer_end", $bufferend, 0);
+            }
+        }
+
+        /**
+         * calculate checksum
+         * @param string $payload
+         * @param bool $transmit
+         * @return bool|int
+         */
+
+        public function checksum(string $payload, bool $transmit)
+        {
+            //$this->SendDebug("Test:", $payload, 0);
+            if (strlen($payload) == 0) {
+                return FALSE;
+            }
+
+            //$this->SendDebug("Checksum:", "Len: ".$len, 0);
+            //$this->SendDebug("Test:",  "Checksum received: ".$payload[$len-2].$payload[$len-1],0);
+
+            $checksum_calc = (0x55 - hexdec($payload[0]));
+            for($i=1; $i < $len-2; $i=$i+2) {
+                $checksum_calc = $checksum_calc - hexdec($payload[$i].$payload[$i+1]);
+            }
+            if ($transmit === TRUE) {
+                return strtoupper(dechex($checksum_calc));
+            }
+            else {
+                $checksum_calc = $checksum_calc & 0x000000FF;
+                //$this->SendDebug("Test:",  "Checksum calculated: ".dechex($checksum_calc),0);
+                $checksum_rec = hexdec($payload[$len-2].$payload[$len-1]);
+                if ($checksum_calc == $checksum_rec) {
+                    return TRUE;
+                }
+                else {
+                    return FALSE;
+                }
             }
         }
 
@@ -513,6 +558,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     IPS_SetVariableProfileAssociation($profile_id,16,$this->Translate('VE_REG_MODE_HIBERNATE'),"",0xFFFFFF);
 
                     break;
+
                 case 'Warning_reason':
                     IPS_CreateVariableProfile($profile_id, 1); // integer
                     IPS_SetVariableProfileAssociation($profile_id,1,$this->Translate('Low Voltage'),"",0xFFFFFF);

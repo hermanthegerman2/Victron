@@ -121,6 +121,6 @@ trait VictronConstants
     ];
 
     protected $display_mapping = [
-        "SmartSolar MPPT 75 15" => array('A053','PID','V','VPV','PPV','I','IL','LOAD','Alarm','Relay','AR','OR','H1','H2','H3','H7','H8','H19','H20','H21','H22','H23','ERR','CS','FW','SER#','HSDS','MODE','WARN','MPPT')
+        "SmartSolar MPPT 75 15" => array('A053','PID','V','VPV','PPV','I','IL','LOAD','Alarm','Relay','AR','OR','H19','H20','H21','H22','H23','ERR','CS','FW','SER#','HSDS','MODE','WARN','MPPT')
         ];
 }
