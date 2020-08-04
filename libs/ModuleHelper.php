@@ -20,6 +20,7 @@ trait ModuleHelper
         $Status = (IPS_GetInstance($this->GetParentID())['InstanceStatus']);
         return $Status;
     }
+
     /**
      * @param null $sender
      * @param mixed $message

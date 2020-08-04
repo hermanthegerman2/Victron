@@ -297,11 +297,11 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 		{
             // send to io
             $this->SetBuffer("lastcommand",$payload);
-            $this->SendDebug("Sendcommand:", $payload, 0);
+            $this->_log("Sendcommand:", $payload, true);
             $calc = $this->checksum("$payload");
-            $this->SendDebug("Checksum:", $calc, 0);
+            $this->_log("Checksum:", $calc, true);
             $payload = ":".$payload.$calc."\n";
-            $this->SendDebug("Sendcomplete:", $payload, 0);
+            $this->_log("Sendcomplete:", $payload, true);
             $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $payload))); // Interface GUI
             return $result;
 		}
@@ -310,7 +310,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
         {
             //$receive = json_decode($JSONString);
             $data = json_decode($JSONString);
-            $this->_log("ReceiveData Utf-8", utf8_decode($data->Buffer), true);
+            //$this->_log("ReceiveData Utf-8", utf8_decode($data->Buffer), true);
             $buffer = $data->{'Buffer'};
             $message = preg_split('/\r\n/', $buffer);
             $bufferend = array_pop($message);
@@ -320,7 +320,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                 for ($n = 1; $n < count($var); $n++) {
                     $label = $var[$n - 1];
                     $labelvalue = $var[$n];
-                    $this->_log("ReceiveData ", $label . '  --->  ' . $labelvalue, true);
+                    //$this->_log("ReceiveData ", $label . '  --->  ' . $labelvalue, true);
 
                     if (($label == "PID" ) && (!$this->ReadAttributeInteger('instance_id'))) {
                         // Initiales Anlegen der Kategorie und der Gerätevariablen
@@ -355,7 +355,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         }
                     }
                     elseif ($label == "Checksum") {
-                        $this->_log("Victron Checksum", $labelvalue, true);
+                        //$this->_log("Victron Checksum", $labelvalue, true);
                         break;
                     }
                     else {
@@ -366,12 +366,12 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             }
                         }
                         $Ident = implode($this->_getIdentifierByNeedle($needle));
-                        $this->_log("Ident by needle", $Ident, true);
+                        //$this->_log("Ident by needle", $Ident, true);
                         if(strpos($Ident,"VEDirect")!==false) {
                             $id = $this->GetIdForIdentRecursive($Ident);
-                            $this->_log("IdForIdentRecursive", $id, true);
+                            //$this->_log("IdForIdentRecursive", $id, true);
                             if (isset($id)) {
-                                $this->_log("Schreiben Wert", "Id: " . $id . " / divisor: " . $divider . "/ value: " . $labelvalue, true);
+                                //$this->_log("Schreiben Wert", "Id: " . $id . " / divisor: " . $divider . "/ value: " . $labelvalue, true);
                                 switch ($divider) {
                                     case 1:
                                         if ($labelvalue == "ON") {
@@ -413,7 +413,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         }
                     }
                 }
-                $this->_log("ReceiveData buffer_end", $bufferend, true);
+                //$this->_log("ReceiveData buffer_end", $bufferend, true);
             }
         }
 
