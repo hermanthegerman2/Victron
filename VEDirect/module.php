@@ -417,16 +417,19 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     IPS_SetVariableProfileAssociation($profile_id,0,$this->Translate('Off'),"",0xFFFFFF);
                     IPS_SetVariableProfileAssociation($profile_id,1,$this->Translate('On'),"",0xFFFFFF);
                     break;
+
                 case 'Alarm_condition_active':
                     IPS_CreateVariableProfile($profile_id, 0); // boolean
                     IPS_SetVariableProfileAssociation($profile_id,0,$this->Translate('Off'),"",0xFFFFFF);
                     IPS_SetVariableProfileAssociation($profile_id,1,$this->Translate('On'),"",0xFFFFFF);
                     break;
+
                 case 'Relay_state':
                     IPS_CreateVariableProfile($profile_id, 0); // boolean
                     IPS_SetVariableProfileAssociation($profile_id,0,$this->Translate('Off'),"",0xFFFFFF);
                     IPS_SetVariableProfileAssociation($profile_id,1,$this->Translate('On'),"",0xFFFFFF);
                     break;
+
                 case 'Alarm_reason':
                     IPS_CreateVariableProfile($profile_id, 1); // integer
                     IPS_SetVariableProfileAssociation($profile_id,1,$this->Translate('Low Voltage'),"",0xFFFFFF);
@@ -444,6 +447,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     IPS_SetVariableProfileAssociation($profile_id,4096,$this->Translate('Short Circuit'),"",0xFFFFFF);
                     IPS_SetVariableProfileAssociation($profile_id,8192,$this->Translate('BMS Lockout'),"",0xFFFFFF);
                     break;
+
                 case 'Off_reason':
                     IPS_CreateVariableProfile($profile_id, 1); // integer
                     IPS_SetVariableProfileAssociation($profile_id,1,$this->Translate('No Input Power'),"",0xFFFFFF);
@@ -456,6 +460,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     IPS_SetVariableProfileAssociation($profile_id,80,$this->Translate('Engine shutdown detection'),"",0xFFFFFF);
                     IPS_SetVariableProfileAssociation($profile_id,100,$this->Translate('Analysing input voltage'),"",0xFFFFFF);
                     break;
+
                 case 'State_of_operation':
                     IPS_CreateVariableProfile($profile_id, 1); // integer
                     IPS_SetVariableProfileAssociation($profile_id,0,$this->Translate('Off'),"",0xFFFFFF);
@@ -474,6 +479,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     IPS_SetVariableProfileAssociation($profile_id,248,$this->Translate('BatterySafe'),"",0xFFFFFF);
                     IPS_SetVariableProfileAssociation($profile_id,252,$this->Translate('External Control'),"",0xFFFFFF);
                     break;
+
                 case 'Error_code':
                     IPS_CreateVariableProfile($profile_id, 1); // integer
                     IPS_SetVariableProfileAssociation($profile_id,0,$this->Translate('No error'),"",0xFFFFFF);
@@ -497,6 +503,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     IPS_SetVariableProfileAssociation($profile_id,117,$this->Translate('Invalid/incompatible firmware'),"",0xFFFFFF);
                     IPS_SetVariableProfileAssociation($profile_id,119,$this->Translate('User settings invalid'),"",0xFFFFFF);
                     break;
+
                 case 'Device_mode':
                     IPS_CreateVariableProfile($profile_id, 1); // integer
                     IPS_SetVariableProfileAssociation($profile_id,1,$this->Translate('VE_REG_MODE_CHARGER'),"",0xFFFFFF);
@@ -523,6 +530,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     IPS_SetVariableProfileAssociation($profile_id,4096,$this->Translate('Short Circuit'),"",0xFFFFFF);
                     IPS_SetVariableProfileAssociation($profile_id,8192,$this->Translate('BMS Lockout'),"",0xFFFFFF);
                     break;
+
                 case 'Tracker_operation_mode':
                     IPS_CreateVariableProfile($profile_id, 1); // integer
                     IPS_SetVariableProfileAssociation($profile_id,0,$this->Translate('Off'),"",0xFFFFFF);
