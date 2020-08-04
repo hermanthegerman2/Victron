@@ -64,6 +64,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             //$this->ConnectParent("{6DC3D946-0D31-450F-A8C6-C42DB8D7D4F1}");
             // Modul-Eigenschaftserstellung
             $this->RegisterPropertyBoolean("Open", true);
+            $this->RegisterPropertyBoolean("Selection", false);
             $this->RegisterPropertyString("IPAddress", "192.168.2.2");
             $this->RegisterPropertyInteger("Socket", 10000);
             $this->RegisterPropertyString("Serial Port", "ttyUSB0");
@@ -87,12 +88,12 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $arrayElements = array();
             $arrayElements[] = array("type" => "CheckBox", "name" => "Open", "caption" => "active");
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-            //$arrayElements[] = array("type" => "Select", "name" => "VictronVEDirect verbinden mit:", "caption" => "Einheit");
+            $arrayElements[] = array("type" => "Select", "name" => "Selection", "caption" => "Connection", "options" => array("caption" => "IP Socket", "value" => 0, "caption" => "Serial Port", "value" => 1 ));
             $arraySort = array();
             $arraySort = array("column" => "Schnittstelle", "direction" => "ascending");
             $arrayColumns = array();
-            $arrayColumns[] = array("label" => "Service", "name" => "Seriell", "width" => "200px", "add" => "");
-            $arrayColumns[] = array("label" => "Status", "name" => "Socket", "width" => "auto", "add" => "");
+            $arrayElements[] = array("label" => "Service", "name" => "Seriell", "width" => "200px", "add" => "");
+            $arrayElements[] = array("label" => "Status", "name" => "Socket", "width" => "auto", "add" => "");
 
 
 
@@ -175,23 +176,23 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     {
                         $Result = @IPS_ApplyChanges($ParentID);
                         If ($Result) {
-                            $this->_log("ApplyChanges", "Einrichtung des Client Socket erfolgreich", true);
+                            $this->_log("ApplyChanges", "Client Socket connection successful !", true);
                         }
                         else {
-                            $this->_log("ApplyChanges", "Einrichtung des Client Socket nicht erfolgreich!", true);
+                            $this->_log("ApplyChanges", "Client Socket connection not successful !", true);
                         }
                     }
                 }
 
                 If (($this->ConnectionTest()) AND ($this->ReadPropertyBoolean("Open") == true))  {
                     $this->SetSummary($this->ReadPropertyString('IPAddress'));
-                    $this->_log("ApplyChanges", "Starte Vorbereitung", true);
+                    $this->_log("ApplyChanges", "start initial preparation", true);
                     If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == false) {
                         SetValueBoolean($this->GetIDForIdent("SocketStatus"), true);
                     }
 
                     // Vorbereitung beendet
-                    $this->_log("ApplyChanges", "Beende Vorbereitung", true);
+                    $this->_log("ApplyChanges", "finish initial preparation", true);
                     $this->SetBuffer("ModuleReady", 1);
 
                     $this->SetStatus(102);
@@ -216,16 +217,16 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
         {
             $result = false;
             If (Sys_Ping($this->ReadPropertyString("IPAddress"), 2000)) {
-                $this->_log("Victron Netzanbindung","Angegebene IP ".$this->ReadPropertyString("IPAddress")." reagiert",true);
+                $this->_log("Victron Socket"," IP ".$this->ReadPropertyString("IPAddress")." answered",true);
                 $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
                 if (!$status) {
-                    $this->_log("Victron Netzanbindung: ","Port ist geschlossen!", true);
+                    $this->_log("Victron Socket","Port is closed!", true);
                     If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
                         SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
                     }
                     $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
                     if (!$status) {
-                        $this->_log(" Netzanbindung: ","Port ist geschlossen!", true);
+                        $this->_log("Victron Socket","Port is closed!", true);
                         If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
                             SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
                         }
@@ -234,13 +235,13 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                 }
                 else {
                     fclose($status);
-                    $this->_log("Victron Netzanbindung: ","Port ist geöffnet", true);
+                    $this->_log("Victron Socket","Port is open!", true);
                     $result = true;
                     $this->SetStatus(102);
                 }
             }
             else {
-                $this->_log("Victron Netzanbindung: ","IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyInteger("Socket")." reagiert nicht!", true);
+                $this->_log("Victron Socket","IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyInteger("Socket")." no answer!", true);
                 If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
                     SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
                 }
@@ -266,10 +267,10 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     }
                     break;
                 case 11101:
-                    $this->_log("Victron MessageSink", "Instanz ".$SenderID." wurde verbunden",true);
+                    $this->_log("Victron MessageSink", "Instance ".$SenderID." is connected",true);
                     break;
                 case 11102:
-                    $this->_log("Victron MessageSink", "Instanz  ".$SenderID." wurde getrennt",true);
+                    $this->_log("Victron MessageSink", "Instance ".$SenderID." is disconnected",true);
                     break;
                 case 10505:
                     If ($Data[0] == 102) {
@@ -320,7 +321,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                 for ($n = 1; $n < count($var); $n++) {
                     $label = $var[$n - 1];
                     $labelvalue = $var[$n];
-                    //$this->_log("ReceiveData ", $label . '  --->  ' . $labelvalue, true);
+                    $this->_log("Victron","ReceiveData Key:".$label . ' Value: ' . $labelvalue, true);
 
                     if (($label == "PID" ) && (!$this->ReadAttributeInteger('instance_id'))) {
                         // Initiales Anlegen der Kategorie und der Gerätevariablen
@@ -368,7 +369,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         if(strpos($Ident,"VEDirect")!==false) {
                             $id = $this->GetIdForIdentRecursive($Ident);
                             if (isset($id)) {
-                                $this->_log("Victron", "Schreibe ". $labelvalue . " / " . $divider . " in Variable Id:" . $id, true);
+                                $this->_log("Victron", "write ". $labelvalue . " / " . $divider . " to variable Id:" . $id, true);
                                 switch ($divider) {
                                     case 1:
                                         if ($labelvalue == "ON") {
@@ -402,10 +403,10 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                 }
                             }
                             else {
-                                $this->_log("Victron", "Keine Variablen-Id gefunden !!!", true);
+                                $this->_log("Victron", "no Id found !!!", true);
                             }
                         } else {
-                            $this->_log("Victron", "Keinen Variablen-Ident für den Key: ".$label . " gefunden", true);
+                            $this->_log("Victron", "no variable-id found for Key: ".$label, true);
                         }
                     }
                 }
