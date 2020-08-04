@@ -324,7 +324,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                     if (($label == "PID" ) && (!$this->ReadAttributeInteger('instance_id'))) {
                         // Initiales Anlegen der Kategorie und der Gerätevariablen
                         $PID = substr($labelvalue, 2);
-                        $PID = $this->display_mapping[$PID][0];
+                        $PID = $this->device_mapping[$PID]['DeviceName'];
                         // Prüfung ob instance_id gesetzt ?
                         if (empty($this->ReadAttributeInteger('instance_id'))) {
                             $this->WriteAttributeInteger('instance_id', $this->InstanceID);
@@ -335,7 +335,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             $position = 0;
                             foreach ($this->variable_mapping as $key => $value) {
 
-                                if (array_search($key, $this->display_mapping[$PID]) == true) {         // ist die Variable im Array display_mapping dabei ?
+                                if (array_search($key, $this->device_mapping[$PID]['DisplayedValues']) == true) {         // ist die Variable im Array display_mapping dabei ?
                                     $ident = $this->InstanceID . '_' . $value['Name'];
                                     $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
                                     $this->CreateVariableByIdentifier([
@@ -380,7 +380,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                         }
                                         if (($label == "PID" ) && (!$this->ReadAttributeInteger('instance_id'))) {
                                             $PID = substr($labelvalue, 2);
-                                            $labelvalue = $this->device_mapping[$PID];
+                                            $labelvalue = $this->device_mapping[$PID]['DeviceName'];;
                                         }
                                         if (IPS_GetVariable($id)["VariableType"] == 0) {
                                             SetValueBoolean($id, $labelvalue);
