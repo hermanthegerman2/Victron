@@ -329,14 +329,14 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                         // Prüfung ob instance_id gesetzt ?
                         if (empty($this->ReadAttributeInteger('instance_id'))) {
                             $this->WriteAttributeInteger('instance_id', $this->InstanceID);
-                            $this->_log("Victron Gerät gefunden: ", $DeviceName,true);
+                            $this->_log("Victron", "Device: ".$DeviceName." gefunden",true);
 
                             // Gerätevariablen anlegen
 
                             $position = 0;
                             foreach ($this->variable_mapping as $key => $value) {
                                 $DisplayedValues = $this->device_mapping[$PID]['DisplayedValues'];
-                                $this->_log("Victron Gerät gefunden: ", $DisplayedValues,true);
+                                $this->_log("Victron", "lege Variablen an: ".$DisplayedValues,true);
                                 if (in_array($key, $DisplayedValues) == true) {         // ist die Variable im Array display_mapping dabei ?
                                     $ident = $this->InstanceID . '_' . $value['Name'];
                                     $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
