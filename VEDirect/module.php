@@ -336,7 +336,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                             $position = 0;
                             foreach ($this->variable_mapping as $key => $value) {
 
-                                if (array_search($key, $this->device_mapping[$PID]['DisplayedValues']) !== false) {         // ist die Variable im Array display_mapping dabei ?
+                                if (in_array($key, $this->device_mapping[$PID]['DisplayedValues']) == true) {         // ist die Variable im Array display_mapping dabei ?
                                     $ident = $this->InstanceID . '_' . $value['Name'];
                                     $custom_profile = isset($value['custom_profile']) && $value['custom_profile'] ? $value['custom_profile'] : false;
                                     $this->CreateVariableByIdentifier([
