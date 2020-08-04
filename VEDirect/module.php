@@ -68,7 +68,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $this->RegisterPropertyString("Serial Port", "ttyUSB0");
             $this->RegisterPropertyBoolean("AutoRestart", true);
             $this->RegisterAttributeInteger("instance_id", NULL);
-            $this->RegisterPropertyBoolean("log", true);
+            $this->RegisterAttributeBoolean("LoadOutput", NULL);
+            $this->RegisterPropertyBoolean("Log", true);
             // Statusvariablen anlegen
             $this->RegisterVariableBoolean("SocketStatus", "SocketStatus", "~Alert.Reversed", 40);
             $this->DisableAction("SocketStatus");
@@ -83,7 +84,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $arrayStatus[] = array("code" => 200, "icon" => "error", "caption" => "Instanz ist fehlerhaft");
 
             $arrayElements = array();
-            $arrayElements[] = array("type" => "CheckBox", "name" => "Open", "caption" => "Aktiv");
+            $arrayElements[] = array("type" => "CheckBox", "name" => "Open", "caption" => "active");
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
             //$arrayElements[] = array("type" => "Select", "name" => "VictronVEDirect verbinden mit:", "caption" => "Einheit");
             $arraySort = array();
@@ -97,6 +98,8 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             //"options" => ( "caption" => "Socket", "value" => 0 , "caption" => "Seriell" , "value" => 1));
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
             $arrayElements[] = array("type" => "CheckBox", "name" => "Log", "caption" => "enable logging");
+            $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
+            $arrayElements[] = array("type" => "CheckBox", "name" => "LoadOutput", "caption" => "enable Load output");
             $arraySort = array();
             $arraySort = array("column" => "ServiceTyp", "direction" => "ascending");
             $arrayColumns = array();
@@ -410,13 +413,28 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
         }
 
         /**
+         * Load output control values (register 0xEDAB)
+         * @param bool $value
+         * @return bool
+         */
+
+        public function LoadOutputControl(bool $value)
+        {
+            $value (!$value) ? 4 : 0;
+            $this->SendDebug("Victron Senden:", "LoadOutputControl Value: ".$value, 0);
+            $payload = '8'.'ABED'.'00'.hexdec($value);
+            $result = $this->TransmitData($payload);
+            return (!$result) ? true : false;
+        }
+
+        /**
          * calculate checksum
          * @param string $payload
          * @param bool $transmit
          * @return bool|int
          */
 
-        public function checksum(string $payload, bool $transmit)
+        protected function checksum(string $payload, bool $transmit)
         {
             //$this->SendDebug("Test:", $payload, 0);
             if (strlen($payload) == 0) {
