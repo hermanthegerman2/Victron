@@ -379,6 +379,10 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
                                         elseif ($labelvalue == "Off") {
                                             $labelvalue = false;
                                         }
+                                        if (($label == "PID" ) && (!$this->ReadAttributeInteger('instance_id'))) {
+                                            $PID = substr($labelvalue, 2);
+                                            $labelvalue = $this->device_mapping[$PID];
+                                        }
                                         if (IPS_GetVariable($id)["VariableType"] == 0) {
                                             SetValueBoolean($id, $labelvalue);
                                         }
