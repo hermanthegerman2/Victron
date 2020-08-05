@@ -89,10 +89,10 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
             $form = json_encode(['elements' => $formElements, 'actions' => $formActions, 'status' => $formStatus]);
             if ($form == '') {
-                $this->_log(__FUNCTION__, 'json_error=' . json_last_error_msg(), true);
-                $this->_log(__FUNCTION__, '=> formElements=' . print_r($formElements, true), true);
-                $this->_log(__FUNCTION__, '=> formActions=' . print_r($formActions, true), true);
-                $this->_log(__FUNCTION__, '=> formStatus=' . print_r($formStatus, true), true);
+                $this->_log(__FUNCTION__, 'json_error=' . json_last_error_msg());
+                $this->_log(__FUNCTION__, '=> formElements=' . print_r($formElements, true));
+                $this->_log(__FUNCTION__, '=> formActions=' . print_r($formActions, true));
+                $this->_log(__FUNCTION__, '=> formStatus=' . print_r($formStatus, true));
             }
             return $form;
         }
@@ -309,10 +309,10 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     if(IPS_HasChanges($ParentID)) {
                         $Result = @IPS_ApplyChanges($ParentID);
                         If ($Result) {
-                            $this->_log("ApplyChanges", "Client Socket connection successful !", true);
+                            $this->_log("ApplyChanges", "Client Socket connection successful !");
                         }
                         else {
-                            $this->_log("ApplyChanges", "Client Socket connection not successful !", true);
+                            $this->_log("ApplyChanges", "Client Socket connection not successful !");
                         }
                     }
                 }
@@ -329,10 +329,10 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     if(IPS_HasChanges($ParentID)) {
                         $Result = @IPS_ApplyChanges($ParentID);
                         If ($Result) {
-                            $this->_log("ApplyChanges", "Serial Port connection successful !", true);
+                            $this->_log("ApplyChanges", "Serial Port connection successful !");
                         }
                         else {
-                            $this->_log("ApplyChanges", "Serial Port connection not successful !", true);
+                            $this->_log("ApplyChanges", "Serial Port connection not successful !");
                         }
                     }
                 }
@@ -344,13 +344,13 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     else {
                         $this->SetSummary($this->ReadPropertyString('Serial Port'));
                     }
-                    $this->_log("ApplyChanges", "start initial preparation", true);
+                    $this->_log("ApplyChanges", "start initial preparation");
                     if (GetValueBoolean($this->GetIDForIdent("ConnectionStatus")) == false) {
                         SetValueBoolean($this->GetIDForIdent("ConnectionStatus"), true);
                     }
 
                     // Vorbereitung beendet
-                    $this->_log("ApplyChanges", "finish initial preparation", true);
+                    $this->_log("ApplyChanges", "finish initial preparation");
                     $this->SetBuffer("ModuleReady", 1);
 
                     $this->SetStatus(102);
@@ -376,16 +376,16 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             $result = false;
             if ($Connection_Type == 'CONNECTION_Socket') {
                 If (Sys_Ping($this->ReadPropertyString("IPAddress"), 2000)) {
-                    $this->_log("Victron Socket"," IP ".$this->ReadPropertyString("IPAddress")." answered",true);
+                    $this->_log("Victron Socket"," IP ".$this->ReadPropertyString("IPAddress")." answered");
                     $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
                     if (!$status) {
-                        $this->_log("Victron Socket","Port is closed!", true);
+                        $this->_log("Victron Socket","Port is closed!");
                         If (GetValueBoolean($this->GetIDForIdent("ConnectionStatus")) == true) {
                             SetValueBoolean($this->GetIDForIdent("ConnectionStatus"), false);
                         }
                         $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
                         if (!$status) {
-                            $this->_log("Victron Socket","Port is closed!", true);
+                            $this->_log("Victron Socket","Port is closed!",);
                             If (GetValueBoolean($this->GetIDForIdent("ConnectionStatus")) == true) {
                                 SetValueBoolean($this->GetIDForIdent("ConnectionStatus"), false);
                             }
@@ -394,13 +394,13 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     }
                     else {
                         fclose($status);
-                        $this->_log("Victron Socket","Port is open!", true);
+                        $this->_log("Victron Socket","Port is open!");
                         $result = true;
                         $this->SetStatus(102);
                     }
                 }
                 else {
-                    $this->_log("Victron Socket","IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyInteger("Socket")." no answer!", true);
+                    $this->_log("Victron Socket","IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyInteger("Socket")." no answer!");
                     If (GetValueBoolean($this->GetIDForIdent("ConnectionStatus")) == true) {
                         SetValueBoolean($this->GetIDForIdent("ConnectionStatus"), false);
                     }
@@ -431,10 +431,10 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     }
                     break;
                 case 11101:
-                    $this->_log("Victron MessageSink", "Instance ".$SenderID." is connected",true);
+                    $this->_log("Victron MessageSink", "Instance ".$SenderID." is connected");
                     break;
                 case 11102:
-                    $this->_log("Victron MessageSink", "Instance ".$SenderID." is disconnected",true);
+                    $this->_log("Victron MessageSink", "Instance ".$SenderID." is disconnected");
                     break;
                 case 10505:
                     If ($Data[0] == 102) {
@@ -462,11 +462,11 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 		{
             // send to io
             $this->SetBuffer("lastcommand",$payload);
-            $this->_log("Victron","Sendcommand:". $payload, true);
+            $this->_log("Victron","Sendcommand:". $payload);
             $calc = $this->checksum("$payload");
-            $this->_log("Victron","Checksum:". $calc, true);
+            $this->_log("Victron","Checksum:". $calc);
             $payload = ":".$payload.$calc."\n";
-            $this->_log("Victron","Sendcomplete:". $payload, true);
+            $this->_log("Victron","Sendcomplete:". $payload);
             $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $payload))); // Interface GUI
             return $result;
 		}
@@ -485,7 +485,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 for ($n = 1; $n < count($var); $n++) {
                     $label = $var[$n - 1];
                     $labelvalue = $var[$n];
-                    $this->_log("Victron","ReceiveData Key:".$label . ' Value: ' . $labelvalue, true);
+                    $this->_log("Victron","ReceiveData Key:".$label . ' Value: ' . $labelvalue);
 
                     if (($label == "PID" ) && (!$this->ReadAttributeInteger('instance_id'))) {
                         // Initiales Anlegen der Kategorie und der Gerätevariablen
@@ -493,7 +493,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                         // Prüfung ob instance_id gesetzt ?
                         if (empty($this->ReadAttributeInteger('instance_id'))) {
                             $this->WriteAttributeInteger('instance_id', $this->InstanceID);
-                            $this->_log("Victron", "Device: ".$DeviceName." gefunden",true);
+                            $this->_log("Victron", "Device: ".$DeviceName." gefunden");
 
                             // Gerätevariablen anlegen
 
@@ -533,7 +533,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                         if(strpos($Ident,"VEDirect")!==false) {
                             $id = $this->GetIdForIdentRecursive($Ident);
                             if (isset($id)) {
-                                $this->_log("Victron", "write ". $labelvalue . " / " . $divider . " to variable Id:" . $id, true);
+                                $this->_log("Victron", "write ". $labelvalue . " / " . $divider . " to variable Id:" . $id);
                                 switch ($divider) {
                                     case 1:
                                         if ($labelvalue == "ON") {
@@ -567,10 +567,10 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                                 }
                             }
                             else {
-                                $this->_log("Victron", "no Id found !!!", true);
+                                $this->_log("Victron", "no Id found !!!");
                             }
                         } else {
-                            $this->_log("Victron", "no variable-id found for Key: ".$label, true);
+                            $this->_log("Victron", "no variable-id found for Key: ".$label);
                         }
                     }
                 }
@@ -587,7 +587,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
         public function LoadOutputControl(bool $value)
         {
             $value (!$value) ? 4 : 0;
-            $this->_log("Victron Senden:", "LoadOutputControl Value: ".$value, true);
+            $this->_log("Victron Senden:", "LoadOutputControl Value: ".$value);
             $payload = '8'.'ABED'.'00'.hexdec($value);
             $result = $this->TransmitData($payload);
             return (!$result) ? true : false;
@@ -607,8 +607,8 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 return FALSE;
             }
 
-            $this->_log("Victron","Checksum: Len: ".$len, true);
-            $this->_log("Victron","Test: Checksum received: ".$payload[$len-2].$payload[$len-1],true);
+            $this->_log("Victron","Checksum: Len: ".$len);
+            $this->_log("Victron","Test: Checksum received: ".$payload[$len-2].$payload[$len-1]);
 
             $checksum_calc = (0x55 - hexdec($payload[0]));
             for($i=1; $i < $len-2; $i=$i+2) {
@@ -619,7 +619,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             }
             else {
                 $checksum_calc = $checksum_calc & 0x000000FF;
-                $this->_log("Victron","Test: Checksum calculated: ".dechex($checksum_calc),true);
+                $this->_log("Victron","Test: Checksum calculated: ".dechex($checksum_calc));
                 $checksum_rec = hexdec($payload[$len-2].$payload[$len-1]);
                 if ($checksum_calc == $checksum_rec) {
                     return TRUE;
@@ -639,7 +639,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
         protected function CreateCustomVariableProfile(string $profile_id, string $name)
         {
-            $this->_log("Victron","CreateCustomVariableProfile: ". $profile_id." : ".$name,true);
+            $this->_log("Victron","CreateCustomVariableProfile: ". $profile_id." : ".$name);
             switch ($name):
                 case 'Load_output_state':
                     IPS_CreateVariableProfile($profile_id, 0); // boolean
