@@ -66,7 +66,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
             $this->RegisterPropertyBoolean("Open", false);
             $this->RegisterPropertyString('language', 'de');
-            $this->RegisterPropertyInteger('Connection_Type', CONNECTION_Socket);
+            $this->RegisterPropertyString('Connection_Type', CONNECTION_Socket);
             $this->RegisterPropertyInteger("Selection", 0);
             $this->RegisterPropertyString("IPAddress", "192.168.2.2"); //192.168.2.2
             $this->RegisterPropertyInteger("Socket", 10000); // 10000
@@ -98,7 +98,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
         private function GetFormElements()
         {
-            $Connection_Type = $this->ReadPropertyInteger('Connection_Type');
+            $Connection_Type = $this->ReadPropertyString('Connection_Type');
 
             if ($Connection_Type == CONNECTION_Socket) {
                 $instID = IPS_GetInstance($this->InstanceID)['InstanceID'];
@@ -224,7 +224,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
         private function GetFormActions()
         {
-            $Connection_Type = $this->ReadPropertyInteger('Connection_Type');
+            $Connection_Type = $this->ReadPropertyString('Connection_Type');
             $msg = "Ping an ".$this->ReadPropertyString('IPAddress')." / ".$this->ReadPropertyInteger('Socket')." senden";
             $formActions = [];
 
@@ -273,7 +273,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             //Never delete this line!
             parent::ApplyChanges();
 
-            $Connection_Type = $this->ReadPropertyInteger('Connection_Type');
+            $Connection_Type = $this->ReadPropertyString('Connection_Type');
             if ($Connection_Type == CONNECTION_Socket) {
                 $this->ForceParent("{3CFF0FD9-E306-41DB-9B5A-9D06D38576C3}");
             }
@@ -439,7 +439,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     }
                     elseif ($Data[0] == 200) {
                         If ($this->ReadPropertyBoolean("AutoRestart") == true) {
-                            $this->ConnectionTest( $this->ReadPropertyInteger('Connection_Type'));
+                            $this->ConnectionTest( $this->ReadPropertyString('Connection_Type'));
                         }
                         If (GetValueBoolean($this->GetIDForIdent("ConnectionStatus")) == true) {
                             SetValueBoolean($this->GetIDForIdent("ConnectionStatus"), false);
