@@ -133,11 +133,6 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 ];
             }
 
-            $formElements[] = [
-                'type'  => 'Image',
-                'image' => 'data:image/png;base64,' . $this->GetBrandImage()
-            ];
-
             $opts_language = [];
             $opts_language[] = ['caption' => $this->Translate('England'), 'value'   => 'en'];
             $opts_language[] = ['caption' => $this->Translate('Germany'), 'value'   => 'de'];
@@ -202,6 +197,10 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 default:
                     break;
             }
+            $formElements[] = [
+                'type'  => 'Image',
+                'image' => 'data:image/png;base64,' . $this->GetBrandImage()
+            ];
 
             return $formElements;
         }
