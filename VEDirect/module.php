@@ -333,8 +333,8 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                         }
                     }
                 }
-
-                If (($this->ConnectionTest($Connection_Type)) AND ($this->ReadPropertyBoolean("Open") == true)) {
+                $result = $this->ConnectionTest($Connection_Type);
+                If ($result == $this->ReadPropertyBoolean("Open")) {
                     if ($Connection_Type == CONNECTION_Socket) {
                         $this->SetSummary($this->ReadPropertyString('IPAddress'));
                     }
