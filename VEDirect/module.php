@@ -334,7 +334,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     }
                 }
 
-                If (($this->ConnectionTest()) AND ($this->ReadPropertyBoolean("Open") == true)) {
+                If (($this->ConnectionTest($Connection_Type)) AND ($this->ReadPropertyBoolean("Open") == true)) {
                     if ($Connection_Type == CONNECTION_Socket) {
                         $this->SetSummary($this->ReadPropertyString('IPAddress'));
                     }
@@ -368,40 +368,46 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 return;
             }
         }
-        private function ConnectionTest()
+        private function ConnectionTest(string $Connection_Type)
         {
             $result = false;
-            If (Sys_Ping($this->ReadPropertyString("IPAddress"), 2000)) {
-                $this->_log("Victron Socket"," IP ".$this->ReadPropertyString("IPAddress")." answered",true);
-                $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
-                if (!$status) {
-                    $this->_log("Victron Socket","Port is closed!", true);
-                    If (GetValueBoolean($this->GetIDForIdent("ConnectionStatus")) == true) {
-                        SetValueBoolean($this->GetIDForIdent("ConnectionStatus"), false);
-                    }
+            if ($Connection_Type == CONNECTION_Socket) {
+                If (Sys_Ping($this->ReadPropertyString("IPAddress"), 2000)) {
+                    $this->_log("Victron Socket"," IP ".$this->ReadPropertyString("IPAddress")." answered",true);
                     $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
                     if (!$status) {
                         $this->_log("Victron Socket","Port is closed!", true);
                         If (GetValueBoolean($this->GetIDForIdent("ConnectionStatus")) == true) {
                             SetValueBoolean($this->GetIDForIdent("ConnectionStatus"), false);
                         }
-                        $this->SetStatus(104);
+                        $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
+                        if (!$status) {
+                            $this->_log("Victron Socket","Port is closed!", true);
+                            If (GetValueBoolean($this->GetIDForIdent("ConnectionStatus")) == true) {
+                                SetValueBoolean($this->GetIDForIdent("ConnectionStatus"), false);
+                            }
+                            $this->SetStatus(104);
+                        }
+                    }
+                    else {
+                        fclose($status);
+                        $this->_log("Victron Socket","Port is open!", true);
+                        $result = true;
+                        $this->SetStatus(102);
                     }
                 }
                 else {
-                    fclose($status);
-                    $this->_log("Victron Socket","Port is open!", true);
-                    $result = true;
-                    $this->SetStatus(102);
+                    $this->_log("Victron Socket","IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyInteger("Socket")." no answer!", true);
+                    If (GetValueBoolean($this->GetIDForIdent("ConnectionStatus")) == true) {
+                        SetValueBoolean($this->GetIDForIdent("ConnectionStatus"), false);
+                    }
+                    $this->SetStatus(104);
                 }
             }
-            else {
-                $this->_log("Victron Socket","IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyInteger("Socket")." no answer!", true);
-                If (GetValueBoolean($this->GetIDForIdent("ConnectionStatus")) == true) {
-                    SetValueBoolean($this->GetIDForIdent("ConnectionStatus"), false);
-                }
-                $this->SetStatus(104);
+            if ($Connection_Type == CONNECTION_TTY) {
+                $result = true;
             }
+
             return $result;
         }
 
