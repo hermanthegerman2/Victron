@@ -66,9 +66,9 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
             $this->RegisterPropertyBoolean("Open", false);
             $this->RegisterPropertyString('language', 'de');
-            $this->RegisterPropertyInteger('Connection_Type', CONNECTION_TTY);
+            $this->RegisterPropertyInteger('Connection_Type', CONNECTION_Socket);
             $this->RegisterPropertyInteger("Selection", 0);
-            $this->RegisterPropertyString("IPAddress", ""); //192.168.2.2
+            $this->RegisterPropertyString("IPAddress", "192.168.2.2"); //192.168.2.2
             $this->RegisterPropertyInteger("Socket", 10000); // 10000
             $this->RegisterPropertyString("Serial Port", "ttyUSB0");
             $this->RegisterAttributeInteger("instance_id", NULL);
@@ -205,6 +205,14 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 default:
                     break;
             }
+            $formElements[] = [
+                'type'    => 'Label',
+                'caption' => '___ Logging _______________________________________________________________________________________________________________'
+            ];
+            $formElements[] = [
+                "type" => "CheckBox",
+                "name" => "log",
+                "caption" => "connect Client Socket"
             $formElements[] = [
                 'type'  => 'Image',
                 'image' => 'data:image/png;base64,' . $this->GetBrandImage()
