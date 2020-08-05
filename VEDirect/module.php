@@ -76,7 +76,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             $this->RegisterPropertyBoolean("log", true);
             // Statusvariablen anlegen
             $this->RegisterVariableBoolean("ConnectionStatus", "ConnectionStatus", "~Alert.Reversed", 40);
-            $this->DisableAction("Connection Status");
+            $this->DisableAction("ConnectionStatus");
 		}
 
         public function GetConfigurationForm()
