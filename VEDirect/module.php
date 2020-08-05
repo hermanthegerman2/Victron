@@ -75,7 +75,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             $this->RegisterAttributeBoolean("LoadOutput", NULL);
             $this->RegisterPropertyBoolean("log", true);
             // Statusvariablen anlegen
-            $this->RegisterVariableBoolean("Connection Status", "Connection Status", "~Alert.Reversed", 40);
+            $this->RegisterVariableBoolean("ConnectionStatus", "ConnectionStatus", "~Alert.Reversed", 40);
             $this->DisableAction("Connection Status");
 		}
 
@@ -332,8 +332,8 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                         $this->SetSummary($this->ReadPropertyString('Serial Port'));
                     }
                     $this->_log("ApplyChanges", "start initial preparation", true);
-                    if (GetValueBoolean($this->GetIDForIdent("Connection Status")) == false) {
-                        SetValueBoolean($this->GetIDForIdent("Connection Status"), true);
+                    if (GetValueBoolean($this->GetIDForIdent("ConnectionStatus")) == false) {
+                        SetValueBoolean($this->GetIDForIdent("ConnectionStatus"), true);
                     }
 
                     // Vorbereitung beendet
@@ -366,14 +366,14 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
                 if (!$status) {
                     $this->_log("Victron Socket","Port is closed!", true);
-                    If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
-                        SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
+                    If (GetValueBoolean($this->GetIDForIdent("ConnectionStatus")) == true) {
+                        SetValueBoolean($this->GetIDForIdent("ConnectionStatus"), false);
                     }
                     $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
                     if (!$status) {
                         $this->_log("Victron Socket","Port is closed!", true);
-                        If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
-                            SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
+                        If (GetValueBoolean($this->GetIDForIdent("ConnectionStatus")) == true) {
+                            SetValueBoolean($this->GetIDForIdent("ConnectionStatus"), false);
                         }
                         $this->SetStatus(104);
                     }
@@ -387,8 +387,8 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             }
             else {
                 $this->_log("Victron Socket","IP ".$this->ReadPropertyString("IPAddress")."Port ".$this->ReadPropertyInteger("Socket")." no answer!", true);
-                If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
-                    SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
+                If (GetValueBoolean($this->GetIDForIdent("ConnectionStatus")) == true) {
+                    SetValueBoolean($this->GetIDForIdent("ConnectionStatus"), false);
                 }
                 $this->SetStatus(104);
             }
@@ -425,8 +425,8 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                         If ($this->ReadPropertyBoolean("AutoRestart") == true) {
                             $this->ConnectionTest();
                         }
-                        If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == true) {
-                            SetValueBoolean($this->GetIDForIdent("SocketStatus"), false);
+                        If (GetValueBoolean($this->GetIDForIdent("ConnectionStatus")) == true) {
+                            SetValueBoolean($this->GetIDForIdent("ConnectionStatus"), false);
                         }
                     }
                     break;
