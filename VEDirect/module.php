@@ -63,16 +63,13 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 			parent::Create();
 
             // Modul-Eigenschaftserstellung
-            $this->RegisterPropertyBoolean('module_disable', false);
-            $this->RegisterPropertyString('vg_selector', '');
+
             $this->RegisterPropertyString('language', 'de');
-            $this->RegisterPropertyInteger('Connection_Type', CONNECTION_UNDEFINED);
-            $this->RegisterPropertyBoolean("Open", true);
+            $this->RegisterPropertyInteger('Connection_Type', CONNECTION_TTY);
             $this->RegisterPropertyInteger("Selection", 0);
-            $this->RegisterPropertyString("IPAddress", "192.168.2.2");
-            $this->RegisterPropertyInteger("Socket", 10000);
+            $this->RegisterPropertyString("IPAddress", ""); //192.168.2.2
+            $this->RegisterPropertyInteger("Socket", ''); // 10000
             $this->RegisterPropertyString("Serial Port", "ttyUSB0");
-            $this->RegisterPropertyBoolean("AutoRestart", true);
             $this->RegisterAttributeInteger("instance_id", NULL);
             $this->RegisterAttributeBoolean("LoadOutput", NULL);
             $this->RegisterPropertyBoolean("log", true);
@@ -156,6 +153,10 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                         'value'   => CONNECTION_TTY
                     ]
                 ]
+            ];
+            $formElements[] = [
+                'type'    => 'Label',
+                'caption' => '___ Connection Type Parameters ___________________________________________________________________________________________'
             ];
 
             switch ($Connection_Type) {
