@@ -79,13 +79,6 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             // Statusvariablen anlegen
             $this->RegisterVariableBoolean("SocketStatus", "SocketStatus", "~Alert.Reversed", 40);
             $this->DisableAction("SocketStatus");
-            $Connection_Type = $this->ReadPropertyInteger('Connection_Type');
-            if ($Connection_Type == CONNECTION_Socket) {
-                $this->ConnectParent("{3CFF0FD9-E306-41DB-9B5A-9D06D38576C3}");
-            }
-            if ($Connection_Type == CONNECTION_TTY) {
-                $this->ConnectParent("{6DC3D946-0D31-450F-A8C6-C42DB8D7D4F1}");
-            }
 		}
 
         public function GetConfigurationForm()
@@ -257,6 +250,14 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
         {
             //Never delete this line!
             parent::ApplyChanges();
+
+            $Connection_Type = $this->ReadPropertyInteger('Connection_Type');
+            if ($Connection_Type == CONNECTION_Socket) {
+                $this->ConnectParent("{3CFF0FD9-E306-41DB-9B5A-9D06D38576C3}");
+            }
+            if ($Connection_Type == CONNECTION_TTY) {
+                $this->ConnectParent("{6DC3D946-0D31-450F-A8C6-C42DB8D7D4F1}");
+            }
 
             // Nachrichten abonnieren
             $this->RegisterMessage(0, 10100); // Alle Kernelmessages (10103 muss im MessageSink ausgewertet werden.)
