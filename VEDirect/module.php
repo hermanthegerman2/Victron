@@ -208,7 +208,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
         private function GetFormActions()
         {
             $Connection_Type = $this->ReadPropertyInteger('Connection_Type');
-            $msg = "Ping an ".$this->ReadPropertyString('IPAddress')." / ".$this->ReadPropertyString('Socket')." senden";
+            $msg = "Ping an ".$this->ReadPropertyString('IPAddress')." / ".$this->ReadPropertyInteger('Socket')." senden";
             $formActions = [];
 
             if ($Connection_Type == CONNECTION_Socket) {
