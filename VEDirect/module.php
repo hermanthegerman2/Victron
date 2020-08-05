@@ -105,9 +105,9 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 $instID = IPS_GetInstance($this->InstanceID)['InstanceID'];
                 $connectionID = IPS_GetInstance($instID)['ConnectionID'];
                 if (IPS_GetInstance($connectionID)['InstanceStatus'] != IS_ACTIVE) {
-                    $msg = 'Socket Connection is not active!';
+                    $msg = 'Client Socket Connection is not active!';
                 } else {
-                    $msg = 'Socket Connection is OK!';
+                    $msg = 'Client Socket Connection is OK!';
                 }
                 $formElements[] = [
                     'type'    => 'Label',
@@ -118,9 +118,9 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 $instID = IPS_GetInstance($this->InstanceID)['InstanceID'];
                 $connectionID = IPS_GetInstance($instID)['ConnectionID'];
                 if (IPS_GetInstance($connectionID)['InstanceStatus'] != IS_ACTIVE) {
-                    $msg = 'TTY Connection is not active!';
+                    $msg = 'Serial Port Connection is not active!';
                 } else {
-                    $msg = 'TTY Connection is OK!';
+                    $msg = 'Serial Port Connection is OK!';
                 }
                 $formElements[] = [
                     'type'    => 'Label',
