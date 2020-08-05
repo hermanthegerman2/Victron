@@ -37,27 +37,6 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="TaskManager">
-    <task id="LOCAL-00131" summary="Form">
-      <created>1596617442287</created>
-      <option name="number" value="00131" />
-      <option name="presentableId" value="LOCAL-00131" />
-      <option name="project" value="LOCAL" />
-      <updated>1596617442287</updated>
-    </task>
-    <task id="LOCAL-00132" summary="Form">
-      <created>1596617595404</created>
-      <option name="number" value="00132" />
-      <option name="presentableId" value="LOCAL-00132" />
-      <option name="project" value="LOCAL" />
-      <updated>1596617595404</updated>
-    </task>
-    <task id="LOCAL-00133" summary="Form">
-      <created>1596618716437</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
-      <option name="project" value="LOCAL" />
-      <updated>1596618716437</updated>
-    </task>
     <task id="LOCAL-00134" summary="Form">
       <created>1596618948985</created>
       <option name="number" value="00134" />
@@ -387,7 +366,28 @@
       <option name="project" value="LOCAL" />
       <updated>1596644718707</updated>
     </task>
-    <option name="localTasksCounter" value="181" />
+    <task id="LOCAL-00181" summary="Form">
+      <created>1596645308608</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1596645308609</updated>
+    </task>
+    <task id="LOCAL-00182" summary="Form">
+      <created>1596645397235</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
+      <option name="project" value="LOCAL" />
+      <updated>1596645397236</updated>
+    </task>
+    <task id="LOCAL-00183" summary="Form">
+      <created>1596645468531</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
+      <option name="project" value="LOCAL" />
+      <updated>1596645468531</updated>
+    </task>
+    <option name="localTasksCounter" value="184" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -415,10 +415,10 @@
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
     <state x="2234" y="503" key="NewPhpFileDialog/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596642616337" />
-    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2" timestamp="1596644722114">
+    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2" timestamp="1596645470923">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
-    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596644722114" />
+    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596645470923" />
     <state x="2217" y="494" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596614124462">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>

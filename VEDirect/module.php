@@ -201,15 +201,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 default:
                     break;
             }
-            $formElements[] = [
-                'type'    => 'Label',
-                'caption' => $this->Translate('___ Options _______________________________________________________________________________________________________________')
-            ];
-            $formElements[] = [
-                "type" => "CheckBox",
-                "name" => "log",
-                "caption" => $this->Translate("enable Logging")
-            ];
+
             /*$opts_language = [];
             $opts_language[] = ['caption' => $this->Translate('England'), 'value' => 'en'];
             $opts_language[] = ['caption' => $this->Translate('Germany'), 'value' => 'de'];
@@ -219,6 +211,16 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 'caption' => $this->Translate('Language'),
                 'options' => $opts_language
             ];*/
+
+            $formElements[] = [
+                'type'    => 'Label',
+                'caption' => $this->Translate('___ Options _______________________________________________________________________________________________________________')
+            ];
+            $formElements[] = [
+                "type" => "CheckBox",
+                "name" => "log",
+                "caption" => $this->Translate("enable Logging")
+            ];
 
             $formElements[] = [
                 'type'  => 'Image',
