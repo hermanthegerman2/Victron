@@ -103,19 +103,24 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
         {
             $Connection_Type = $this->ReadPropertyInteger('Connection_Type');
 
-            $formElements = [];
-            $formElements[] = [
-                'type'    => 'CheckBox',
-                'name'    => 'module_disable',
-                'caption' => 'Instance is disabled'
-            ];
-
             if ($Connection_Type == CONNECTION_Socket) {
                 $instID = IPS_GetInstanceListByModuleID('{3CFF0FD9-E306-41DB-9B5A-9D06D38576C3}')[0];
                 if (IPS_GetInstance($instID)['InstanceStatus'] != IS_ACTIVE) {
-                    $msg = 'Error: Symcon Connect is not active!';
+                    $msg = 'Socket Connection is not active!';
                 } else {
-                    $msg = 'Status: Symcon Connect is OK!';
+                    $msg = 'Socket Connection is OK!';
+                }
+                $formElements[] = [
+                    'type'    => 'Label',
+                    'caption' => $msg
+                ];
+            }
+            if ($Connection_Type == CONNECTION_TTY) {
+                $instID = IPS_GetInstanceListByModuleID('{6DC3D946-0D31-450F-A8C6-C42DB8D7D4F1}')[0];
+                if (IPS_GetInstance($instID)['InstanceStatus'] != IS_ACTIVE) {
+                    $msg = 'TTY Connection is not active!';
+                } else {
+                    $msg = 'TTY Connection is OK!';
                 }
                 $formElements[] = [
                     'type'    => 'Label',
