@@ -2,6 +2,12 @@
 // helper properties
 declare(strict_types=1);
 
+if (!defined('CONNECTION_UNDEFINED')) {
+    define('CONNECTION_UNDEFINED', 0);
+    define('CONNECTION_Socket', 1);
+    define('CONNECTION_TTY', 2);
+}
+
 trait VictronConstants
 {
      protected $variable_mapping = [
