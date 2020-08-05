@@ -109,7 +109,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             $Connection_Type = $this->ReadPropertyInteger('Connection_Type');
 
             if ($Connection_Type == CONNECTION_Socket) {
-                $instID = IPS_GetInstance($this->InstanceID);
+                $instID = IPS_GetInstance($this->InstanceID)[InstanceID];
                 $connectionID = IPS_GetInstance($instID)['ConnectionID'];
                 if (IPS_GetInstance($connectionID)['InstanceStatus'] != IS_ACTIVE) {
                     $msg = 'Socket Connection is not active!';
@@ -122,7 +122,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 ];
             }
             if ($Connection_Type == CONNECTION_TTY) {
-                $instID = IPS_GetInstance($this->InstanceID);
+                $instID = IPS_GetInstance($this->InstanceID)[InstanceID];
                 $connectionID = IPS_GetInstance($instID)['ConnectionID'];
                 if (IPS_GetInstance($connectionID)['InstanceStatus'] != IS_ACTIVE) {
                     $msg = 'TTY Connection is not active!';
