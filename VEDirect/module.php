@@ -439,7 +439,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     }
                     elseif ($Data[0] == 200) {
                         If ($this->ReadPropertyBoolean("AutoRestart") == true) {
-                            $this->ConnectionTest();
+                            $this->ConnectionTest( $this->ReadPropertyInteger('Connection_Type'));
                         }
                         If (GetValueBoolean($this->GetIDForIdent("ConnectionStatus")) == true) {
                             SetValueBoolean($this->GetIDForIdent("ConnectionStatus"), false);
