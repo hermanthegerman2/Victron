@@ -75,7 +75,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             $this->RegisterAttributeBoolean("LoadOutput", NULL);
             $this->RegisterPropertyBoolean("log", true);
             // Statusvariablen anlegen
-            $this->RegisterVariableBoolean("SocketStatus", "SocketStatus", "~Alert.Reversed", 40);
+            $this->RegisterVariableBoolean("Connection Status", "Connection Status", "~Alert.Reversed", 40);
             $this->DisableAction("Connection Status");
 		}
 
