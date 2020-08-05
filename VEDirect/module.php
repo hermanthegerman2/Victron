@@ -156,13 +156,14 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     ]
                 ]
             ];
-            $formElements[] = [
-                'type'    => 'Label',
-                'caption' => '___ Connection Type Parameters ___________________________________________________________________________________________'
-            ];
 
             switch ($Connection_Type) {
+
                 case 'CONNECTION_TTY':
+                    $formElements[] = [
+                        'type'    => 'Label',
+                        'caption' => '___ Serial Port Connection Parameters ___________________________________________________________________________________________'
+                    ];
 
                     $formElements[] = [
                         'type'    => 'Label',
@@ -176,6 +177,11 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     ];
                     break;
                 case 'CONNECTION_Socket':
+
+                    $formElements[] = [
+                        'type'    => 'Label',
+                        'caption' => '___ Client Socket Connection Type Parameters ____________________________________________________________________________________'
+                    ];
 
                     $formElements[] = [
                         'type'    => 'Label',
