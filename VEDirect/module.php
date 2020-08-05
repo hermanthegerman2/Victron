@@ -411,12 +411,12 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             return $result;
         }
 
-        public function GetConfigurationForParent()
+        /*public function GetConfigurationForParent()
         {
             $JsonArray = array( "Host" => $this->ReadPropertyString('IPAddress'), "Port" => $this->ReadPropertyInteger("Socket"), "Open" => $this->ReadPropertyBoolean("Open"));
             $Json = json_encode($JsonArray);
             return $Json;
-        }
+        }*/
 
         public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
         {
