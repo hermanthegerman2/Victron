@@ -160,20 +160,20 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
             switch ($Connection_Type) {
                 case CONNECTION_TTY:
-                    $formElements[]
+                    $formElements[];
                     $formElements[] = [
                         'type'    => 'Label',
-                        'caption' => 'Push "Login" in the action part of this configuration form.'
+                        'caption' => 'Serial Port Connection'
                     ];
 
                     $formElements[] = [
+                        'name'    => 'Serial Port',
                         'type'    => 'ValidationTextBox',
-                        'items'   => $items,
                         'caption' => 'Serial Port (ttyUSB0)'
                     ];
                     break;
                 case CONNECTION_Socket:
-                    $formElements[]
+                    $formElements[];
                     $formElements[] = [
                         'type'    => 'Label',
                         'caption' => 'Client Socket Connection'
