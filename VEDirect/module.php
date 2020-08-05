@@ -144,15 +144,15 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 'options' => [
                     [
                         'caption' => 'Please select a connection type',
-                        'value'   => CONNECTION_UNDEFINED
+                        'value'   => 'CONNECTION_UNDEFINED'
                     ],
                     [
                         'caption' => 'Client Socket',
-                        'value'   => CONNECTION_Socket
+                        'value'   => 'CONNECTION_Socket'
                     ],
                     [
                         'caption' => 'Serial Port',
-                        'value'   => CONNECTION_TTY
+                        'value'   => 'CONNECTION_TTY'
                     ]
                 ]
             ];
@@ -172,7 +172,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     $formElements[] = [
                         'name'    => 'Serial Port',
                         'type'    => 'ValidationTextBox',
-                        'caption' => 'Serial Port (ttyUSB0)'
+                        'caption' => 'Serial Port (for example: ttyUSB0 or COM1)'
                     ];
                     break;
                 case CONNECTION_Socket:
