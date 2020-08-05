@@ -63,7 +63,8 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 			parent::Create();
 
             // Modul-Eigenschaftserstellung
-
+            $this->RegisterPropertyInteger("Host", NULL);
+            $this->RegisterPropertyBoolean("Open", false);
             $this->RegisterPropertyString('language', 'de');
             $this->RegisterPropertyInteger('Connection_Type', CONNECTION_TTY);
             $this->RegisterPropertyInteger("Selection", 0);
