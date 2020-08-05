@@ -66,7 +66,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
             $this->RegisterPropertyBoolean("Open", false);
             $this->RegisterPropertyString('language', 'de');
-            $this->RegisterPropertyString('Connection_Type', CONNECTION_Socket);
+            $this->RegisterPropertyString('Connection_Type', 'CONNECTION_UNDEFINED');
             $this->RegisterPropertyInteger("Selection", 0);
             $this->RegisterPropertyString("IPAddress", "192.168.2.2"); //192.168.2.2
             $this->RegisterPropertyInteger("Socket", 10000); // 10000
