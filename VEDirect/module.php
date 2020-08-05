@@ -128,6 +128,16 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 'image' => 'data:image/png;base64,' . $this->GetBrandImage()
             ];
 
+            $opts_language = [];
+            $opts_language[] = ['caption' => $this->Translate('England'), 'value'   => 'en'];
+            $opts_language[] = ['caption' => $this->Translate('Germany'), 'value'   => 'de'];
+            $formElements[] = [
+                'type'    => 'Select',
+                'name'    => 'language',
+                'caption' => 'Language',
+                'options' => $opts_language
+            ];
+
             $formElements[] = [
                 'type'    => 'Select',
                 'name'    => 'Connection_Type',
@@ -138,12 +148,12 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                         'value'   => CONNECTION_UNDEFINED
                     ],
                     [
-                        'caption' => 'VictronVE via IP-Address and Port Connect',
-                        'value'   => CONNECTION_TTY
+                        'caption' => 'IP/Port Connect',
+                        'value'   => CONNECTION_Socket
                     ],
                     [
-                        'caption' => 'VictronVE via IP-Address and Port Connect',
-                        'value'   => CONNECTION_Socket
+                        'caption' => 'Serial TTY Connect',
+                        'value'   => CONNECTION_TTY
                     ]
                 ]
             ];
@@ -157,9 +167,9 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     ];
 
                     $formElements[] = [
-                        'type'    => 'ExpansionPanel',
+                        'type'    => 'ValidationTextBox',
                         'items'   => $items,
-                        'caption' => 'Miele@Home Login'
+                        'caption' => 'TTY Port (ttyUSB0)'
                     ];
                     break;
                 case CONNECTION_Socket:
@@ -178,57 +188,6 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                         'type'    => 'ValidationTextBox',
                         'caption' => 'Socket'
                     ];
-
-                    $items[] = [
-                        'type'    => 'Label',
-                        'caption' => 'Language Settings'
-                    ];
-
-                    $opts_language = [];
-                    $opts_language[] = ['caption' => $this->Translate('England'), 'value'   => 'en'];
-                    $opts_language[] = ['caption' => $this->Translate('Germany'), 'value'   => 'de'];
-                    $items[] = [
-                        'type'    => 'Select',
-                        'name'    => 'language',
-                        'caption' => 'Language',
-                        'options' => $opts_language
-                    ];
-
-                    $opts_vg_selector = [];
-                    $opts_vg_selector[] = ['caption' => $this->Translate('England'), 'value' => 'en-GB'];
-                    $opts_vg_selector[] = ['caption' => $this->Translate('Germany'), 'value' => 'de-DE'];
-                    $opts_vg_selector[] = ['caption' => $this->Translate('Switzerland'), 'value' => 'de-CH'];
-                    $opts_vg_selector[] = ['caption' => $this->Translate('Austria'), 'value' => 'de-AT'];
-                    $opts_vg_selector[] = ['caption' => $this->Translate('Netherlands'), 'value' => 'nl-NL'];
-                    $opts_vg_selector[] = ['caption' => $this->Translate('Belgium'), 'value' => 'nl-BE'];
-                    $opts_vg_selector[] = ['caption' => $this->Translate('Luxembourg'), 'value' => 'de-LU'];
-                    $items[] = [
-                        'type'    => 'Select',
-                        'name'    => 'vg_selector',
-                        'caption' => 'VG-Selector',
-                        'options' => $opts_vg_selector
-                    ];
-
-                    $items[] = [
-                        'type'    => 'Label',
-                        'caption' => 'Victron'
-                    ];
-                    $items[] = [
-                        'name'    => 'IPAddress',
-                        'type'    => 'ValidationTextBox',
-                        'caption' => 'IPAddress'
-                    ];
-                    $items[] = [
-                        'name'    => 'Socket',
-                        'type'    => 'ValidationTextBox',
-                        'caption' => 'Socket'
-                    ];
-
-                    $formElements[] = [
-                        'type'    => 'ExpansionPanel',
-                        'items'   => $items,
-                        'caption' => 'Victron Verbindungsdaten'
-                    ];
                     break;
                 default:
                     break;
@@ -240,26 +199,34 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
         private function GetFormActions()
         {
             $Connection_Type = $this->ReadPropertyInteger('Connection_Type');
-
+            $msg = "Ping an ".$this->ReadPropertyInteger('IPAddress')." senden";
             $formActions = [];
 
             if ($Connection_Type == CONNECTION_Socket) {
                 $formActions[] = [
                     'type'    => 'Label',
-                    'caption' => 'Login with your Miele@Home username and Miele@Home password:'
+                    'caption' => $msg
                 ];
                 $formActions[] = [
                     'type'    => 'Button',
-                    'caption' => 'Login at Miele@Home',
+                    'caption' => 'Ping',
                     'onClick' => ''
                 ];
             }
 
-            $formActions[] = [
-                'type'    => 'Button',
-                'caption' => 'Test access',
-                'onClick' => ''
-            ];
+            if ($Connection_Type == CONNECTION_TTY) {
+                $Connection_Type = $this->ReadPropertyInteger('Serial Port');
+                $msg = "Ping an ".$this->ReadPropertyInteger('Serial Port')." senden";
+                $formActions[] = [
+                    'type'    => 'Label',
+                    'caption' => $msg
+                ];
+                $formActions[] = [
+                    'type'    => 'Button',
+                    'caption' => 'Ping',
+                    'onClick' => ''
+                ];
+            }
 
             return $formActions;
         }
