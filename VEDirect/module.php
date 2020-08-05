@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+define('None', 0);
 
 require_once __DIR__ . "/../libs/VictronConstants.php"; // Victron Daten Library
 require_once __DIR__ . "/../libs/ModuleHelper.php"; // globale Funktionen
