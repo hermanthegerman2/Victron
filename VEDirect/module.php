@@ -137,16 +137,6 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 ];
             }
 
-            $opts_language = [];
-            $opts_language[] = ['caption' => $this->Translate('England'), 'value'   => 'en'];
-            $opts_language[] = ['caption' => $this->Translate('Germany'), 'value'   => 'de'];
-            $formElements[] = [
-                'type'    => 'Select',
-                'name'    => 'language',
-                'caption' => 'Language',
-                'options' => $opts_language
-            ];
-
             $formElements[] = [
                 'type'    => 'Select',
                 'name'    => 'Connection_Type',
@@ -207,13 +197,23 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             }
             $formElements[] = [
                 'type'    => 'Label',
-                'caption' => '___ Logging _______________________________________________________________________________________________________________'
+                'caption' => '___ Options _______________________________________________________________________________________________________________'
             ];
             $formElements[] = [
                 "type" => "CheckBox",
                 "name" => "log",
                 "caption" => "enable Logging"
             ];
+            $opts_language = [];
+            $opts_language[] = ['caption' => $this->Translate('England'), 'value'   => 'en'];
+            $opts_language[] = ['caption' => $this->Translate('Germany'), 'value'   => 'de'];
+            $formElements[] = [
+                'type'    => 'Select',
+                'name'    => 'language',
+                'caption' => 'Language',
+                'options' => $opts_language
+            ];
+
             $formElements[] = [
                 'type'  => 'Image',
                 'image' => 'data:image/png;base64,' . $this->GetBrandImage()
