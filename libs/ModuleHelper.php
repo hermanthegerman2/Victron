@@ -24,7 +24,7 @@ trait ModuleHelper
      * @param mixed $message
      * @param bool $debug
      */
-    protected function _log($sender = NULL, $message = '', $debug = true)
+    protected function _log($sender = NULL, $message = '')
     {
         if ($this->ReadPropertyBoolean('log')) {
             if (is_array($message)) {
@@ -32,7 +32,10 @@ trait ModuleHelper
             }
             IPS_LogMessage($sender, $message);
         }
-        if ($debug == true) {
+        if ($this->ReadPropertyBoolean('debug')) {
+            if (is_array($message)) {
+                $message = json_encode($message);
+            }
             $this->SendDebug($sender, $message, 0);
         }
     }

@@ -73,6 +73,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             $this->RegisterPropertyString("Serial Port", "ttyUSB0");
             $this->RegisterAttributeInteger("instance_id", NULL);
             $this->RegisterAttributeBoolean("LoadOutput", NULL);
+            $this->RegisterPropertyBoolean("debug", true);
             $this->RegisterPropertyBoolean("log", true);
             $this->RegisterPropertyBoolean("AutoRestart", true);
             // Statusvariablen anlegen
@@ -107,6 +108,11 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 "type" => "CheckBox",
                 "name" => "log",
                 "caption" => $this->Translate("enable Logging")
+            ];
+            $formElements[] = [
+                "type" => "CheckBox",
+                "name" => "debug",
+                "caption" => $this->Translate("enable debug messages")
             ];
 
             if ($Connection_Type == 'CONNECTION_Socket') {

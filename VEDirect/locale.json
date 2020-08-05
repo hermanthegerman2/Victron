@@ -3,7 +3,8 @@
         "de": {
             "England": "England",
             "Germany": "Deutschland",
-            "enable Logging": "Fehlermeldungen aktiv",
+            "enable Logging": "Nachrichten im Log aktiv",
+            "enable debug messages": "Debug Nachrichten aktiv",
             "Language": "Sprache",
             "___ Options _______________________________________________________________________________________________________________": "___ Einstellungen ___________________________________________________________________________________________________________",
             "Client Socket Connection": "Client Socket Verbindung",
