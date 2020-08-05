@@ -2,8 +2,6 @@
 // helper properties
 declare(strict_types=1);
 
-namespace Constants;
-
 trait VictronConstants
 {
      protected $variable_mapping = [

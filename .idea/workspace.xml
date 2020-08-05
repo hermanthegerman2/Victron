@@ -19,7 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="743ffc69-5e4a-46cd-b509-289612cf2695" name="Default Changelist" comment="" />
+    <list default="true" id="743ffc69-5e4a-46cd-b509-289612cf2695" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/libs/images.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VEDirect/module.php" beforeDir="false" afterPath="$PROJECT_DIR$/VEDirect/module.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ModuleHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/libs/ModuleHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/VictronConstants.php" beforeDir="false" afterPath="$PROJECT_DIR$/libs/VictronConstants.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,20 +41,6 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="TaskManager">
-    <task id="LOCAL-00077" summary="Form">
-      <created>1596503444612</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1596503444612</updated>
-    </task>
-    <task id="LOCAL-00078" summary="Form">
-      <created>1596503502661</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1596503502661</updated>
-    </task>
     <task id="LOCAL-00079" summary="Form">
       <created>1596504107070</created>
       <option name="number" value="00079" />
@@ -385,7 +377,21 @@
       <option name="project" value="LOCAL" />
       <updated>1596612881267</updated>
     </task>
-    <option name="localTasksCounter" value="127" />
+    <task id="LOCAL-00127" summary="Form">
+      <created>1596613342486</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1596613342486</updated>
+    </task>
+    <task id="LOCAL-00128" summary="Form">
+      <created>1596613412476</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1596613412476</updated>
+    </task>
+    <option name="localTasksCounter" value="129" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -409,14 +415,18 @@
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
     <state x="1854" y="235" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596482550120" />
-    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2" timestamp="1596612886984">
+    <state x="2234" y="503" key="NewPhpFileDialog" timestamp="1596613777808">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
-    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596612886984" />
-    <state x="2217" y="494" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596545516158">
+    <state x="2234" y="503" key="NewPhpFileDialog/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596613777808" />
+    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2" timestamp="1596613414703">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
-    <state x="2217" y="494" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596545516158" />
+    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596613414703" />
+    <state x="2217" y="494" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596614124462">
+      <screen x="1440" y="0" width="1920" height="1160" />
+    </state>
+    <state x="2217" y="494" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596614124462" />
     <state x="2056" y="270" width="672" height="677" key="run.anything.popup" timestamp="1596572903902">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
