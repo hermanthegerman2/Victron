@@ -70,7 +70,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             $this->RegisterPropertyInteger("Selection", 0);
             $this->RegisterPropertyString("IPAddress", "192.168.2.2"); //192.168.2.2
             $this->RegisterPropertyInteger("Socket", 10000); // 10000
-            $this->RegisterPropertyString("Serial Port", "ttyUSB0");
+            $this->RegisterPropertyString("Serial Port", "/dev/ttyUSB0");
             $this->RegisterAttributeInteger("instance_id", NULL);
             $this->RegisterAttributeBoolean("LoadOutput", NULL);
             $this->RegisterPropertyBoolean("debug", true);
@@ -188,7 +188,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     $formElements[] = [
                         'name'    => 'Serial Port',
                         'type'    => 'ValidationTextBox',
-                        'caption' => $this->Translate('Serial Port (for example: ttyUSB0 or COM1)')
+                        'caption' => $this->Translate('Serial Port (for example: /dev/ttyUSB0 or COM1)')
                     ];
                     break;
                 case 'CONNECTION_Socket':
