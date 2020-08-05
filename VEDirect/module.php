@@ -212,7 +212,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             $formElements[] = [
                 "type" => "CheckBox",
                 "name" => "log",
-                "caption" => "connect Client Socket"
+                "caption" => "enable Logging"
             ];
             $formElements[] = [
                 'type'  => 'Image',
