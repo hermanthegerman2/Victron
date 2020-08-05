@@ -67,7 +67,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             // Modul-Eigenschaftserstellung
             $this->RegisterPropertyBoolean('module_disable', false);
             $this->RegisterPropertyString('vg_selector', '');
-            $this->RegisterPropertyString('language', '');
+            $this->RegisterPropertyString('language', 'de');
             $this->RegisterPropertyInteger('Connection_Type', CONNECTION_UNDEFINED);
             $this->RegisterPropertyBoolean("Open", true);
             $this->RegisterPropertyInteger("Selection", 0);
@@ -204,7 +204,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
         private function GetFormActions()
         {
             $Connection_Type = $this->ReadPropertyInteger('Connection_Type');
-            $msg = "Ping an ".$this->ReadPropertyString('IPAddress')." senden";
+            $msg = "Ping an ".$this->ReadPropertyString('IPAddress')." / ".$this->ReadPropertyString('Socket')." senden";
             $formActions = [];
 
             if ($Connection_Type == CONNECTION_Socket) {
@@ -215,7 +215,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 $formActions[] = [
                     'type'    => 'Button',
                     'caption' => 'Ping',
-                    'onClick' => ''
+                    'onClick' => 'echo VEDirect_ConnectionTest()'
                 ];
             }
 
@@ -229,7 +229,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 $formActions[] = [
                     'type'    => 'Button',
                     'caption' => 'Ping',
-                    'onClick' => ''
+                    'onClick' => 'echo VEDirect_ConnectionTest()'
                 ];
             }
 
