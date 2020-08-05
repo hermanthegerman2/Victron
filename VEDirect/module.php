@@ -210,15 +210,15 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 "name" => "log",
                 "caption" => $this->Translate("enable Logging")
             ];
-            $opts_language = [];
-            $opts_language[] = ['caption' => $this->Translate('England'), 'value'   => 'en'];
-            $opts_language[] = ['caption' => $this->Translate('Germany'), 'value'   => 'de'];
+            /*$opts_language = [];
+            $opts_language[] = ['caption' => $this->Translate('England'), 'value' => 'en'];
+            $opts_language[] = ['caption' => $this->Translate('Germany'), 'value' => 'de'];
             $formElements[] = [
                 'type'    => 'Select',
                 'name'    => 'language',
                 'caption' => $this->Translate('Language'),
                 'options' => $opts_language
-            ];
+            ];*/
 
             $formElements[] = [
                 'type'  => 'Image',
