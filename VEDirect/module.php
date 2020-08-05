@@ -213,6 +213,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 "type" => "CheckBox",
                 "name" => "log",
                 "caption" => "connect Client Socket"
+            ];
             $formElements[] = [
                 'type'  => 'Image',
                 'image' => 'data:image/png;base64,' . $this->GetBrandImage()
