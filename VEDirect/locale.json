@@ -1,8 +1,32 @@
 {
     "translations": {
         "de": {
-            "Translation 1": "Übersetzung 1",
-            "Translation 2": "Übersetzung 2"
+            "England": "England",
+            "Germany": "Deutschland",
+            "enable Logging": "Fehlermeldungen aktiv",
+            "Language": "Sprache",
+            "___ Options _______________________________________________________________________________________________________________": "___ Einstellungen __________________________________________________________________________________________________________",
+            "Client Socket Connection": "Client Socket Verbindung",
+            "___ Client Socket Connection Parameters ___________________________________________________________________________________": "___ Client Socket Verbindungs Parameter ____________________________________________________________________________________",
+            "Serial Port (for example: ttyUSB0 or COM1)": "Serial Port (z. B.: ttyUSB0 oder COM1)",
+            "Serial Port Connection:": "Serial Port Verbindung",
+            "___ Serial Port Connection Parameters _____________________________________________________________________________________": "___ Serial Port Verbindungs Parameter ______________________________________________________________________________________",
+            "Please select a connection type": "Wählen sie den Verbindungstyp",
+            "Connection Type": "Verbindungstyp",
+            "Serial Port Connection is OK!": "Serial Port Verbindung ist OK!",
+            "Serial Port Connection is not active!": "Serial Port Verbindung ist nicht aktiv!",
+            "connect Serial Port": "verbinde Serial Port",
+            "Client Socket Connection is not active!": "Client Socket Verbindung ist nicht aktiv!",
+            "Client Socket Connection is OK!": "Client Socket Verbindung ist OK!",
+            "connect Client Socket": "verbinde Client Socket",
+
+
+            "Instance getting created": "Instanz wird erstellt",
+            "Instance is active": "Instanz ist aktiv",
+            "Instance is deleted": "Instanz wird gelöscht",
+            "Instance is inactive": "Instanz ist inaktiv",
+            "Instance is not created": "Instanz wurde nicht erzeugt",
+            "Instance Error": "Instanz fehlerhaft"
         }
     }
 }

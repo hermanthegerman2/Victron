@@ -104,14 +104,14 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 $instID = IPS_GetInstance($this->InstanceID)['InstanceID'];
                 $connectionID = IPS_GetInstance($instID)['ConnectionID'];
                 if (IPS_GetInstance($connectionID)['InstanceStatus'] != IS_ACTIVE) {
-                    $msg = 'Client Socket Connection is not active!';
+                    $msg = $this->Translate('Client Socket Connection is not active!');
                 } else {
-                    $msg = 'Client Socket Connection is OK!';
+                    $msg = $this->Translate('Client Socket Connection is OK!');
                 }
                 $formElements[] = [
                     "type" => "CheckBox",
                     "name" => "Open",
-                    "caption" => "connect Client Socket"
+                    "caption" => $this->Translate("connect Client Socket")
                 ];
                 $formElements[] = [
                     'type'    => 'Label',
@@ -122,14 +122,14 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 $instID = IPS_GetInstance($this->InstanceID)['InstanceID'];
                 $connectionID = IPS_GetInstance($instID)['ConnectionID'];
                 if (IPS_GetInstance($connectionID)['InstanceStatus'] != IS_ACTIVE) {
-                    $msg = 'Serial Port Connection is not active!';
+                    $msg = $this->Translate('Serial Port Connection is not active!');
                 } else {
-                    $msg = 'Serial Port Connection is OK!';
+                    $msg = $this->Translate('Serial Port Connection is OK!');
                 }
                 $formElements[] = [
                     "type" => "CheckBox",
                     "name" => "Open",
-                    "caption" => "connect Serial Port"
+                    "caption" => $this->Translate("connect Serial Port")
                 ];
                 $formElements[] = [
                     'type'    => 'Label',
@@ -140,10 +140,10 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             $formElements[] = [
                 'type'    => 'Select',
                 'name'    => 'Connection_Type',
-                'caption' => 'Connection Type',
+                'caption' => $this->Translate('Connection Type'),
                 'options' => [
                     [
-                        'caption' => 'Please select a connection type',
+                        'caption' => $this->Translate('Please select a connection type'),
                         'value'   => 'CONNECTION_UNDEFINED'
                     ],
                     [
@@ -162,30 +162,30 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 case 'CONNECTION_TTY':
                     $formElements[] = [
                         'type'    => 'Label',
-                        'caption' => '___ Serial Port Connection Parameters ___________________________________________________________________________________________'
+                        'caption' => $this->Translate('___ Serial Port Connection Parameters _____________________________________________________________________________________')
                     ];
 
                     $formElements[] = [
                         'type'    => 'Label',
-                        'caption' => 'Serial Port Connection'
+                        'caption' => $this->Translate('Serial Port Connection')
                     ];
 
                     $formElements[] = [
                         'name'    => 'Serial Port',
                         'type'    => 'ValidationTextBox',
-                        'caption' => 'Serial Port (for example: ttyUSB0 or COM1)'
+                        'caption' => $this->Translate('Serial Port (for example: ttyUSB0 or COM1)')
                     ];
                     break;
                 case 'CONNECTION_Socket':
 
                     $formElements[] = [
                         'type'    => 'Label',
-                        'caption' => '___ Client Socket Connection Type Parameters ____________________________________________________________________________________'
+                        'caption' => $this->Translate('___ Client Socket Connection Parameters ___________________________________________________________________________________')
                     ];
 
                     $formElements[] = [
                         'type'    => 'Label',
-                        'caption' => 'Client Socket Connection'
+                        'caption' => $this->Translate('Client Socket Connection')
                     ];
                     $formElements[] = [
                         'name'    => 'IPAddress',
@@ -203,12 +203,12 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             }
             $formElements[] = [
                 'type'    => 'Label',
-                'caption' => '___ Options _______________________________________________________________________________________________________________'
+                'caption' => $this->Translate('___ Options _______________________________________________________________________________________________________________')
             ];
             $formElements[] = [
                 "type" => "CheckBox",
                 "name" => "log",
-                "caption" => "enable Logging"
+                "caption" => $this->Translate("enable Logging")
             ];
             $opts_language = [];
             $opts_language[] = ['caption' => $this->Translate('England'), 'value'   => 'en'];
@@ -216,7 +216,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             $formElements[] = [
                 'type'    => 'Select',
                 'name'    => 'language',
-                'caption' => 'Language',
+                'caption' => $this->Translate('Language'),
                 'options' => $opts_language
             ];
 
@@ -265,10 +265,10 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
         private function GetFormStatus()
         {
             $formStatus = [];
-            $formStatus[] = ['code' => 101, 'icon' => 'inactive', 'caption' => 'Instance getting created'];
-            $formStatus[] = ['code' => 102, 'icon' => 'active', 'caption' => 'Instance is active'];
-            $formStatus[] = ['code' => 104, 'icon' => 'inactive', 'caption' => 'Instance is not active'];
-            $formStatus[] = ['code' => 200, 'icon' => 'error', 'caption' => 'Instance Error'];
+            $formStatus[] = ['code' => 101, 'icon' => 'inactive', 'caption' => $this->Translate('Instance getting created')];
+            $formStatus[] = ['code' => 102, 'icon' => 'active', 'caption' => $this->Translate('Instance is active')];
+            $formStatus[] = ['code' => 104, 'icon' => 'inactive', 'caption' => $this->Translate('Instance is not active')];
+            $formStatus[] = ['code' => 200, 'icon' => 'error', 'caption' => $this->Translate('Instance Error')];
 
             return $formStatus;
         }
