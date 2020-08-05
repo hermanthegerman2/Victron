@@ -242,20 +242,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 $formActions[] = [
                     'type'    => 'Button',
                     'caption' => 'Ping',
-                    'onClick' => 'echo VEDirect_ConnectionTest()'
-                ];
-            }
-
-            if ($Connection_Type == 'CONNECTION_TTY') {
-                $msg = "Ping an ".$this->ReadPropertyString('Serial Port')." senden";
-                $formActions[] = [
-                    'type'    => 'Label',
-                    'caption' => $msg
-                ];
-                $formActions[] = [
-                    'type'    => 'Button',
-                    'caption' => 'Ping',
-                    'onClick' => 'echo VEDirect_ConnectionTest()'
+                    'onClick' => $this->VEDirect_ConnectionTest($Connection_Type)
                 ];
             }
 
