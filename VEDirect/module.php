@@ -76,7 +76,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             $this->RegisterPropertyBoolean("log", true);
             // Statusvariablen anlegen
             $this->RegisterVariableBoolean("SocketStatus", "SocketStatus", "~Alert.Reversed", 40);
-            $this->DisableAction("SocketStatus");
+            $this->DisableAction("Connection Status");
 		}
 
         public function GetConfigurationForm()
@@ -108,6 +108,11 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     $msg = 'Client Socket Connection is OK!';
                 }
                 $formElements[] = [
+                    "type" => "CheckBox",
+                    "name" => "Open",
+                    "caption" => "connect Client Socket"
+                ];
+                $formElements[] = [
                     'type'    => 'Label',
                     'caption' => $msg
                 ];
@@ -120,6 +125,11 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 } else {
                     $msg = 'Serial Port Connection is OK!';
                 }
+                $formElements[] = [
+                    "type" => "CheckBox",
+                    "name" => "Open",
+                    "caption" => "connect Serial Port"
+                ];
                 $formElements[] = [
                     'type'    => 'Label',
                     'caption' => $msg
@@ -273,7 +283,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 // INSTANCEMESSAGE
                 $this->RegisterMessage($ParentID, 10505); // Status hat sich geändert
 
-                If ($ParentID > 0) {
+                If (($ParentID > 0) &&  ($Connection_Type == CONNECTION_Socket)) {
                     If (IPS_GetProperty($ParentID, 'Host') <> $this->ReadPropertyString('IPAddress')) {
                         IPS_SetProperty($ParentID, 'Host', $this->ReadPropertyString('IPAddress'));
                     }
@@ -283,8 +293,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     If (IPS_GetName($ParentID) == "Client Socket") {
                         IPS_SetName($ParentID, "Victron");
                     }
-                    if(IPS_HasChanges($ParentID))
-                    {
+                    if(IPS_HasChanges($ParentID)) {
                         $Result = @IPS_ApplyChanges($ParentID);
                         If ($Result) {
                             $this->_log("ApplyChanges", "Client Socket connection successful !", true);
@@ -294,12 +303,37 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                         }
                     }
                 }
+                If (($ParentID > 0) && ($Connection_Type == CONNECTION_TTYCONNECTION_TTY)) {
+                    If (IPS_GetProperty($ParentID, 'Port') <> $this->ReadPropertyString('Serial Port')) {
+                        IPS_SetProperty($ParentID, 'Port', $this->ReadPropertyString('Serial Port'));
+                    }
+                    If (IPS_GetProperty($ParentID, 'Open') <> $this->ReadPropertyBoolean("Open")) {
+                        IPS_SetProperty($ParentID, 'Open', $this->ReadPropertyBoolean("Open"));
+                    }
+                    If (IPS_GetName($ParentID) == "Serial Port") {
+                        IPS_SetName($ParentID, "Victron");
+                    }
+                    if(IPS_HasChanges($ParentID)) {
+                        $Result = @IPS_ApplyChanges($ParentID);
+                        If ($Result) {
+                            $this->_log("ApplyChanges", "Serial Port connection successful !", true);
+                        }
+                        else {
+                            $this->_log("ApplyChanges", "Serial Port connection not successful !", true);
+                        }
+                    }
+                }
 
-                If (($this->ConnectionTest()) AND ($this->ReadPropertyBoolean("Open") == true))  {
-                    $this->SetSummary($this->ReadPropertyString('IPAddress'));
+                If (($this->ConnectionTest()) AND ($this->ReadPropertyBoolean("Open") == true)) {
+                    if ($Connection_Type == CONNECTION_Socket) {
+                        $this->SetSummary($this->ReadPropertyString('IPAddress'));
+                    }
+                    else {
+                        $this->SetSummary($this->ReadPropertyString('Serial Port'));
+                    }
                     $this->_log("ApplyChanges", "start initial preparation", true);
-                    If (GetValueBoolean($this->GetIDForIdent("SocketStatus")) == false) {
-                        SetValueBoolean($this->GetIDForIdent("SocketStatus"), true);
+                    if (GetValueBoolean($this->GetIDForIdent("Connection Status")) == false) {
+                        SetValueBoolean($this->GetIDForIdent("Connection Status"), true);
                     }
 
                     // Vorbereitung beendet
