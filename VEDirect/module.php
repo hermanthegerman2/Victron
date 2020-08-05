@@ -303,7 +303,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                         }
                     }
                 }
-                If (($ParentID > 0) && ($Connection_Type == CONNECTION_TTYCONNECTION_TTY)) {
+                If (($ParentID > 0) && ($Connection_Type == CONNECTION_TTY)) {
                     If (IPS_GetProperty($ParentID, 'Port') <> $this->ReadPropertyString('Serial Port')) {
                         IPS_SetProperty($ParentID, 'Port', $this->ReadPropertyString('Serial Port'));
                     }
