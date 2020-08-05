@@ -89,9 +89,9 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $arrayElements[] = array("type" => "CheckBox", "name" => "Open", "caption" => "active");
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
             $arrayOptions = array();
-            $arrayOptions[] = array("label" => "Socket", "value" => 0);
-            $arrayOptions[] = array("label" => "Seriell", "value" => 1);
-            $arrayElements[] = array("type" => "Select", "name" => "Selection", "caption" => "Connection", "options" => $arrayOptions );
+            $arrayOptions[] = array("label" => "Socket Connection", "value" => 0);
+            $arrayOptions[] = array("label" => "Serial Connection", "value" => 1);
+            $arrayElements[] = array("type" => "Select", "name" => "Selection", "caption" => "Connection Interface", "options" => $arrayOptions );
 
 
             $arrayElements[] = array("label" => "Service", "name" => "Serial Port", "width" => "200px", "add" => "");
@@ -109,22 +109,6 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             else {
                 $arrayActions[] = array("type" => "Label", "label" => "Diese Funktionen stehen erst nach Eingabe und Übernahme der erforderlichen Daten zur Verfügung!");
             }
-            /*{"elements": [],
-                "actions": [
-                    {
-                       "name": "Text",
-                        "type": "ValidationTextBox",
-                        "caption": "Text"
-                    },
-                    {
-                        "type": "Button",
-                        "caption": "Send",
-                        "onClick": "VICTRON_Send($id, $Text);"
-                    }
-                ],
-                "status": []
-            }*/
-
             return JSON_encode(array("status" => $arrayStatus, "elements" => $arrayElements, "actions" => $arrayActions));
         }
 
