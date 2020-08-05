@@ -8,8 +8,6 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
 	class VEDirect extends IPSModule {
 
-	    const guid_device = "{4607FBB3-BE52-1D44-F235-5439358A479D}";
-
 	    use ModuleHelper;
         use VictronConstants;
         use VictronImagesLib;
@@ -319,6 +317,10 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 If (($ParentID > 0) && ($Connection_Type == 'CONNECTION_TTY')) {
                     If (IPS_GetProperty($ParentID, 'Port') <> $this->ReadPropertyString('Serial Port')) {
                         IPS_SetProperty($ParentID, 'Port', $this->ReadPropertyString('Serial Port'));
+                        IPS_SetProperty($ParentID, 'BaudRate', 19200);
+                        IPS_SetProperty($ParentID, 'DataBits', 8);
+                        IPS_SetProperty($ParentID, 'StopBits', 1);
+                        IPS_SetProperty($ParentID, 'Parity', None);
                     }
                     If (IPS_GetProperty($ParentID, 'Open') <> $this->ReadPropertyBoolean("Open")) {
                         IPS_SetProperty($ParentID, 'Open', $this->ReadPropertyBoolean("Open"));
