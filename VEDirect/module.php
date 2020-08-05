@@ -88,17 +88,10 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
             $arrayElements = array();
             $arrayElements[] = array("type" => "CheckBox", "name" => "Open", "caption" => "active");
             $arrayElements[] = array("type" => "Label", "label" => "_____________________________________________________________________________________________________");
-            $arrayElements[] = array("type" => "Select", "name" => "Selection", "caption" => "Connection", "options" => array (
-                0 =>
-                    array(
-                        'caption' => 'Socket',
-                        'value' => 0,
-                    ),
-                1 =>
-                    array(
-                        'caption' => 'Seriell',
-                        'value' => 1,
-                    )));
+            $arrayOptions = array();
+            $arrayOptions[] = array("label" => "Socket", "value" => 0);
+            $arrayOptions[] = array("label" => "Seriell", "value" => 1);
+            $arrayElements[] = array("type" => "Select", "name" => "Selection", "caption" => "Connection", "options" => $arrayOptions );
 
 
             $arrayElements[] = array("label" => "Service", "name" => "Serial Port", "width" => "200px", "add" => "");
