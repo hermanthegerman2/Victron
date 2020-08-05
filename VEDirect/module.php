@@ -100,7 +100,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
         {
             $Connection_Type = $this->ReadPropertyString('Connection_Type');
 
-            if ($Connection_Type == CONNECTION_Socket) {
+            if ($Connection_Type == 'CONNECTION_Socket') {
                 $instID = IPS_GetInstance($this->InstanceID)['InstanceID'];
                 $connectionID = IPS_GetInstance($instID)['ConnectionID'];
                 if (IPS_GetInstance($connectionID)['InstanceStatus'] != IS_ACTIVE) {
@@ -118,7 +118,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     'caption' => $msg
                 ];
             }
-            if ($Connection_Type == CONNECTION_TTY) {
+            if ($Connection_Type == 'CONNECTION_TTY') {
                 $instID = IPS_GetInstance($this->InstanceID)['InstanceID'];
                 $connectionID = IPS_GetInstance($instID)['ConnectionID'];
                 if (IPS_GetInstance($connectionID)['InstanceStatus'] != IS_ACTIVE) {
@@ -162,7 +162,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             ];
 
             switch ($Connection_Type) {
-                case CONNECTION_TTY:
+                case 'CONNECTION_TTY':
 
                     $formElements[] = [
                         'type'    => 'Label',
@@ -175,7 +175,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                         'caption' => 'Serial Port (for example: ttyUSB0 or COM1)'
                     ];
                     break;
-                case CONNECTION_Socket:
+                case 'CONNECTION_Socket':
 
                     $formElements[] = [
                         'type'    => 'Label',
@@ -228,7 +228,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             $msg = "Ping an ".$this->ReadPropertyString('IPAddress')." / ".$this->ReadPropertyInteger('Socket')." senden";
             $formActions = [];
 
-            if ($Connection_Type == CONNECTION_Socket) {
+            if ($Connection_Type == 'CONNECTION_Socket') {
                 $formActions[] = [
                     'type'    => 'Label',
                     'caption' => $msg
@@ -240,7 +240,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 ];
             }
 
-            if ($Connection_Type == CONNECTION_TTY) {
+            if ($Connection_Type == 'CONNECTION_TTY') {
                 $msg = "Ping an ".$this->ReadPropertyString('Serial Port')." senden";
                 $formActions[] = [
                     'type'    => 'Label',
@@ -274,10 +274,10 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             parent::ApplyChanges();
 
             $Connection_Type = $this->ReadPropertyString('Connection_Type');
-            if ($Connection_Type == CONNECTION_Socket) {
+            if ($Connection_Type == 'CONNECTION_Socket') {
                 $this->ForceParent("{3CFF0FD9-E306-41DB-9B5A-9D06D38576C3}");
             }
-            if ($Connection_Type == CONNECTION_TTY) {
+            if ($Connection_Type == 'CONNECTION_TTY') {
                 $this->ForceParent("{6DC3D946-0D31-450F-A8C6-C42DB8D7D4F1}");
             }
 
@@ -293,7 +293,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 // INSTANCEMESSAGE
                 $this->RegisterMessage($ParentID, 10505); // Status hat sich geändert
 
-                If (($ParentID > 0) &&  ($Connection_Type == CONNECTION_Socket)) {
+                If (($ParentID > 0) &&  ($Connection_Type == 'CONNECTION_Socket')) {
                     If (IPS_GetProperty($ParentID, 'Host') <> $this->ReadPropertyString('IPAddress')) {
                         IPS_SetProperty($ParentID, 'Host', $this->ReadPropertyString('IPAddress'));
                     }
@@ -313,7 +313,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                         }
                     }
                 }
-                If (($ParentID > 0) && ($Connection_Type == CONNECTION_TTY)) {
+                If (($ParentID > 0) && ($Connection_Type == 'CONNECTION_TTY')) {
                     If (IPS_GetProperty($ParentID, 'Port') <> $this->ReadPropertyString('Serial Port')) {
                         IPS_SetProperty($ParentID, 'Port', $this->ReadPropertyString('Serial Port'));
                     }
@@ -335,7 +335,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 }
                 $result = $this->ConnectionTest($Connection_Type);
                 If ($result == $this->ReadPropertyBoolean("Open")) {
-                    if ($Connection_Type == CONNECTION_Socket) {
+                    if ($Connection_Type == 'CONNECTION_Socket') {
                         $this->SetSummary($this->ReadPropertyString('IPAddress'));
                     }
                     else {
@@ -371,7 +371,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
         private function ConnectionTest(string $Connection_Type)
         {
             $result = false;
-            if ($Connection_Type == CONNECTION_Socket) {
+            if ($Connection_Type == 'CONNECTION_Socket') {
                 If (Sys_Ping($this->ReadPropertyString("IPAddress"), 2000)) {
                     $this->_log("Victron Socket"," IP ".$this->ReadPropertyString("IPAddress")." answered",true);
                     $status = @fsockopen($this->ReadPropertyString("IPAddress"), $this->ReadPropertyInteger("Socket"), $errno, $errstr, 10);
@@ -404,7 +404,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     $this->SetStatus(104);
                 }
             }
-            if ($Connection_Type == CONNECTION_TTY) {
+            if ($Connection_Type == 'CONNECTION_TTY') {
                 $result = true;
             }
 
