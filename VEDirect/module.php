@@ -204,7 +204,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
         private function GetFormActions()
         {
             $Connection_Type = $this->ReadPropertyInteger('Connection_Type');
-            $msg = "Ping an ".$this->ReadPropertyInteger('IPAddress')." senden";
+            $msg = "Ping an ".$this->ReadPropertyString('IPAddress')." senden";
             $formActions = [];
 
             if ($Connection_Type == CONNECTION_Socket) {
@@ -221,7 +221,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
             if ($Connection_Type == CONNECTION_TTY) {
                 $Connection_Type = $this->ReadPropertyInteger('Serial Port');
-                $msg = "Ping an ".$this->ReadPropertyInteger('Serial Port')." senden";
+                $msg = "Ping an ".$this->ReadPropertyString('Serial Port')." senden";
                 $formActions[] = [
                     'type'    => 'Label',
                     'caption' => $msg
