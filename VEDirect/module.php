@@ -99,6 +99,15 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
         private function GetFormElements()
         {
             $Connection_Type = $this->ReadPropertyString('Connection_Type');
+            $formElements[] = [
+                'type'    => 'Label',
+                'caption' => $this->Translate('___ Options _______________________________________________________________________________________________________________')
+            ];
+            $formElements[] = [
+                "type" => "CheckBox",
+                "name" => "log",
+                "caption" => $this->Translate("enable Logging")
+            ];
 
             if ($Connection_Type == 'CONNECTION_Socket') {
                 $instID = IPS_GetInstance($this->InstanceID)['InstanceID'];
@@ -211,16 +220,6 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 'caption' => $this->Translate('Language'),
                 'options' => $opts_language
             ];*/
-
-            $formElements[] = [
-                'type'    => 'Label',
-                'caption' => $this->Translate('___ Options _______________________________________________________________________________________________________________')
-            ];
-            $formElements[] = [
-                "type" => "CheckBox",
-                "name" => "log",
-                "caption" => $this->Translate("enable Logging")
-            ];
 
             $formElements[] = [
                 'type'  => 'Image',
