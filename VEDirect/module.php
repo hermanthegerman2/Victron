@@ -242,7 +242,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 $formActions[] = [
                     'type'    => 'Button',
                     'caption' => 'Ping',
-                    'onClick' => $this->VEDirect_ConnectionTest($Connection_Type)
+                    'onClick' => $this->ConnectionTest($Connection_Type)
                 ];
             }
 
