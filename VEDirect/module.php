@@ -481,6 +481,7 @@ require_once __DIR__ . "/../libs/ModuleHelper.php";
 
                 case 'Off_reason':
                     IPS_CreateVariableProfile($profile_id, 1); // integer
+                    IPS_SetVariableProfileAssociation($profile_id,0,$this->Translate('Battery low'),"",0xFFFFFF);
                     IPS_SetVariableProfileAssociation($profile_id,1,$this->Translate('No Input Power'),"",0xFFFFFF);
                     IPS_SetVariableProfileAssociation($profile_id,2,$this->Translate('Switched off (power switch)'),"",0xFFFFFF);
                     IPS_SetVariableProfileAssociation($profile_id,4,$this->Translate('Switched off (device mode register)'),"",0xFFFFFF);
