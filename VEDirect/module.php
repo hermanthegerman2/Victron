@@ -8,7 +8,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
 	class VEDirect extends IPSModule {
 
-	    const guid_device = "{DBD5563D-DFBA-A3DC-11A4-5E5E4C21F768}";
+	    const guid_device = "{4607FBB3-BE52-1D44-F235-5439358A479D}";
 
 	    use ModuleHelper;
         use VictronConstants;
@@ -109,8 +109,9 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             $Connection_Type = $this->ReadPropertyInteger('Connection_Type');
 
             if ($Connection_Type == CONNECTION_Socket) {
-                $instID = IPS_GetInstanceListByModuleID(self::guid_device);
-                if (IPS_GetInstance($instID)['InstanceStatus'] != IS_ACTIVE) {
+                $instID = IPS_GetInstance($this->InstanceID);
+                $connectionID = IPS_GetInstance([$instID])['ConnectionID'];
+                if (IPS_GetInstance($connectionID)['InstanceStatus'] != IS_ACTIVE) {
                     $msg = 'Socket Connection is not active!';
                 } else {
                     $msg = 'Socket Connection is OK!';
@@ -121,8 +122,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 ];
             }
             if ($Connection_Type == CONNECTION_TTY) {
-                $instID = IPS_GetInstanceListByModuleID(self::guid_device);
-                if (IPS_GetInstance($instID)['InstanceStatus'] != IS_ACTIVE) {
+                if (IPS_GetInstance($connectionID)['InstanceStatus'] != IS_ACTIVE) {
                     $msg = 'TTY Connection is not active!';
                 } else {
                     $msg = 'TTY Connection is OK!';
@@ -153,11 +153,11 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                         'value'   => CONNECTION_UNDEFINED
                     ],
                     [
-                        'caption' => 'IP/Port Connect',
+                        'caption' => 'Client Socket',
                         'value'   => CONNECTION_Socket
                     ],
                     [
-                        'caption' => 'Serial TTY Connect',
+                        'caption' => 'Serial Port',
                         'value'   => CONNECTION_TTY
                     ]
                 ]
@@ -174,24 +174,24 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     $formElements[] = [
                         'type'    => 'ValidationTextBox',
                         'items'   => $items,
-                        'caption' => 'TTY Port (ttyUSB0)'
+                        'caption' => 'Serial Port (ttyUSB0)'
                     ];
                     break;
                 case CONNECTION_Socket:
                     $items = [];
                     $items[] = [
                         'type'    => 'Label',
-                        'caption' => 'Socket Connection'
+                        'caption' => 'Client Socket Connection'
                     ];
                     $items[] = [
                         'name'    => 'IPAddress',
                         'type'    => 'ValidationTextBox',
-                        'caption' => 'IPAddress'
+                        'caption' => 'Host'
                     ];
                     $items[] = [
                         'name'    => 'Socket',
                         'type'    => 'ValidationTextBox',
-                        'caption' => 'Socket'
+                        'caption' => 'Port'
                     ];
                     break;
                 default:
