@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="743ffc69-5e4a-46cd-b509-289612cf2695" name="Default Changelist" comment="" />
+    <list default="true" id="743ffc69-5e4a-46cd-b509-289612cf2695" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VEDirect/module.php" beforeDir="false" afterPath="$PROJECT_DIR$/VEDirect/module.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,13 +38,6 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="TaskManager">
-    <task id="LOCAL-00127" summary="Form">
-      <created>1596613342486</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1596613342486</updated>
-    </task>
     <task id="LOCAL-00128" summary="Form">
       <created>1596613412476</created>
       <option name="number" value="00128" />
@@ -385,7 +381,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596641160666</updated>
     </task>
-    <option name="localTasksCounter" value="177" />
+    <task id="LOCAL-00177" summary="Form">
+      <created>1596641689901</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1596641689902</updated>
+    </task>
+    <option name="localTasksCounter" value="178" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -413,10 +416,10 @@
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
     <state x="2234" y="503" key="NewPhpFileDialog/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596613777808" />
-    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2" timestamp="1596641163612">
+    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2" timestamp="1596641695195">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
-    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596641163612" />
+    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596641695195" />
     <state x="2217" y="494" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596614124462">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>

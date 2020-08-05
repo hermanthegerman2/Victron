@@ -303,8 +303,8 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     If (IPS_GetProperty($ParentID, 'Host') <> $this->ReadPropertyString('IPAddress')) {
                         IPS_SetProperty($ParentID, 'Host', $this->ReadPropertyString('IPAddress'));
                     }
-                    If (IPS_GetProperty($ParentID, 'Port') <> $this->RegisterPropertyInteger('Socket')) {
-                        IPS_SetProperty($ParentID, 'Port', $this->RegisterPropertyInteger('Socket'));
+                    If (IPS_GetProperty($ParentID, 'Port') <> $this->ReadPropertyInteger('Socket')) {
+                        IPS_SetProperty($ParentID, 'Port', $this->ReadPropertyInteger('Socket'));
                     }
                     If (IPS_GetProperty($ParentID, 'Open') <> $this->ReadPropertyBoolean("Open")) {
                         IPS_SetProperty($ParentID, 'Open', $this->ReadPropertyBoolean("Open"));
