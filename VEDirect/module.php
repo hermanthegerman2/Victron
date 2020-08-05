@@ -160,7 +160,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
             switch ($Connection_Type) {
                 case CONNECTION_TTY:
-                    $formElements[];
+
                     $formElements[] = [
                         'type'    => 'Label',
                         'caption' => 'Serial Port Connection'
@@ -173,7 +173,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     ];
                     break;
                 case CONNECTION_Socket:
-                    $formElements[];
+
                     $formElements[] = [
                         'type'    => 'Label',
                         'caption' => 'Client Socket Connection'
