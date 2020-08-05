@@ -101,7 +101,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
         private function GetFormElements()
         {
-            $Connection_Type = $this->ReadPropertyInteger('$Connection_Type');
+            $Connection_Type = $this->ReadPropertyInteger('Connection_Type');
 
             $formElements = [];
             $formElements[] = [
@@ -239,7 +239,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
         private function GetFormActions()
         {
-            $oauth_type = $this->ReadPropertyInteger('$Connection_Type');
+            $Connection_Type = $this->ReadPropertyInteger('Connection_Type');
 
             $formActions = [];
 
