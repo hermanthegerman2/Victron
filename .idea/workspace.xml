@@ -19,9 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="743ffc69-5e4a-46cd-b509-289612cf2695" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="743ffc69-5e4a-46cd-b509-289612cf2695" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,34 +35,6 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="TaskManager">
-    <task id="LOCAL-00123" summary="Form">
-      <created>1596588833893</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1596588833893</updated>
-    </task>
-    <task id="LOCAL-00124" summary="Form">
-      <created>1596589074192</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1596589074192</updated>
-    </task>
-    <task id="LOCAL-00125" summary="Form">
-      <created>1596612662188</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1596612662188</updated>
-    </task>
-    <task id="LOCAL-00126" summary="Form">
-      <created>1596612881267</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1596612881267</updated>
-    </task>
     <task id="LOCAL-00127" summary="Form">
       <created>1596613342486</created>
       <option name="number" value="00127" />
@@ -387,7 +357,35 @@
       <option name="project" value="LOCAL" />
       <updated>1596640027251</updated>
     </task>
-    <option name="localTasksCounter" value="173" />
+    <task id="LOCAL-00173" summary="Form">
+      <created>1596640578060</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1596640578060</updated>
+    </task>
+    <task id="LOCAL-00174" summary="Form">
+      <created>1596640631345</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1596640631346</updated>
+    </task>
+    <task id="LOCAL-00175" summary="Form">
+      <created>1596641035801</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1596641035801</updated>
+    </task>
+    <task id="LOCAL-00176" summary="Form">
+      <created>1596641160666</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1596641160666</updated>
+    </task>
+    <option name="localTasksCounter" value="177" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -415,10 +413,10 @@
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
     <state x="2234" y="503" key="NewPhpFileDialog/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596613777808" />
-    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2" timestamp="1596640029480">
+    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2" timestamp="1596641163612">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
-    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596640029480" />
+    <state x="1992" y="686" width="816" height="387" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596641163612" />
     <state x="2217" y="494" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596614124462">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
@@ -427,9 +425,9 @@
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
     <state x="2056" y="270" width="672" height="677" key="run.anything.popup/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596572903902" />
-    <state x="2063" y="255" width="672" height="678" key="search.everywhere.popup" timestamp="1596577449693">
+    <state x="2063" y="255" width="672" height="678" key="search.everywhere.popup" timestamp="1596640751192">
       <screen x="1440" y="0" width="1920" height="1160" />
     </state>
-    <state x="2063" y="255" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596577449693" />
+    <state x="2063" y="255" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/1440.0.1920.1160@1440.0.1920.1160" timestamp="1596640751192" />
   </component>
 </project>
