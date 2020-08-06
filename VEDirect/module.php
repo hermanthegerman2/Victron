@@ -1,14 +1,13 @@
 <?php
 
 declare(strict_types=1);
+define('None', 0);
 
 require_once __DIR__ . "/../libs/VictronConstants.php"; // Victron Daten Library
 require_once __DIR__ . "/../libs/ModuleHelper.php"; // globale Funktionen
 require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
 	class VEDirect extends IPSModule {
-
-	    const guid_device = "{4607FBB3-BE52-1D44-F235-5439358A479D}";
 
 	    use ModuleHelper;
         use VictronConstants;
@@ -70,7 +69,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             $this->RegisterPropertyInteger("Selection", 0);
             $this->RegisterPropertyString("IPAddress", "192.168.2.2"); //192.168.2.2
             $this->RegisterPropertyInteger("Socket", 10000); // 10000
-            $this->RegisterPropertyString("Serial Port", "ttyUSB0");
+            $this->RegisterPropertyString("Serial Port", "/dev/ttyUSB0");
             $this->RegisterAttributeInteger("instance_id", NULL);
             $this->RegisterAttributeBoolean("LoadOutput", NULL);
             $this->RegisterPropertyBoolean("debug", true);
@@ -188,7 +187,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     $formElements[] = [
                         'name'    => 'Serial Port',
                         'type'    => 'ValidationTextBox',
-                        'caption' => $this->Translate('Serial Port (for example: ttyUSB0 or COM1)')
+                        'caption' => $this->Translate('Serial Port (for example: /dev/ttyUSB0 or COM1)')
                     ];
                     break;
                 case 'CONNECTION_Socket':
@@ -319,6 +318,10 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 If (($ParentID > 0) && ($Connection_Type == 'CONNECTION_TTY')) {
                     If (IPS_GetProperty($ParentID, 'Port') <> $this->ReadPropertyString('Serial Port')) {
                         IPS_SetProperty($ParentID, 'Port', $this->ReadPropertyString('Serial Port'));
+                        IPS_SetProperty($ParentID, 'BaudRate', 19200);
+                        IPS_SetProperty($ParentID, 'DataBits', 8);
+                        IPS_SetProperty($ParentID, 'StopBits', 1);
+                        IPS_SetProperty($ParentID, 'Parity', None);
                     }
                     If (IPS_GetProperty($ParentID, 'Open') <> $this->ReadPropertyBoolean("Open")) {
                         IPS_SetProperty($ParentID, 'Open', $this->ReadPropertyBoolean("Open"));
