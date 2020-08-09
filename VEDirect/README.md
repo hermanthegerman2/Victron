@@ -91,7 +91,7 @@ __Konfigurationsseite__:
 
 Name     | Beschreibung
 -------- | ------------------
-         |
+Open     |
          |
 
 ### 5. Statusvariablen und Profile

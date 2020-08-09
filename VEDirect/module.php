@@ -216,16 +216,6 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     break;
             }
 
-            /*$opts_language = [];
-            $opts_language[] = ['caption' => $this->Translate('England'), 'value' => 'en'];
-            $opts_language[] = ['caption' => $this->Translate('Germany'), 'value' => 'de'];
-            $formElements[] = [
-                'type'    => 'Select',
-                'name'    => 'language',
-                'caption' => $this->Translate('Language'),
-                'options' => $opts_language
-            ];*/
-
             $formElements[] = [
                 'type'  => 'Image',
                 'image' => 'data:image/png;base64,' . $this->GetBrandImage()
@@ -236,7 +226,8 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
         private function GetFormActions()
         {
-            $Connection_Type = $this->ReadPropertyString('Connection_Type');
+
+            /*$Connection_Type = $this->ReadPropertyString('Connection_Type');
             $msg = "Ping an IP: ".$this->ReadPropertyString('IPAddress')." / Port: ".$this->ReadPropertyInteger('Socket')." senden";
             $formActions = [];
 
@@ -253,6 +244,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             }
 
             return $formActions;
+            */
         }
 
         private function GetFormStatus()
