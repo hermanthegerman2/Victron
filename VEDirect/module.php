@@ -64,7 +64,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             // Modul-Eigenschaftserstellung
 
             $this->RegisterPropertyBoolean("Open", false);
-            $this->RegisterPropertyString('language', 'de');
+            //$this->RegisterPropertyString('language', 'de');
             $this->RegisterPropertyString('Connection_Type', 'CONNECTION_UNDEFINED');
             $this->RegisterPropertyInteger("Selection", 0);
             $this->RegisterPropertyString("IPAddress", "192.168.2.2");
