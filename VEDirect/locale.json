@@ -44,7 +44,7 @@
             "BMS": "Batteriemanagementsystem",
             "Short Circuit": "Kurzschluss",
             "BMS Lockout": "BMS gesperrt",
-            "Battery low": "nierige Batterieladung",
+            "Battery low": "niedrige Batterieladung",
             "No Input Power": "keine Eingangsleistung",
             "Switched off (power switch)": "EIN-Schalter aus",
             "Switched off (device mode register)": "über das Gerät aus",
