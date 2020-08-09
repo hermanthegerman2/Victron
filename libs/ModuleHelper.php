@@ -426,7 +426,7 @@ trait ModuleHelper
             foreach ($Profile_list as $value) {
                 $Profile = (strpos($value, IPS_GetInstance($this->InstanceID)['ModuleInfo']['ModuleName']));
                 if (isset($Profile)) {
-                    IPS_DeleteVariableProfile($value);
+                    @IPS_DeleteVariableProfile($value);
                 }
             }
             return true;
