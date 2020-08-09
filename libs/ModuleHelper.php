@@ -416,6 +416,23 @@ trait ModuleHelper
     }
 
     /**
+     * delete all CustomProfiles of this Instance
+     * @return int
+     */
+    protected function DeleteCustomVariableProfiles()
+    {
+        $Profile_list = IPS_GetVariableProfileList();
+        if (isset($Profile_list)) {
+            $Profile_list = array_keys($Profile_list, IPS_GetInstance($this->InstanceID)['ModuleInfo']['ModuleName']);
+            foreach ($Profile_list as $value) {
+                IPS_DeleteVariableProfile($value);
+            }
+            return true;
+        }
+        else return false;
+    }
+
+    /**
      * get url of connect module
      * @return string
      */

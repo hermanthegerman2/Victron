@@ -460,6 +460,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 		{
 			//Never delete this line!
 			parent::Destroy();
+			$this->DeleteCustomVariableProfiles();
 		}
 
 		public function TransmitData(string $payload)
