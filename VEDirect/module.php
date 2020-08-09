@@ -67,11 +67,11 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             $this->RegisterPropertyString('language', 'de');
             $this->RegisterPropertyString('Connection_Type', 'CONNECTION_UNDEFINED');
             $this->RegisterPropertyInteger("Selection", 0);
-            $this->RegisterPropertyString("IPAddress", "192.168.2.2"); //192.168.2.2
+            $this->RegisterPropertyString("IPAddress", "192.168.2.2");
             $this->RegisterPropertyInteger("Socket", 10000); // 10000
             $this->RegisterPropertyString("Serial Port", "/dev/ttyUSB0");
             $this->RegisterAttributeInteger("instance_id", NULL);
-            $this->RegisterAttributeBoolean("LoadOutput", NULL);
+            //$this->RegisterAttributeBoolean("LoadOutput", NULL);
             $this->RegisterPropertyBoolean("debug", true);
             $this->RegisterPropertyBoolean("log", true);
             $this->RegisterPropertyBoolean("AutoRestart", true);
@@ -227,7 +227,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
         private function GetFormActions()
         {
 
-            /*$Connection_Type = $this->ReadPropertyString('Connection_Type');
+            $Connection_Type = $this->ReadPropertyString('Connection_Type');
             $msg = "Ping an IP: ".$this->ReadPropertyString('IPAddress')." / Port: ".$this->ReadPropertyInteger('Socket')." senden";
             $formActions = [];
 
@@ -244,7 +244,6 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             }
 
             return $formActions;
-            */
         }
 
         private function GetFormStatus()
