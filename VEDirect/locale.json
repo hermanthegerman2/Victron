@@ -30,6 +30,8 @@
 
             "Off": "Aus",
             "On": "An",
+            "normal operation": "normaler Betrieb",
+            "alarm": "Alarm",
             "Low Voltage": "niedrige Spannung",
             "High Voltage": "hohe Spannung",
             "Low SOC": "niedrige Ladung",
@@ -127,7 +129,7 @@
             "AC output voltage": "AC-Ausgangsspannung",
             "AC output current": "AC-Ausgangsstrom",
             "AC output apparent power": "AC-Ausgangsscheinleistung",
-            "Load output state": "Zustand der Lastausgabe",
+            "Load output state": "Status Lastausgang",
             "Alarm condition active": "Alarmzustand aktiv",
             "Relay state": "Relais-Status",
             "Alarm reason": "Alarmgrund",

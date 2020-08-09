@@ -460,6 +460,9 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 		{
 			//Never delete this line!
 			parent::Destroy();
+			if ($this->DeleteCustomVariableProfile()) {
+                $this->_log("Victron delete", "CustomVariableProfile gelöscht");
+            };
 		}
 
 		public function TransmitData(string $payload)
@@ -659,8 +662,8 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
                 case 'Relay_state':
                     IPS_CreateVariableProfile($profile_id, 0); // boolean
-                    IPS_SetVariableProfileAssociation($profile_id,0,$this->Translate('Off'),"",0xFFFFFF);
-                    IPS_SetVariableProfileAssociation($profile_id,1,$this->Translate('On'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation($profile_id,0,$this->Translate('normal operation'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation($profile_id,1,$this->Translate('alarm'),"",0xFFFFFF);
                     break;
 
                 case 'Alarm_reason':
