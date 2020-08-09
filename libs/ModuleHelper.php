@@ -419,7 +419,7 @@ trait ModuleHelper
      * delete all CustomProfiles of this Instance
      * @return int
      */
-    protected function DeleteCustomVariableProfiles()
+    protected function DeleteCustomVariableProfile()
     {
         $Profile_list = IPS_GetVariableProfileList();
         if (isset($Profile_list)) {

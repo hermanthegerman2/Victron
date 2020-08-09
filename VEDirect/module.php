@@ -460,7 +460,9 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 		{
 			//Never delete this line!
 			parent::Destroy();
-			$this->DeleteCustomVariableProfiles();
+			if ($this->DeleteCustomVariableProfile()) {
+                $this->_log("Victron delete", "CustomVariableProfile gelöscht");
+            };
 		}
 
 		public function TransmitData(string $payload)
