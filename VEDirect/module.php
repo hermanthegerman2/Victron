@@ -317,6 +317,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 }
                 If (($ParentID > 0) && ($Connection_Type == 'CONNECTION_TTY')) {
                     If (IPS_GetProperty($ParentID, 'Port') <> $this->ReadPropertyString('Serial Port')) {
+
                         IPS_SetProperty($ParentID, 'Port', $this->ReadPropertyString('Serial Port'));
                         IPS_SetProperty($ParentID, 'BaudRate', 19200);
                         IPS_SetProperty($ParentID, 'DataBits', 8);
@@ -739,11 +740,11 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
                 case 'Device_mode':
                     IPS_CreateVariableProfile($profile_id, 1); // integer
-                    IPS_SetVariableProfileAssociation($profile_id,1,$this->Translate('VE_REG_MODE_CHARGER'),"",0xFFFFFF);
-                    IPS_SetVariableProfileAssociation($profile_id,2,$this->Translate('VE_REG_MODE_INVERTER'),"",0xFFFFFF);
-                    IPS_SetVariableProfileAssociation($profile_id,4,$this->Translate('VE_REG_MODE_OFF'),"",0xFFFFFF);
-                    IPS_SetVariableProfileAssociation($profile_id,8,$this->Translate('VE_REG_MODE_ECO'),"",0xFFFFFF);
-                    IPS_SetVariableProfileAssociation($profile_id,16,$this->Translate('VE_REG_MODE_HIBERNATE'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation($profile_id,1,$this->Translate('Charger'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation($profile_id,2,$this->Translate('Inverter'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation($profile_id,4,$this->Translate('OFF'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation($profile_id,8,$this->Translate('ECO'),"",0xFFFFFF);
+                    IPS_SetVariableProfileAssociation($profile_id,16,$this->Translate('Hibernate'),"",0xFFFFFF);
 
                     break;
 
