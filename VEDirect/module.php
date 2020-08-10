@@ -226,7 +226,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
         {
 
             $Connection_Type = $this->ReadPropertyString('Connection_Type');
-            $msg = "Ping an IP: ".$this->ReadPropertyString('IPAddress')." / Port: ".$this->ReadPropertyInteger('Socket')." senden";
+            $msg = "Ping an IP: ".$this->ReadPropertyString('IPAddress')." senden";
             $formActions = [];
 
             if ($Connection_Type == 'CONNECTION_Socket') {
