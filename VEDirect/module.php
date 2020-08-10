@@ -64,19 +64,17 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             // Modul-Eigenschaftserstellung
 
             $this->RegisterPropertyBoolean("Open", false);
-            $this->RegisterPropertyString('language', 'de');
             $this->RegisterPropertyString('Connection_Type', 'CONNECTION_UNDEFINED');
             $this->RegisterPropertyInteger("Selection", 0);
-            $this->RegisterPropertyString("IPAddress", "192.168.2.2"); //192.168.2.2
+            $this->RegisterPropertyString("IPAddress", "192.168.2.2");
             $this->RegisterPropertyInteger("Socket", 10000); // 10000
             $this->RegisterPropertyString("Serial Port", "/dev/ttyUSB0");
             $this->RegisterAttributeInteger("instance_id", NULL);
-            $this->RegisterAttributeBoolean("LoadOutput", NULL);
             $this->RegisterPropertyBoolean("debug", true);
             $this->RegisterPropertyBoolean("log", true);
             $this->RegisterPropertyBoolean("AutoRestart", true);
             // Statusvariablen anlegen
-            $this->RegisterVariableBoolean("ConnectionStatus", "ConnectionStatus", "~Alert.Reversed", 40);
+            $this->RegisterVariableBoolean("ConnectionStatus", $this->Translate("ConnectionStatus"), "~Alert.Reversed", 40);
             $this->DisableAction("ConnectionStatus");
 		}
 
@@ -208,23 +206,13 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     ];
                     $formElements[] = [
                         'name'    => 'Socket',
-                        'type'    => 'ValidationTextBox',
+                        'type'    => 'NumberSpinner',
                         'caption' => 'Port'
                     ];
                     break;
                 default:
                     break;
             }
-
-            /*$opts_language = [];
-            $opts_language[] = ['caption' => $this->Translate('England'), 'value' => 'en'];
-            $opts_language[] = ['caption' => $this->Translate('Germany'), 'value' => 'de'];
-            $formElements[] = [
-                'type'    => 'Select',
-                'name'    => 'language',
-                'caption' => $this->Translate('Language'),
-                'options' => $opts_language
-            ];*/
 
             $formElements[] = [
                 'type'  => 'Image',
@@ -236,21 +224,15 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
         private function GetFormActions()
         {
-            $Connection_Type = $this->ReadPropertyString('Connection_Type');
-            $msg = "Ping an IP: ".$this->ReadPropertyString('IPAddress')." / Port: ".$this->ReadPropertyInteger('Socket')." senden";
-            $formActions = [];
-
-            if ($Connection_Type == 'CONNECTION_Socket') {
-                $formActions[] = [
-                    'type'    => 'Label',
-                    'caption' => $msg
-                ];
-                $formActions[] = [
-                    'type'    => 'Button',
-                    'caption' => 'Ping',
-                    'onClick' => $this->ConnectionTest($Connection_Type)
-                ];
-            }
+            $formActions[] = [
+                'type'    => 'Label',
+                'caption' => 'no Test Actions available for now'
+            ];
+            /*$formActions[] = [
+                'type'    => 'Button',
+                'caption' => 'Ping',
+                'onClick' => Sys_Ping($this->ReadPropertyString("IPAddress"), 2000)
+            ];*/
 
             return $formActions;
         }
@@ -365,15 +347,6 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     $this->SetBuffer("ModuleReady", 0);
                 }
             }
-            else {
-                if ($this->ReadPropertyBoolean("LoadOutput") == true) {
-                    $this->LoadOutputControl(true);
-                }
-                else {
-                    $this->LoadOutputControl(false);
-                }
-                return;
-            }
         }
         private function ConnectionTest(string $Connection_Type)
         {
@@ -417,13 +390,6 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
             return $result;
         }
-
-        /*public function GetConfigurationForParent()
-        {
-            $JsonArray = array( "Host" => $this->ReadPropertyString('IPAddress'), "Port" => $this->ReadPropertyInteger("Socket"), "Open" => $this->ReadPropertyBoolean("Open"));
-            $Json = json_encode($JsonArray);
-            return $Json;
-        }*/
 
         public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
         {
@@ -634,6 +600,27 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 else {
                     return FALSE;
                 }
+            }
+        }
+
+        /**
+         * @param null $sender
+         * @param mixed $message
+         * @param bool $debug
+         */
+        protected function _log($sender = NULL, $message = '')
+        {
+            if ($this->ReadPropertyBoolean('log')) {
+                if (is_array($message)) {
+                    $message = json_encode($message);
+                }
+                IPS_LogMessage($sender, $message);
+            }
+            if ($this->ReadPropertyBoolean('debug')) {
+                if (is_array($message)) {
+                    $message = json_encode($message);
+                }
+                $this->SendDebug($sender, $message, 0);
             }
         }
 

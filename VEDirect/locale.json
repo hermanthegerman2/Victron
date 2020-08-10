@@ -6,6 +6,7 @@
             "enable Logging": "Nachrichten im Log aktiv",
             "enable debug messages": "Debug Nachrichten aktiv",
             "Language": "Sprache",
+            "ConnectionStatus": "Verbindungsstatus",
             "___ Options _______________________________________________________________________________________________________________": "___ Einstellungen ___________________________________________________________________________________________________________",
             "Client Socket Connection": "Client Socket Verbindung",
             "___ Client Socket Connection Parameters ___________________________________________________________________________________": "___ Client Socket Verbindungs Parameter _____________________________________________________________________________________",
@@ -20,6 +21,7 @@
             "Client Socket Connection is not active!": "Client Socket Verbindung ist nicht aktiv!",
             "Client Socket Connection is OK!": "Client Socket Verbindung ist OK!",
             "connect Client Socket": "verbinde Client Socket",
+            "no Test Actions available for now": "aktuell gibt es keine Testfunktionen",
 
             "Instance getting created": "Instanz wird erstellt",
             "Instance is active": "Instanz ist aktiv",
