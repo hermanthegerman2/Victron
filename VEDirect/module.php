@@ -355,7 +355,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     $this->SetStatus(104);
                     $this->SetBuffer("ModuleReady", 0);
                 }
-            }
+            }/*
             else {
                 if ($this->ReadPropertyBoolean("LoadOutput") == true) {
                     $this->LoadOutputControl(true);
@@ -364,7 +364,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     $this->LoadOutputControl(false);
                 }
                 return;
-            }
+            }*/
         }
         private function ConnectionTest(string $Connection_Type)
         {
