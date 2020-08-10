@@ -237,7 +237,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                 $formActions[] = [
                     'type'    => 'Button',
                     'caption' => 'Ping',
-                    'onClick' => $this->ConnectionTest($Connection_Type)
+                    'onClick' => Sys_Ping($this->ReadPropertyString("IPAddress"), 2000)
                 ];
             }
 
@@ -353,16 +353,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     $this->SetStatus(104);
                     $this->SetBuffer("ModuleReady", 0);
                 }
-            }/*
-            else {
-                if ($this->ReadPropertyBoolean("LoadOutput") == true) {
-                    $this->LoadOutputControl(true);
-                }
-                else {
-                    $this->LoadOutputControl(false);
-                }
-                return;
-            }*/
+            }
         }
         private function ConnectionTest(string $Connection_Type)
         {
