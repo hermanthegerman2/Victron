@@ -20,27 +20,6 @@ trait ModuleHelper
     }
 
     /**
-     * @param null $sender
-     * @param mixed $message
-     * @param bool $debug
-     */
-    protected function _log($sender = NULL, $message = '')
-    {
-        if ($this->ReadPropertyBoolean('log')) {
-            if (is_array($message)) {
-                $message = json_encode($message);
-            }
-            IPS_LogMessage($sender, $message);
-        }
-        if ($this->ReadPropertyBoolean('debug')) {
-            if (is_array($message)) {
-                $message = json_encode($message);
-            }
-            $this->SendDebug($sender, $message, 0);
-        }
-    }
-
-    /**
      * creates an instance by identifier
      * @param int $module_id
      * @param int $parent_id

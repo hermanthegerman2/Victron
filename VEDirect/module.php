@@ -611,6 +611,27 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
         }
 
         /**
+         * @param null $sender
+         * @param mixed $message
+         * @param bool $debug
+         */
+        protected function _log($sender = NULL, $message = '')
+        {
+            if ($this->ReadPropertyBoolean('log')) {
+                if (is_array($message)) {
+                    $message = json_encode($message);
+                }
+                IPS_LogMessage($sender, $message);
+            }
+            if ($this->ReadPropertyBoolean('debug')) {
+                if (is_array($message)) {
+                    $message = json_encode($message);
+                }
+                $this->SendDebug($sender, $message, 0);
+            }
+        }
+
+        /**
          * create custom variable profile
          * @param string $profile_id
          * @param string $name
