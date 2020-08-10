@@ -20,6 +20,7 @@
             "Client Socket Connection is not active!": "Client Socket Verbindung ist nicht aktiv!",
             "Client Socket Connection is OK!": "Client Socket Verbindung ist OK!",
             "connect Client Socket": "verbinde Client Socket",
+            "no Test Actions available for now": "aktuell gibt es keine Testfunktionen",
 
             "Instance getting created": "Instanz wird erstellt",
             "Instance is active": "Instanz ist aktiv",

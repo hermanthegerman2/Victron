@@ -224,22 +224,15 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
         private function GetFormActions()
         {
-
-            $Connection_Type = $this->ReadPropertyString('Connection_Type');
-            $msg = "Ping an IP: ".$this->ReadPropertyString('IPAddress')." senden";
-            $formActions = [];
-
-            if ($Connection_Type == 'CONNECTION_Socket') {
-                $formActions[] = [
-                    'type'    => 'Label',
-                    'caption' => $msg
-                ];
-                $formActions[] = [
-                    'type'    => 'Button',
-                    'caption' => 'Ping',
-                    'onClick' => Sys_Ping($this->ReadPropertyString("IPAddress"), 2000)
-                ];
-            }
+            $formActions[] = [
+                'type'    => 'Label',
+                'caption' => 'no Test Actions available for now'
+            ];
+            /*$formActions[] = [
+                'type'    => 'Button',
+                'caption' => 'Ping',
+                'onClick' => Sys_Ping($this->ReadPropertyString("IPAddress"), 2000)
+            ];*/
 
             return $formActions;
         }
