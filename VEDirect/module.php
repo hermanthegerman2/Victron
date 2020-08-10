@@ -200,7 +200,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     $formElements[] = [
                         'type'    => 'Label',
                         'caption' => $this->Translate('Client Socket Connection')
-                    ];
+                    ];/*
                     $formElements[] = [
                         'name'    => 'IPAddress',
                         'type'    => 'ValidationTextBox',
@@ -210,7 +210,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                         'name'    => 'Socket',
                         'type'    => 'ValidationTextBox',
                         'caption' => 'Port'
-                    ];
+                    ];*/
                     break;
                 default:
                     break;
