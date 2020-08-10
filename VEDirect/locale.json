@@ -6,6 +6,7 @@
             "enable Logging": "Nachrichten im Log aktiv",
             "enable debug messages": "Debug Nachrichten aktiv",
             "Language": "Sprache",
+            "ConnectionStatus": "Verbindungsstatus",
             "___ Options _______________________________________________________________________________________________________________": "___ Einstellungen ___________________________________________________________________________________________________________",
             "Client Socket Connection": "Client Socket Verbindung",
             "___ Client Socket Connection Parameters ___________________________________________________________________________________": "___ Client Socket Verbindungs Parameter _____________________________________________________________________________________",
