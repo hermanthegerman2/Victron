@@ -64,14 +64,12 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
             // Modul-Eigenschaftserstellung
 
             $this->RegisterPropertyBoolean("Open", false);
-            //$this->RegisterPropertyString('language', 'de');
             $this->RegisterPropertyString('Connection_Type', 'CONNECTION_UNDEFINED');
             $this->RegisterPropertyInteger("Selection", 0);
             $this->RegisterPropertyString("IPAddress", "192.168.2.2");
             $this->RegisterPropertyInteger("Socket", 10000); // 10000
             $this->RegisterPropertyString("Serial Port", "/dev/ttyUSB0");
             $this->RegisterAttributeInteger("instance_id", NULL);
-            //$this->RegisterAttributeBoolean("LoadOutput", NULL);
             $this->RegisterPropertyBoolean("debug", true);
             $this->RegisterPropertyBoolean("log", true);
             $this->RegisterPropertyBoolean("AutoRestart", true);
@@ -200,7 +198,7 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     $formElements[] = [
                         'type'    => 'Label',
                         'caption' => $this->Translate('Client Socket Connection')
-                    ];/*
+                    ];
                     $formElements[] = [
                         'name'    => 'IPAddress',
                         'type'    => 'ValidationTextBox',
@@ -208,9 +206,9 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
                     ];
                     $formElements[] = [
                         'name'    => 'Socket',
-                        'type'    => 'ValidationTextBox',
+                        'type'    => 'NumberSpinner',
                         'caption' => 'Port'
-                    ];*/
+                    ];
                     break;
                 default:
                     break;
@@ -408,13 +406,6 @@ require_once __DIR__ . '/../libs/images.php';  // eingebettete Images
 
             return $result;
         }
-
-        /*public function GetConfigurationForParent()
-        {
-            $JsonArray = array( "Host" => $this->ReadPropertyString('IPAddress'), "Port" => $this->ReadPropertyInteger("Socket"), "Open" => $this->ReadPropertyBoolean("Open"));
-            $Json = json_encode($JsonArray);
-            return $Json;
-        }*/
 
         public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
         {
