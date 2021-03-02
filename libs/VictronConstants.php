@@ -121,6 +121,7 @@ trait VictronConstants
         "A108" => array('DeviceName' => 'SmartSolar MPPT VE Can 250|60', 'DisplayedValues' => array('PID','V','VPV','PPV','I','IL','LOAD','Alarm','Relay','AR','OR','H19','H20','H21','H22','H23','ERR','CS','FW','SER#','HSDS','MODE','WARN','MPPT')),
         "A109" => array('DeviceName' => 'SmartSolar MPPT VE Can 250|70', 'DisplayedValues' => array('PID','V','VPV','PPV','I','IL','LOAD','Alarm','Relay','AR','OR','H19','H20','H21','H22','H23','ERR','CS','FW','SER#','HSDS','MODE','WARN','MPPT')),
         "A10A" => array('DeviceName' => 'SmartSolar MPPT VE Can 250|85', 'DisplayedValues' => array('PID','V','VPV','PPV','I','IL','LOAD','Alarm','Relay','AR','OR','H19','H20','H21','H22','H23','ERR','CS','FW','SER#','HSDS','MODE','WARN','MPPT')),
-        "A10B" => array('DeviceName' => 'SmartSolar MPPT VE Can 250|100', 'DisplayedValues' => array('PID','V','VPV','PPV','I','IL','LOAD','Alarm','Relay','AR','OR','H19','H20','H21','H22','H23','ERR','CS','FW','SER#','HSDS','MODE','WARN','MPPT'))
+        "A10B" => array('DeviceName' => 'SmartSolar MPPT VE Can 250|100', 'DisplayedValues' => array('PID','V','VPV','PPV','I','IL','LOAD','Alarm','Relay','AR','OR','H19','H20','H21','H22','H23','ERR','CS','FW','SER#','HSDS','MODE','WARN','MPPT')),
+        "A389" => array('DeviceName' => 'BMV Smart Shunt 500A', 'DisplayedValues' => array('PID','V','T','I','P','SOC','CE','Relay','TTG','Alarm','AR','H1','H2','H3','H4','H5','H6','H7','H8','H9','H10','H11','H12','H15','H16','H17','H18','FW'))
     ];
 }
